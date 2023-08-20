@@ -29,6 +29,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: mauriciabad/llocs-de-begur
+          flavor: 'latest=true'
 
       - name: Login to Docker Hub
         if: github.event_name != 'pull_request'
@@ -46,31 +47,3 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      # The next 2 actions add a comment to the PR with info of the deploy
-      - name: Find the 'deploy info' comment
-        uses: peter-evans/find-comment@v2
-        if: github.event_name == 'pull_request'
-        id: fc
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          comment-author: 'github-actions[bot]'
-          body-includes: Docker image tag(s) pushed
-
-      - name: Create or update the 'deploy info' comment
-        uses: peter-evans/create-or-update-comment@v3
-        if: github.event_name == 'pull_request'
-        with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            Docker image tag(s) pushed:
-            ```text
-            ${{ steps.docker_meta.outputs.tags }}
-            ```
-
-            Labels added to images:
-            ```text
-            ${{ steps.docker_meta.outputs.labels }}
-            ```
-          edit-mode: replace
