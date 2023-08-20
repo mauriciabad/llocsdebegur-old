@@ -18,4 +18,4 @@ Public URL: <https://llocs-de-begur.vercel.app/>
 
 > Uses: `Strapi`
 
-Deployed on Maurici's server.
+Deployed on Maurici's server automatically when a merge happens to the main branch.
