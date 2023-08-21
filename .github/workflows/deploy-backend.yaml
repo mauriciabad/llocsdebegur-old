@@ -21,5 +21,4 @@ jobs:
           ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
           stack_file_name: ./backend/docker-compose.yaml
           args: up -d
-          deployment_mode: docker-compose
-          pull_images_first: 'true'
+          copy_stack_file: true
