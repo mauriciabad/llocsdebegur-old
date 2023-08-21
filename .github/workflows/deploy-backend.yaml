@@ -12,6 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Create backend .env file
+        run: echo "${{ secrets.BACKEND_PROD_ENV_FILE }}" > ./backend/.env
+
       - name: Deploy to server
         uses: wshihadeh/docker-deployment-action@v1
         with:
