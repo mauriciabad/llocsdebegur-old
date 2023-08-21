@@ -11,7 +11,8 @@ jobs:
         id: changes
         with:
           filters: |
-            backend: ['backend/**']
+            backend: 
+              - 'backend/**'
 
       - name: Check services healthiness
         if: steps.changes.outputs.backend == 'true'
