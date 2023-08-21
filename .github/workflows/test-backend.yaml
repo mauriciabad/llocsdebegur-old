@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Health check backend
     steps:
+      - uses: actions/checkout@v3
       - name: Check services healthiness
-        uses: isbang/compose-action@v1.5.1
+        uses: thegabriele97/dockercompose-health-action@main
         with:
-          compose-file: './backend/docker-compose.yml'
+          timeout: '60'
+          workdir: 'backend'
