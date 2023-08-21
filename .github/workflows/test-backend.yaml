@@ -10,27 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v2.0
-        with:
-          directory: backend
-          file_name: .env
-          fail_on_empty: true
-          envkey_NODE_ENV: 'production'
-          envkey_HOST: ${{ secrets.HOST }}
-          envkey_PORT: ${{ secrets.PORT }}
-          envkey_APP_KEYS: ${{ secrets.APP_KEYS }}
-          envkey_API_TOKEN_SALT: ${{ secrets.API_TOKEN_SALT }}
-          envkey_ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
-          envkey_TRANSFER_TOKEN_SALT: ${{ secrets.TRANSFER_TOKEN_SALT }}
-          envkey_JWT_SECRET: ${{ secrets.JWT_SECRET }}
-          envkey_DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-          envkey_DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
-          envkey_DATABASE_CLIENT: ${{ secrets.DATABASE_CLIENT }}
-          envkey_DATABASE_FILENAME: ${{ secrets.DATABASE_FILENAME }}
-          envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          envkey_DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-          envkey_DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+      - name: Create backend .env file
+        run: echo "${{ secrets.BACKEND_PROD_ENV_FILE }}" > ./backend/.env
 
       - name: Check services healthiness
         uses: thegabriele97/dockercompose-health-action@main
