@@ -14,7 +14,7 @@ jobs:
         run: echo "${{ secrets.BACKEND_PROD_ENV_FILE }}" > ./backend/.env
 
       - name: Deploy to server
-        uses: wshihadeh/docker-deployment-action@v1
+        uses: wshihadeh/docker-deployment-action@v2
         with:
           remote_docker_host: ghactions@89.58.2.185
           ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
