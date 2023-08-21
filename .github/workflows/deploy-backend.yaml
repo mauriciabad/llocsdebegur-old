@@ -20,4 +20,4 @@ jobs:
           ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
           ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
           stack_file_name: ./backend/docker-compose.yaml
-          args: up --env-file .env
+          args: up --env-file ./backend/.env
