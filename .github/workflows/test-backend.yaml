@@ -8,7 +8,6 @@ jobs:
     name: Health check backend
     steps:
       - name: Check services healthiness
-        uses: thegabriele97/dockercompose-health-action@main
+        uses: isbang/compose-action@v1.5.1
         with:
-          timeout: '60'
-          workdir: 'backend'
+          compose-file: './backend/docker-compose.yml'
