@@ -1,0 +1,21 @@
+name: Deploy backend
+
+on:
+  push:
+    branches: 'main'
+
+jobs:
+  deploy-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Deploy to server
+        uses: wshihadeh/docker-deployment-action@v1
+        with:
+          remote_docker_host: ghactions@89.58.2.185
+          ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
+          ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
+          args: llocs-de-begur
