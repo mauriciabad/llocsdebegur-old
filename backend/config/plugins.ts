@@ -1,7 +1,8 @@
-export default {
+
+export default ({ env }) => ({
   upload: {
     config: {
-      provider: 'local',
+      provider: 'local'
     },
   },
-}
+});
