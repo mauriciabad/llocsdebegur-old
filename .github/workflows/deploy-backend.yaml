@@ -19,4 +19,7 @@ jobs:
           key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
 
-      - run: DOCKER_HOST=ssh://ghactions@89.58.2.185 docker compose -f backend/docker-compose.yaml up -d
+      - name: Deploy to server
+        run: docker compose -f backend/docker-compose.yaml up -d
+        env:
+          DOCKER_HOST: ${{ secrets.DOCKER_HOST }}
