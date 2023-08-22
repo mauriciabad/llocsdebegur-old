@@ -17,7 +17,6 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
-          name: id_rsa # optional
           known_hosts: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
 
-      - run: DOCKER_HOST=ssh://ghactions@89.58.2.185 docker compose -f backend/docker-compose.yaml up
+      - run: DOCKER_HOST=ssh://ghactions@89.58.2.185 docker compose -f backend/docker-compose.yaml up -d
