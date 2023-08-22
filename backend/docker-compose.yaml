@@ -22,13 +22,16 @@ services:
       # - ./src:/opt/app/src
       # - ./package.json:/opt/package.json
       # - ./package-lock.json:/opt/package-lock.json
-
       - ./.env:/opt/app/.env
       - ./public/uploads:/opt/app/public/uploads
-    ports:
-      - "1337:1337"
+    #ports:
+    #  - "1337:1337"
+    labels:
+      caddy: cms.llocsdebegur.server.mauriciabad.com
+      caddy.reverse_proxy: "{{upstreams 1337}}"
     networks:
       - llocs-de-begur
+      - caddy
     depends_on:
       - llocs-de-begurDB
 
@@ -73,3 +76,6 @@ networks:
   llocs-de-begur:
     name: Llocs-de-begur
     driver: bridge
+  caddy:
+    name: caddy
+    external: true
