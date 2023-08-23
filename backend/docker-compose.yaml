@@ -18,8 +18,8 @@ services:
       NODE_ENV: ${NODE_ENV}
     volumes:
       # [Maui] I don't know what this is for, it comes from the strapi dockerize
-      # - ./config:/opt/app/config
-      # - ./src:/opt/app/src
+      - ./config:/opt/app/config
+      - ./src:/opt/app/src
       # - ./package.json:/opt/package.json
       # - ./package-lock.json:/opt/package-lock.json
       - ./.env:/opt/app/.env
