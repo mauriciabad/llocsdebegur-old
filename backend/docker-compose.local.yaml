@@ -23,14 +23,14 @@ services:
       - ./package-lock.json:/opt/package-lock.json
       - ./.env:/opt/app/.env
       - ./public/uploads:/opt/app/public/uploads
-    #ports:
-    #  - "1337:1337"
-    labels:
-      caddy: cms.llocsdebegur.s.mauriciabad.com
-      caddy.reverse_proxy: "{{upstreams 1337}}"
+    ports:
+      - "1337:1337"
+    # labels:
+    #   caddy: cms.llocsdebegur.s.mauriciabad.com
+    #   caddy.reverse_proxy: "{{upstreams 1337}}"
     networks:
       - llocs-de-begur
-      - caddy
+      # - caddy
     depends_on:
       - llocs-de-begurDB
 
@@ -50,8 +50,8 @@ services:
     volumes:
       - llocs-de-begur-data:/var/lib/mysql
     # - ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
-    # ports:
-    # - "3306:3306"
+    ports:
+      - "3306:3306"
     networks:
       - llocs-de-begur
 
@@ -59,16 +59,16 @@ services:
     container_name: llocs-de-begurAdminer
     image: adminer
     restart: unless-stopped
-    #ports:
-    # - "9090:8080"
+    ports:
+      - "9090:8080"
     environment:
       - ADMINER_DEFAULT_SERVER=llocs-de-begurDB
     networks:
       - llocs-de-begur
-      - caddy
-    labels:
-      caddy: db.llocsdebegur.s.mauriciabad.com
-      caddy.reverse_proxy: "{{upstreams 9090}}"
+      # - caddy
+    # labels:
+    #   caddy: db.llocsdebegur.s.mauriciabad.com
+    #   caddy.reverse_proxy: "{{upstreams 9090}}"
     depends_on:
       - llocs-de-begurDB
 
@@ -79,6 +79,6 @@ networks:
   llocs-de-begur:
     name: Llocs-de-begur
     driver: bridge
-  caddy:
-    name: caddy
-    external: true
+  # caddy:
+  #   name: caddy
+  #   external: true
