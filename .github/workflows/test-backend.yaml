@@ -10,10 +10,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            backend:
+              - 'backend/**'
+            frontend:
+              - 'frontend/**'
+
       - name: Create backend .env file
         run: echo "${{ secrets.BACKEND_PROD_ENV_FILE }}" > ./backend/.env
 
       - name: Check services healthiness
+        if: steps.filter.outputs.backend == 'true'
         uses: thegabriele97/dockercompose-health-action@main
         with:
           timeout: '60'
