@@ -1,0 +1,28 @@
+{
+  "key": "core_admin_project-settings",
+  "value": {
+    "menuLogo": {
+      "name": "favicon-3 (1).png",
+      "hash": "favicon_3_1_55fa6fa955",
+      "url": "/uploads/favicon_3_1_55fa6fa955.png",
+      "width": 64,
+      "height": 64,
+      "ext": ".png",
+      "size": 9.66,
+      "provider": "local"
+    },
+    "authLogo": {
+      "name": "favicon-3 (1).png",
+      "hash": "favicon_3_1_9e1fae58f4",
+      "url": "/uploads/favicon_3_1_9e1fae58f4.png",
+      "width": 64,
+      "height": 64,
+      "ext": ".png",
+      "size": 9.66,
+      "provider": "local"
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
