@@ -26,7 +26,7 @@ jobs:
 
       - name: Open repo and pull changes
         run: |
-          cd /home/maui/llocsdebegur
+          cd /home/shared/llocsdebegur
           git pull
 
       - name: Build and deploy backend
