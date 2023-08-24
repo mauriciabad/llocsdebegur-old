@@ -15,21 +15,25 @@ jobs:
       - name: Create backend .env file
         run: echo "${{ secrets.BACKEND_PROD_ENV_FILE }}" > ./backend/.env
 
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.BACKEND_SSH_PRIVATE_KEY }}
-          known_hosts: ${{ secrets.BACKEND_SSH_KNOWN_HOSTS }}
-
-      - name: Connect to server with ssh
-        run: ssh ${{ secrets.BACKEND_USERNAME }}@${{ secrets.BACKEND_HOST }}
-
-      - name: Open repo and pull changes
+      - name: Configure SSH
         run: |
-          cd /home/shared/llocsdebegur
-          git pull
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/server.key
+          chmod 600 ~/.ssh/server.key
+          cat >>~/.ssh/config <<END
+          Host server
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/server.key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.BACKEND_USERNAME }}
+          SSH_KEY: ${{ secrets.BACKEND_SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.BACKEND_HOST }}
 
-      - name: Build and deploy backend
-        run: |
-          cd backend
-          ./deploy.sh
+      - name: Update repo
+        run: ssh server 'cd /home/shared/llocsdebegur; git status; git pull'
+
+      - name: Build and deploy code
+        run: ssh server 'cd /home/shared/llocsdebegur/backend/; docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build'
