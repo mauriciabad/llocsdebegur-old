@@ -17,11 +17,11 @@ CMS admin panel URL: <https://cms.llocsdebegur.s.mauriciabad.com/admin>
 To run the code in local run:
 
 ```sh
-docker compose up -f docker-compose.yaml -d --build
+docker compose -f docker-compose.yaml up -d --build
 ```
 
 To run the code in production run:
 
 ```sh
-docker compose up -f docker-compose.yaml -f docker-compose.prod.yaml -d --build
+docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build
 ```
