@@ -16,6 +16,8 @@ CMS admin panel URL: <https://cms.llocsdebegur.s.mauriciabad.com/admin>
 
 ### Development
 
+In order to make changes in the backend, do them locally and when everything works commit to master, then the code will be deployed to the server and you can start creating the new data there.
+
 To run the code in local run:
 
 ```sh
