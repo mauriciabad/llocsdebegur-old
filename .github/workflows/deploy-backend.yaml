@@ -1,6 +1,8 @@
 name: Deploy backend
 
-on: push
+on:
+  push:
+    branches: main
 
 jobs:
   deploy-backend:
@@ -31,7 +33,7 @@ jobs:
           SSH_HOST: ${{ secrets.BACKEND_HOST }}
 
       - name: Update repo
-        run: ssh server 'cd /home/shared/llocsdebegur; git pull'
+        run: ssh server 'cd /home/shared/llocsdebegur; git status; git pull'
 
       - name: Build and deploy code
         run: ssh server 'cd /home/shared/llocsdebegur/backend/; docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build'
