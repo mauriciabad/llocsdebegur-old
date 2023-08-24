@@ -50,7 +50,8 @@ To run the code locally:
 
 ```sh
 cd backend
-docker compose -f docker-compose.yaml up --build
+npm i
+npm run docker:dev
 ```
 
 Admin URL: <http://localhost:1337/admin>
