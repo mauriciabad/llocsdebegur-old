@@ -5,7 +5,7 @@
 > Uses: `React JS`, `Next.js`, `Tailwind`, and `TypeScript`.
 > Deployment: Deployed on `Vercel`.
 
-Public URL: <https://llocs-de-begur.vercel.app/>
+Public URL: <https://llocsdebegur.vercel.app/>
 
 ## Backend
 

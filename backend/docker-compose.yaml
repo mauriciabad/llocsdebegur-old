@@ -1,14 +1,14 @@
 version: "3"
 services:
-  llocs-de-begur:
-    container_name: llocs-de-begur
+  llocsdebegur:
+    container_name: llocsdebegur
     build: .
-    image: llocs-de-begur:latest
+    image: llocsdebegur:latest
     restart: unless-stopped
     env_file: .env
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_HOST: llocs-de-begurDB
+      DATABASE_HOST: llocsdebegurDB
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
       DATABASE_PORT: ${DATABASE_PORT}
@@ -26,12 +26,12 @@ services:
     ports:
       - "1337:1337"
     networks:
-      - llocs-de-begur
+      - llocsdebegur
     depends_on:
-      - llocs-de-begurDB
+      - llocsdebegurDB
 
-  llocs-de-begurDB:
-    container_name: llocs-de-begurDB
+  llocsdebegurDB:
+    container_name: llocsdebegurDB
     platform: linux/amd64
     restart: unless-stopped
     env_file: .env
@@ -44,29 +44,29 @@ services:
       MYSQL_DATABASE: ${DATABASE_NAME}
       MYSQL_ROOT_HOST: "%"
     volumes:
-      - llocs-de-begur-data:/var/lib/mysql
+      - llocsdebegur-data:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
-      - llocs-de-begur
+      - llocsdebegur
 
-  llocs-de-begurAdminer:
-    container_name: llocs-de-begurAdminer
+  llocsdebegurAdminer:
+    container_name: llocsdebegurAdminer
     image: adminer
     restart: unless-stopped
     ports:
       - "9090:8080"
     environment:
-      - ADMINER_DEFAULT_SERVER=llocs-de-begurDB
+      - ADMINER_DEFAULT_SERVER=llocsdebegurDB
     networks:
-      - llocs-de-begur
+      - llocsdebegur
     depends_on:
-      - llocs-de-begurDB
+      - llocsdebegurDB
 
 volumes:
-  llocs-de-begur-data:
+  llocsdebegur-data:
 
 networks:
-  llocs-de-begur:
+  llocsdebegur:
     name: Llocs-de-begur
     driver: bridge

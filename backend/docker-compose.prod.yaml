@@ -1,6 +1,6 @@
 version: "3"
 services:
-  llocs-de-begur:
+  llocsdebegur:
     build:
       context: .
       dockerfile: Dockerfile.prod
@@ -13,10 +13,10 @@ services:
     networks:
       - caddy
 
-  llocs-de-begurDB:
+  llocsdebegurDB:
     ports: !reset []
 
-  llocs-de-begurAdminer:
+  llocsdebegurAdminer:
     ports: !reset []
     networks:
       - caddy
