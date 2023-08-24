@@ -1,4 +1,6 @@
-### Frontend
+# Llocs de Begur app
+
+## Frontend
 
 > Uses: `React JS`, `Next.js`, `Tailwind`, and `TypeScript`.
 > Deployment: Deployed on `Vercel`.
