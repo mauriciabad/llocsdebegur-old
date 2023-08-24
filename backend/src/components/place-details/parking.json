@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_place_details_parkings",
+  "info": {
+    "displayName": "Parking",
+    "icon": "car"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "free",
+        "paid",
+        "mixed"
+      ],
+      "required": false
+    },
+    "details": {
+      "type": "richtext"
+    }
+  }
+}

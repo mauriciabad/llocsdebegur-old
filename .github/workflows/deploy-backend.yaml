@@ -1,0 +1,35 @@
+name: Deploy backend
+
+on:
+  push:
+    branches: main
+
+jobs:
+  deploy-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Create backend .env file
+        run: echo "${{ secrets.BACKEND_PROD_ENV_FILE }}" > ./backend/.env
+
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.BACKEND_SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.BACKEND_SSH_KNOWN_HOSTS }}
+
+      - name: Connect to server with ssh
+        run: ssh ${{ secrets.BACKEND_USERNAME }}@${{ secrets.BACKEND_HOST }}
+
+      - name: Open repo and pull changes
+        run: |
+          cd /home/maui/llocsdebegur
+          git pull
+
+      - name: Build and deploy backend
+        run: |
+          cd backend
+          ./deploy.sh

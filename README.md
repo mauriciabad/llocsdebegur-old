@@ -1,23 +1,29 @@
-# Llocs de Begur
+# Llocs de Begur app
 
-Web amb llocs que em semblen guais de begur.
-
-<https://llocs-de-begur.vercel.app/>
-
-## For Developers
-
-### Frontend
+## Frontend
 
 > Uses: `React JS`, `Next.js`, `Tailwind`, and `TypeScript`.
 > Deployment: Deployed on `Vercel`.
 
-Public URL: <https://llocs-de-begur.vercel.app/>
+Public URL: <https://llocsdebegur.vercel.app/>
 
 ## Backend
 
 > Uses: `Strapi`
-> Deployment: Deployed on Maurici's server directly.
+> Deployment: Deployed on Maurici's server automatically when there's a push in main.
 
 CMS admin panel URL: <https://cms.llocsdebegur.s.mauriciabad.com/admin>
 
-The code is directly in the server.
+### Development
+
+To run the code in local run:
+
+```sh
+docker compose -f docker-compose.yaml up -d --build
+```
+
+To run the code in production run:
+
+```sh
+docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build
+```

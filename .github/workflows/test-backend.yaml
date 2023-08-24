@@ -1,0 +1,20 @@
+name: Test backend
+
+on: push
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    name: Health check backend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Create backend .env file
+        run: echo "${{ secrets.BACKEND_PROD_ENV_FILE }}" > ./backend/.env
+
+      - name: Check services healthiness
+        uses: thegabriele97/dockercompose-health-action@main
+        with:
+          timeout: '60'
+          workdir: 'backend'

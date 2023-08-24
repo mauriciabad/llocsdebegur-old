@@ -1,0 +1,60 @@
+{
+  "collectionName": "components_place_details_basic_details",
+  "info": {
+    "displayName": "Basic Details",
+    "icon": "file",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "shortDescription": {
+      "type": "text",
+      "maxLength": 200,
+      "required": true
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "location": {
+      "type": "string"
+    },
+    "amountOfPeople": {
+      "type": "enumeration",
+      "enum": [
+        "tooManyPeople",
+        "manyPeople",
+        "somePeople",
+        "almosNoPeople",
+        "noPeople"
+      ]
+    }
+  }
+}
