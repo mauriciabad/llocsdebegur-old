@@ -1,8 +1,7 @@
-# CMS for Llocs de begur app
+# CMS for Llocs de Begur app
 
-To update the docker containers run:
+To deploy the code run:
 
 ```bash
-docker-compose up -d --build
+./deploy.sh
 ```
-

@@ -18,10 +18,16 @@ jobs:
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
-          key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
-          known_hosts: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
+          key: ${{ secrets.BACKEND_SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.BACKEND_SSH_KNOWN_HOSTS }}
 
-      - name: Deploy to server
-        run: docker compose -f backend/docker-compose.yaml up -d
-        env:
-          DOCKER_HOST: ${{ secrets.DOCKER_HOST }}
+      - name: Connect to server with ssh
+        run: ssh ${{ secrets.BACKEND_USERNAME }}@${{ secrets.BACKEND_HOST }}
+
+      - name: Open repo and pull changes
+        run: |
+          cd /home/maui/llocsdebegur
+          git pull
+
+      - name: Build and deploy
+        run: ./deploy.sh

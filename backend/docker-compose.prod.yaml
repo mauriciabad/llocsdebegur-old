@@ -1,0 +1,27 @@
+version: "3"
+services:
+  llocs-de-begur:
+    environment:
+      NODE_ENV: production
+    ports: !reset []
+    labels:
+      caddy: cms.llocsdebegur.s.mauriciabad.com
+      caddy.reverse_proxy: "{{upstreams 1337}}"
+    networks:
+      - caddy
+
+  llocs-de-begurDB:
+    ports: !reset []
+
+  llocs-de-begurAdminer:
+    ports: !reset []
+    networks:
+      - caddy
+    labels:
+      caddy: db.llocsdebegur.s.mauriciabad.com
+      caddy.reverse_proxy: "{{upstreams 9090}}"
+
+networks:
+  caddy:
+    name: caddy
+    external: true
