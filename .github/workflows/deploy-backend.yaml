@@ -24,6 +24,8 @@ jobs:
 
       - name: Open repo and pull changes
         run: |
+          pwd
+          tree
           cd /home/shared/llocsdebegur
           git pull
 
