@@ -34,7 +34,7 @@ npm run build
 
 ## Backend
 
-> Uses: `Strapi`, `GraphQL`
+> Uses: `Strapi`, `GraphQL`, `Docker`
 >
 > Deployment: Deployed on Maurici's server automatically when there's a push in main.
 
