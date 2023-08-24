@@ -55,6 +55,8 @@ docker compose -f docker-compose.yaml up --build
 
 Admin URL: <http://localhost:1337/admin>
 
+> Remember that you can export the admin's config with the plugin [Config Sync](https://market.strapi.io/plugins/strapi-plugin-config-sync) or `npm run cs export`. **You should do this manually when the config changes** (Admin role, User role, Core store, or I18n locale). And after deploying, manually importing the config with the plugin [Config Sync](https://market.strapi.io/plugins/strapi-plugin-config-sync) or `npm run cs import`
+
 #### Production environment
 
 To run the code in production run:

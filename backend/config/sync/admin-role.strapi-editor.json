@@ -1,0 +1,139 @@
+{
+  "name": "Editor",
+  "code": "strapi-editor",
+  "description": "Editors can manage and publish contents including those of other users.",
+  "permissions": [
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::details-beach.details-beach",
+      "properties": {
+        "fields": [
+          "sandType",
+          "accessDescription",
+          "hasBusStop",
+          "sandImage",
+          "basicDetails.name",
+          "basicDetails.content",
+          "basicDetails.shortDescription",
+          "basicDetails.cover",
+          "basicDetails.media",
+          "basicDetails.location",
+          "basicDetails.amountOfPeople",
+          "parking.type",
+          "parking.details"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::details-beach.details-beach",
+      "properties": {
+        "fields": [
+          "sandType",
+          "accessDescription",
+          "hasBusStop",
+          "sandImage",
+          "basicDetails.name",
+          "basicDetails.content",
+          "basicDetails.shortDescription",
+          "basicDetails.cover",
+          "basicDetails.media",
+          "basicDetails.location",
+          "basicDetails.amountOfPeople",
+          "parking.type",
+          "parking.details"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::details-beach.details-beach",
+      "properties": {
+        "fields": [
+          "sandType",
+          "accessDescription",
+          "hasBusStop",
+          "sandImage",
+          "basicDetails.name",
+          "basicDetails.content",
+          "basicDetails.shortDescription",
+          "basicDetails.cover",
+          "basicDetails.media",
+          "basicDetails.location",
+          "basicDetails.amountOfPeople",
+          "parking.type",
+          "parking.details"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::landing.landing",
+      "properties": {
+        "fields": [
+          "heroTitle"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::landing.landing",
+      "properties": {
+        "fields": [
+          "heroTitle"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::landing.landing",
+      "properties": {
+        "fields": [
+          "heroTitle"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.copy-link",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.download",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.update",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.configure-view",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::details-beach.details-beach",
+  "value": {
+    "uid": "api::details-beach.details-beach",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "sandType": {
+        "edit": {
+          "label": "sandType",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "sandType",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "accessDescription": {
+        "edit": {
+          "label": "accessDescription",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "accessDescription",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "hasBusStop": {
+        "edit": {
+          "label": "hasBusStop",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hasBusStop",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "sandImage": {
+        "edit": {
+          "label": "sandImage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "sandImage",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "basicDetails": {
+        "edit": {
+          "label": "basicDetails",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "basicDetails",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "parking": {
+        "edit": {
+          "label": "parking",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "parking",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "sandType",
+        "hasBusStop",
+        "sandImage"
+      ],
+      "edit": [
+        [
+          {
+            "name": "sandType",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "accessDescription",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "hasBusStop",
+            "size": 4
+          },
+          {
+            "name": "sandImage",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "basicDetails",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "parking",
+            "size": 12
+          }
+        ]
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
