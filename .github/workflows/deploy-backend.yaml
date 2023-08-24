@@ -13,23 +13,13 @@ jobs:
       - name: Create backend .env file
         run: echo "${{ secrets.BACKEND_PROD_ENV_FILE }}" > ./backend/.env
 
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
+      - name: Connect to server and run deploy
+        uses: appleboy/ssh-action@v1.0.0
         with:
+          host: ${{ secrets.BACKEND_HOST }}
+          username: ${{ secrets.BACKEND_USERNAME }}
           key: ${{ secrets.BACKEND_SSH_PRIVATE_KEY }}
-          known_hosts: ${{ secrets.BACKEND_SSH_KNOWN_HOSTS }}
-
-      - name: Connect to server with ssh
-        run: ssh ${{ secrets.BACKEND_USERNAME }}@${{ secrets.BACKEND_HOST }}
-
-      - name: Open repo and pull changes
-        run: |
-          pwd
-          tree
-          cd /home/shared/llocsdebegur
-          git pull
-
-      - name: Build and deploy backend
-        run: |
-          cd backend
-          ./deploy.sh
+          script: |
+            cd /home/shared/llocsdebegur
+            git pull
+            ./deploy.sh
