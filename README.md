@@ -8,6 +8,30 @@
 
 Public URL: <https://llocsdebegur.vercel.app/>
 
+### Development
+
+#### Local environment
+
+To run the code locally:
+
+```sh
+cd frontend
+npm i
+npm run dev
+```
+
+App URL: <http://localhost:3000>
+
+#### Production environment
+
+To run the code in production:
+
+```sh
+cd frontend
+npm i
+npm run build
+```
+
 ## Backend
 
 > Uses: `Strapi`
@@ -20,12 +44,18 @@ CMS admin panel URL: <https://cms.llocsdebegur.s.mauriciabad.com/admin>
 
 To make changes in the backend, do them locally and when everything works commit to master. Then, the code will be deployed automatically to the server and you can start creating the new data there.
 
-To run the code in local run:
+#### Local environment
+
+To run the code locally:
 
 ```sh
 cd backend
 docker compose -f docker-compose.yaml up --build
 ```
+
+Admin URL: <http://localhost:1337/admin>
+
+#### Production environment
 
 To run the code in production run:
 

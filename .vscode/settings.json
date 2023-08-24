@@ -1,3 +1,8 @@
 {
-  "yaml.customTags": ["!reset", "!reset sequence"]
+  "yaml.customTags": ["!reset", "!reset sequence"],
+  "markdownlint.config": {
+    "MD024": {
+      "siblings_only": true
+    }
+  }
 }
