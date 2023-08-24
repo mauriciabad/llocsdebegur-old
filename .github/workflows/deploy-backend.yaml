@@ -30,9 +30,6 @@ jobs:
           SSH_KEY: ${{ secrets.BACKEND_SSH_PRIVATE_KEY }}
           SSH_HOST: ${{ secrets.BACKEND_HOST }}
 
-      - name: Test stuff
-        run: ssh server 'pwd; cd /home/shared/llocsdebegur; tree'
-
       - name: Update repo
         run: ssh server 'cd /home/shared/llocsdebegur; git pull'
 
