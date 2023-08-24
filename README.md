@@ -1,21 +1,13 @@
-# Llocs de Begur
-
-Web amb llocs que em semblen guais de begur.
-
-<https://llocs-de-begur.vercel.app/>
-
-## For Developers
-
 ### Frontend
 
 > Uses: `React JS`, `Next.js`, `Tailwind`, and `TypeScript`.
-
-Deployed on `Vercel`.
+> Deployment: Deployed on `Vercel`.
 
 Public URL: <https://llocs-de-begur.vercel.app/>
 
 ## Backend
 
 > Uses: `Strapi`
+> Deployment: Deployed on Maurici's server automatically when there's a push in main.
 
-Deployed on Maurici's server automatically when a merge happens to the main branch.
+CMS admin panel URL: <https://cms.llocsdebegur.s.mauriciabad.com/admin>
