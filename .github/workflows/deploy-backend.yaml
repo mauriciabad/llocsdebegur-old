@@ -12,9 +12,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Create backend .env file
-        run: echo "${{ secrets.BACKEND_PROD_ENV_FILE }}" > ./backend/.env
-
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
