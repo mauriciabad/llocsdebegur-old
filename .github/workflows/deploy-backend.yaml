@@ -13,13 +13,22 @@ jobs:
       - name: Create backend .env file
         run: echo "${{ secrets.BACKEND_PROD_ENV_FILE }}" > ./backend/.env
 
-      - name: Connect to server and run deploy
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.BACKEND_HOST }}
-          username: ${{ secrets.BACKEND_USERNAME }}
-          key: ${{ secrets.BACKEND_SSH_PRIVATE_KEY }}
-          script: |
-            cd /home/shared/llocsdebegur
-            git pull
-            ./deploy.sh
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/server.key
+          chmod 600 ~/.ssh/server.key
+          cat >>~/.ssh/config <<END
+          Host server
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/server.key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.BACKEND_USERNAME }}
+          SSH_KEY: ${{ secrets.BACKEND_SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.BACKEND_HOST }}
+
+      - name: Run deploy script
+        run: ssh server '/home/shared/llocsdebegur/backend/ghactions-deploy.sh'
