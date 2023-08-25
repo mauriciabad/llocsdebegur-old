@@ -1,4 +1,7 @@
-import { env } from "@/lib/env";
 import { GraphQLClient } from "graphql-request";
 
-export const graphqlClient = new GraphQLClient(env('GRAPHQL_API_URL'))
+const GRAPHQL_API_URL = process.env.NODE_ENV === 'production'
+  ? 'https://cms.llocsdebegur.s.mauriciabad.com/graphql'
+  : 'http://localhost:1337/graphql'
+
+export const graphqlClient = new GraphQLClient(GRAPHQL_API_URL)
