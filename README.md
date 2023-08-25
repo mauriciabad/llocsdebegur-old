@@ -32,7 +32,7 @@ npm i
 npm run build
 ```
 
-- Vercel's project URL: <https://vercel.com/mauriciabad/llocs-de-begur>
+- Vercel's project URL: <https://vercel.com/mauriciabad/llocsdebegur>
 
 ## Backend
 
