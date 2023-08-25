@@ -4,5 +4,11 @@
     "MD024": {
       "siblings_only": true
     }
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
   }
 }
