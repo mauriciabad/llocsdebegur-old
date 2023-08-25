@@ -6,7 +6,7 @@
 >
 > Deployment: Deployed on `Vercel`.
 
-Public URL: <https://llocsdebegur.vercel.app/>
+Public URL: <https://llocsdebegur.mauriciabad.com/>
 
 ### Development
 
@@ -31,6 +31,8 @@ cd frontend
 npm i
 npm run build
 ```
+
+- Vercel's project URL: <https://vercel.com/mauriciabad/llocs-de-begur>
 
 ## Backend
 

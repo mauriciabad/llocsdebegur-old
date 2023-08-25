@@ -4,6 +4,15 @@
   "type": "public",
   "permissions": [
     {
+      "action": "api::details-beach.details-beach.find"
+    },
+    {
+      "action": "api::details-beach.details-beach.findOne"
+    },
+    {
+      "action": "api::landing.landing.find"
+    },
+    {
       "action": "plugin::users-permissions.auth.callback"
     },
     {

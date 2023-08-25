@@ -1,6 +1,5 @@
 const ENV_DEFAULTS = {
-  GRAPHQL_API_KEY: null, // Login in strapi admin, go to settings and generate a new key
-  GRAPHQL_API_URL: 'http://localhost:1337'
+  GRAPHQL_API_URL: 'http://localhost:1337/graphql'
 } as const
 
 type EnvValidKey = keyof typeof ENV_DEFAULTS
