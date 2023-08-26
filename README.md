@@ -10,6 +10,8 @@ Public URL: <https://llocsdebegur.mauriciabad.com/>
 
 ### Development
 
+Check the [TODO.md](./TODO.md) file to pick a task to develop if you're unsure about what to do.
+
 #### Local environment
 
 To run the code locally:
@@ -44,6 +46,8 @@ npm run build
 - GraphQL URL: <http://cms.llocsdebegur.s.mauriciabad.com/graphql>
 
 ### Development
+
+Check the [TODO.md](./TODO.md) file to pick a task to develop if you're unsure about what to do.
 
 To make changes in the backend, do them locally and when everything works commit to master. Then, the code will be deployed automatically to the server and you can start creating the new data there.
 
