@@ -6,5 +6,9 @@
   "Footer": {
     "switch-locale-description": "Veure en ",
     "switch-locale-name": "Català"
+  },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "go-home": "Go to homepage"
   }
 }

@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import classNames from 'classnames'
 import { useLocale } from 'next-intl'
-import { notFound } from 'next/navigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,16 +13,10 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode
-  params: { locale: string }
 }) {
   const locale = useLocale()
-
-  if (params.locale !== locale) {
-    notFound()
-  }
 
   return (
     <html lang={locale}>
