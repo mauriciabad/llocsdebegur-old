@@ -12,7 +12,6 @@
           "accessDescription",
           "hasBusStop",
           "sandImage",
-          "basicDetails.name",
           "basicDetails.content",
           "basicDetails.shortDescription",
           "basicDetails.cover",
@@ -20,7 +19,9 @@
           "basicDetails.location",
           "basicDetails.amountOfPeople",
           "parking.type",
-          "parking.details"
+          "parking.details",
+          "slug",
+          "name"
         ]
       },
       "conditions": [
@@ -36,7 +37,6 @@
           "accessDescription",
           "hasBusStop",
           "sandImage",
-          "basicDetails.name",
           "basicDetails.content",
           "basicDetails.shortDescription",
           "basicDetails.cover",
@@ -44,7 +44,9 @@
           "basicDetails.location",
           "basicDetails.amountOfPeople",
           "parking.type",
-          "parking.details"
+          "parking.details",
+          "slug",
+          "name"
         ]
       },
       "conditions": [
@@ -60,7 +62,6 @@
           "accessDescription",
           "hasBusStop",
           "sandImage",
-          "basicDetails.name",
           "basicDetails.content",
           "basicDetails.shortDescription",
           "basicDetails.cover",
@@ -68,7 +69,9 @@
           "basicDetails.location",
           "basicDetails.amountOfPeople",
           "parking.type",
-          "parking.details"
+          "parking.details",
+          "slug",
+          "name"
         ]
       },
       "conditions": [
@@ -80,7 +83,8 @@
       "subject": "api::landing.landing",
       "properties": {
         "fields": [
-          "heroTitle"
+          "heroTitle",
+          "heroDescription"
         ]
       },
       "conditions": [
@@ -92,7 +96,8 @@
       "subject": "api::landing.landing",
       "properties": {
         "fields": [
-          "heroTitle"
+          "heroTitle",
+          "heroDescription"
         ]
       },
       "conditions": [
@@ -104,7 +109,8 @@
       "subject": "api::landing.landing",
       "properties": {
         "fields": [
-          "heroTitle"
+          "heroTitle",
+          "heroDescription"
         ]
       },
       "conditions": [

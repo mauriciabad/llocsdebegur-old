@@ -7,7 +7,7 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "id",
+      "mainField": "name",
       "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
@@ -104,6 +104,34 @@
           "sortable": false
         }
       },
+      "slug": {
+        "edit": {
+          "label": "slug",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "name": {
+        "edit": {
+          "label": "name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -134,16 +162,30 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "sandType",
-        "hasBusStop",
-        "sandImage"
-      ],
       "edit": [
         [
           {
+            "name": "name",
+            "size": 6
+          },
+          {
+            "name": "slug",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "basicDetails",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "sandType",
+            "size": 6
+          },
+          {
+            "name": "sandImage",
             "size": 6
           }
         ],
@@ -157,16 +199,6 @@
           {
             "name": "hasBusStop",
             "size": 4
-          },
-          {
-            "name": "sandImage",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "basicDetails",
-            "size": 12
           }
         ],
         [
@@ -175,6 +207,12 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "sandType",
+        "hasBusStop",
+        "sandImage"
       ]
     }
   },
