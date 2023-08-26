@@ -49,10 +49,19 @@ export default async function Page({
               .shortDescription
           }
         </p>
-        <img src={
-          `${BACKEND_URL}${beaches.detailsBeaches.data[0].attributes.basicDetails
-            .cover.data.attributes.url}`
-        } alt="" className='rounded-xl shadow-2xl max-w-xl mx-auto w-full mt-4' />
+        <img
+          src={`${BACKEND_URL}${beaches.detailsBeaches.data[0].attributes.basicDetails.cover.data.attributes.url}`}
+          alt=""
+          className="rounded-xl shadow-2xl max-w-xl mx-auto w-full mt-4"
+          height={
+            beaches.detailsBeaches.data[0].attributes.basicDetails.cover.data
+              .attributes.height
+          }
+          width={
+            beaches.detailsBeaches.data[0].attributes.basicDetails.cover.data
+              .attributes.width
+          }
+        />
       </section>
 
       <Footer />

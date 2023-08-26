@@ -1,24 +1,26 @@
-'use client'
-
-import Link from 'next/link'
+import { MyLink } from '@/navigation'
 import { IconLanguage } from '@tabler/icons-react'
-import { useTranslations } from 'next-intl'
-import { usePathname } from 'next/navigation'
+import { useTranslations, useLocale } from 'next-intl'
 
 export default function Footer() {
+  const currentLocale = useLocale()
+  const targetLocale = currentLocale === 'en' ? 'ca' : 'en'
   const t = useTranslations('Footer')
-  const pathname = usePathname()
+
   return (
     <footer className="sticky top-full inset-x-0 p-4 bg-sky-100 text-center">
       <div>
-        <IconLanguage className="text-sky-500 inline-block" />
-        <span>{t('view-in')}</span>
-        <Link href={pathname} locale="ca" className="underline ml-2">
-          Català
-        </Link>
-        <Link href={pathname} locale="en" className="underline ml-2">
-          English
-        </Link>
+        <IconLanguage className="text-sky-500 inline-block mr-2" />
+        <span>{t('switch-locale-description')}</span>
+        <MyLink
+          key={targetLocale}
+          href={`/`}
+          locale={targetLocale}
+          hrefLang={targetLocale}
+          className="underline"
+        >
+          {t('switch-locale-name')}
+        </MyLink>
       </div>
     </footer>
   )

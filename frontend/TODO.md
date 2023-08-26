@@ -2,9 +2,8 @@
 
 ## i18n
 
-- [ ] Change language from footer
 - [ ] Fix slug different by language
-- [ ] Urls translated to (platjes)
+- [ ] Strapi makes me write non-localized fields anyway
 
 ## Dev experience
 

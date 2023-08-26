@@ -1,9 +1,9 @@
 import { gql } from 'graphql-request'
 import { graphqlClient } from '@/lib/graphql'
-import Link from 'next/link'
 import { IconBeach } from '@tabler/icons-react'
 import Footer from '@/components/footer'
 import { useTranslations, useLocale } from 'next-intl'
+import { MyLink } from '@/navigation'
 
 export default async function PageWrapper() {
   const locale = useLocale()
@@ -36,13 +36,16 @@ function Page({ beaches }: { beaches: any }) {
         <ul className="mt-6">
           {beaches.detailsBeaches.data.map((beach) => (
             <li key={beach.attributes.slug}>
-              <Link
-                href={`/platjes/${beach.attributes.slug}`}
+              <MyLink
+                href={{
+                  pathname: '/platjes/[slug]',
+                  params: { slug: beach.attributes.slug },
+                }}
                 className="underline text-xl py-2 px-4 inline-block"
               >
                 {' '}
                 {beach.attributes.name}
-              </Link>
+              </MyLink>
             </li>
           ))}
         </ul>

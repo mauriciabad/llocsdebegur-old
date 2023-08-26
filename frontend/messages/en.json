@@ -4,6 +4,7 @@
     "view-all": "Explore all"
   },
   "Footer": {
-    "view-in": "View the website in:"
+    "switch-locale-description": "Veure en ",
+    "switch-locale-name": "Català"
   }
 }

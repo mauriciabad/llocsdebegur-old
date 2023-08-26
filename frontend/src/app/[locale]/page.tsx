@@ -1,9 +1,9 @@
 import { gql } from 'graphql-request'
 import { graphqlClient } from '@/lib/graphql'
-import Link from 'next/link'
 import { IconBeach } from '@tabler/icons-react'
 import Footer from '@/components/footer'
 import { useTranslations, useLocale } from 'next-intl'
+import { MyLink } from '@/navigation'
 
 export default async function PageWrapper() {
   const locale = useLocale()
@@ -41,12 +41,12 @@ function Page({ landingInfo }: { landingInfo: any }) {
       <section className="text-center mx-auto max-w-2xl p-4">
         <IconBeach className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1" />
         <h2 className="font-bold text-3xl">{t('beaches')}</h2>
-        <Link
+        <MyLink
           href="/platjes"
           className="p-4 leading-none bg-sky-900 text-white uppercase rounded-lg inline-block mt-6"
         >
           {t('view-all')}
-        </Link>
+        </MyLink>
       </section>
 
       <Footer />

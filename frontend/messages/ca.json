@@ -4,6 +4,7 @@
     "view-all": "Veure totes"
   },
   "Footer": {
-    "view-in": "Veure la pàgina en:"
+    "switch-locale-description": "Switch to ",
+    "switch-locale-name": "English"
   }
 }
