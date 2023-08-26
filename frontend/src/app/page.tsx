@@ -1,5 +1,5 @@
-import { graphqlClient } from '@/lib/graphql'
 import { gql } from 'graphql-request'
+import { graphqlClient } from '@/lib/graphql'
 
 const queryGetAllBeaches = gql`
   query {
