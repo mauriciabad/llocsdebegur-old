@@ -12,6 +12,10 @@
 
 - [ ] Nav bar
 
+## Refactors
+
+- [ ] Weird strapi return types from graphl
+
 ## Others
 
 - [ ]
