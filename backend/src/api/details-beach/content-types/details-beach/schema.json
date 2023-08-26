@@ -88,7 +88,8 @@
         }
       },
       "type": "uid",
-      "required": true
+      "required": true,
+      "targetField": "name"
     },
     "name": {
       "pluginOptions": {
@@ -99,7 +100,7 @@
       "type": "string",
       "maxLength": 100,
       "required": true,
-      "unique": true
+      "unique": false
     }
   }
 }

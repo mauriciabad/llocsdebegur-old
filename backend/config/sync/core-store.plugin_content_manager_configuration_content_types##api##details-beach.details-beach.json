@@ -8,7 +8,7 @@
       "searchable": true,
       "pageSize": 10,
       "mainField": "name",
-      "defaultSortBy": "id",
+      "defaultSortBy": "name",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -209,10 +209,8 @@
         ]
       ],
       "list": [
-        "id",
-        "sandType",
-        "hasBusStop",
-        "sandImage"
+        "name",
+        "basicDetails"
       ]
     }
   },
