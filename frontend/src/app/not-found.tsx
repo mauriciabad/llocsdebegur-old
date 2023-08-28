@@ -1,6 +1,8 @@
 import { MyLink } from '@/navigation'
 import { useTranslations } from 'next-intl'
 
+export const dynamic = "force-dynamic";
+
 export default function Page() {
   const t = useTranslations('NotFoundPage')
 
