@@ -15,7 +15,6 @@
 ## Refactors
 
 - [ ] Weird strapi return types from graphl
-- [ ] Automatic types for GraphQL responses
 
 ## Others
 

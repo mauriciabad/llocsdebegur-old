@@ -1,8 +1,23 @@
-import { GraphQLClient } from 'graphql-request'
+import { IS_PRODUCTION_ENV } from '@/constants';
+import { BACKEND_URL } from '@/constants';
+import {
+  ApolloClient,
+  createHttpLink,
+  InMemoryCache
+} from '@apollo/client';
+import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 
-const GRAPHQL_API_URL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://cms.llocsdebegur.s.mauriciabad.com/graphql'
-    : 'http://localhost:1337/graphql'
+if (IS_PRODUCTION_ENV) {
+  loadDevMessages();
+  loadErrorMessages();
+}
 
-export const graphqlClient = new GraphQLClient(GRAPHQL_API_URL)
+const GRAPHQL_API_URL = `${BACKEND_URL}/graphql` as const
+
+export const graphqlClient = new ApolloClient({
+  ssrMode: true,
+  link: createHttpLink({
+    uri: GRAPHQL_API_URL
+  }),
+  cache: new InMemoryCache(),
+});

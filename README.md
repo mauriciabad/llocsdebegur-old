@@ -2,7 +2,7 @@
 
 ## Frontend
 
-> Uses: `React JS`, `Next.js`, `Tailwind`, and `TypeScript`.
+> Uses: `React JS`, `Next.js`, `Apollo GraphQL`, `Tailwind`, and `TypeScript`.
 >
 > Deployment: Deployed on `Vercel`.
 
