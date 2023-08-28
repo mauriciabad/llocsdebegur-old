@@ -1,10 +1,9 @@
 import { IconBeach } from '@tabler/icons-react'
-import Footer from '@/components/footer'
 import { useTranslations, useLocale } from 'next-intl'
 import { MyLink } from '@/navigation'
 import { graphql } from '@/gql'
 import { GetLandingQuery } from '@/gql/graphql'
-import { graphqlClient } from '@/lib/graphql'
+import { gqlClient } from '@/lib/graphql'
 
 const getLandingQuery = graphql(`
   query getLanding($locale: I18NLocaleCode!) {
@@ -22,9 +21,9 @@ const getLandingQuery = graphql(`
 export default async function PageWrapper() {
   const locale = useLocale()
 
-  const { data: landingInfo } = await graphqlClient.query({
+  const { data: landingInfo } = await gqlClient().query({
     query: getLandingQuery,
-    variables: { locale }
+    variables: { locale },
   })
 
   if (!landingInfo) return <h1>Error fetching data</h1> // TODO: Do better error handling
@@ -36,7 +35,7 @@ function Page({ landingInfo }: { landingInfo: GetLandingQuery }) {
   const t = useTranslations('Landing')
 
   return (
-    <main>
+    <>
       <header className="bg-sky-900 text-white min-h-[50vh] flex items-center justify-center flex-col p-4 text-center">
         <h1 className="font-bold text-6xl">
           {landingInfo.landing?.data?.attributes?.heroTitle}
@@ -46,7 +45,7 @@ function Page({ landingInfo }: { landingInfo: GetLandingQuery }) {
         </p>
       </header>
 
-      <section className="text-center mx-auto max-w-2xl p-4">
+      <main className="text-center mx-auto max-w-2xl p-4">
         <IconBeach className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1" />
         <h2 className="font-bold text-3xl">{t('beaches')}</h2>
         <MyLink
@@ -55,9 +54,7 @@ function Page({ landingInfo }: { landingInfo: GetLandingQuery }) {
         >
           {t('view-all')}
         </MyLink>
-      </section>
-
-      <Footer />
-    </main>
+      </main>
+    </>
   )
 }

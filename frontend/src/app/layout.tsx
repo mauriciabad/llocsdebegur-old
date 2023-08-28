@@ -3,7 +3,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import classNames from 'classnames'
 import { useLocale } from 'next-intl'
-
+import { ApolloWrapper } from './ApolloWrapper'
+import Footer from '@/components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -21,7 +22,9 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={classNames([inter.className, '[&>main]:min-h-screen'])}>
-        {children}
+        <ApolloWrapper>{children}</ApolloWrapper>
+
+        <Footer />
       </body>
     </html>
   )

@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@apollo/client": "3.8.1",
+    "@apollo/experimental-nextjs-app-support": "0.4.1",
     "@tabler/icons-react": "2.32.0",
     "@types/node": "20.5.1",
     "@types/react": "18.2.20",
