@@ -17,10 +17,16 @@ Check the [TODO.md](./TODO.md) file to pick a task to develop if you're unsure a
 To run the code locally:
 
 ```sh
+# Run the backend first or it will crash
+
 cd frontend
 npm i
 npm run dev
 ```
+
+> ⚠️ Becaure of `codegen`, the backend needs to be running locally.
+>
+> If you plan to not update any GraphQL query, you don't need to run the backend, simply run `npm run dev:next`. Otherwise, you have to run the backend.
 
 - App URL: <http://localhost:3000>
 
