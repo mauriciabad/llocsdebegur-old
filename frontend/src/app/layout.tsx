@@ -21,7 +21,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={classNames([inter.className, '[&>main]:min-h-screen'])}>
+      <body className={classNames([inter.className, 'min-h-screen'])}>
         <ApolloWrapper>{children}</ApolloWrapper>
 
         <Footer />
