@@ -35,6 +35,7 @@ function objectMap<TValue, TResult>(
 ) {
   const ret = {} as Dictionary<TResult>;
   for (const key of Object.keys(obj)) {
+    if (key === '__typename') continue;
     const retKey = keySelector
       ? keySelector.call(ctx || null, key, obj)
       : key;
