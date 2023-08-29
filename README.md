@@ -2,23 +2,31 @@
 
 ## Frontend
 
-> Uses: `React JS`, `Next.js`, `Tailwind`, and `TypeScript`.
+> Uses: `React JS`, `Next.js`, `Apollo GraphQL`, `Tailwind`, and `TypeScript`.
 >
 > Deployment: Deployed on `Vercel`.
 
-Public URL: <https://llocsdebegur.vercel.app/>
+Public URL: <https://llocsdebegur.mauriciabad.com/>
 
 ### Development
+
+Check the [TODO.md](./TODO.md) file to pick a task to develop if you're unsure about what to do.
 
 #### Local environment
 
 To run the code locally:
 
 ```sh
+# Run the backend first or it will crash
+
 cd frontend
 npm i
 npm run dev
 ```
+
+> ⚠️ Becaure of `codegen`, the backend needs to be running locally.
+>
+> If you plan to not update any GraphQL query, you don't need to run the backend, simply run `npm run dev:next`. Otherwise, you have to run the backend.
 
 - App URL: <http://localhost:3000>
 
@@ -32,6 +40,8 @@ npm i
 npm run build
 ```
 
+- Vercel's project URL: <https://vercel.com/mauriciabad/llocsdebegur>
+
 ## Backend
 
 > Uses: `Strapi`, `GraphQL`, `Docker`
@@ -42,6 +52,8 @@ npm run build
 - GraphQL URL: <http://cms.llocsdebegur.s.mauriciabad.com/graphql>
 
 ### Development
+
+Check the [TODO.md](./TODO.md) file to pick a task to develop if you're unsure about what to do.
 
 To make changes in the backend, do them locally and when everything works commit to master. Then, the code will be deployed automatically to the server and you can start creating the new data there.
 

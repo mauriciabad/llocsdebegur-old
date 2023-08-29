@@ -4,7 +4,8 @@
   "info": {
     "singularName": "landing",
     "pluralName": "landings",
-    "displayName": "Landing"
+    "displayName": "Landing",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,6 +24,16 @@
       },
       "type": "string",
       "required": true
+    },
+    "heroDescription": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true,
+      "maxLength": 300
     }
   }
 }

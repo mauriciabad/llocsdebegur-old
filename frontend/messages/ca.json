@@ -1,0 +1,23 @@
+{
+  "Landing": {
+    "beaches": "Platjes",
+    "view-all": "Veure totes"
+  },
+  "AllBeachesView": {
+    "beaches": "Platjes"
+  },
+  "BeachView": {
+    "photos": "Fotos"
+  },
+  "Footer": {
+    "switch-locale-description": "Switch to ",
+    "switch-locale-name": "English"
+  },
+  "Spinner": {
+    "loading": "Carregant..."
+  },
+  "NotFoundPage": {
+    "title": "Pàgina no trobada",
+    "go-home": "Tornar a l'inici"
+  }
+}

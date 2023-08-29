@@ -1,0 +1,23 @@
+{
+  "Landing": {
+    "beaches": "Beaches",
+    "view-all": "Explore all"
+  },
+  "AllBeachesView": {
+    "beaches": "Beaches"
+  },
+  "BeachView": {
+    "photos": "Photos"
+  },
+  "Footer": {
+    "switch-locale-description": "Veure en ",
+    "switch-locale-name": "Català"
+  },
+  "Spinner": {
+    "loading": "Loading..."
+  },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "go-home": "Go to homepage"
+  }
+}

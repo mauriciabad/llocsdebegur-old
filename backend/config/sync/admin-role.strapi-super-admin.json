@@ -12,7 +12,6 @@
           "accessDescription",
           "hasBusStop",
           "sandImage",
-          "basicDetails.name",
           "basicDetails.content",
           "basicDetails.shortDescription",
           "basicDetails.cover",
@@ -20,11 +19,13 @@
           "basicDetails.location",
           "basicDetails.amountOfPeople",
           "parking.type",
-          "parking.details"
+          "parking.details",
+          "slug",
+          "name"
         ],
         "locales": [
           "en",
-          "ca-ES"
+          "ca"
         ]
       },
       "conditions": []
@@ -35,7 +36,7 @@
       "properties": {
         "locales": [
           "en",
-          "ca-ES"
+          "ca"
         ]
       },
       "conditions": []
@@ -46,7 +47,7 @@
       "properties": {
         "locales": [
           "en",
-          "ca-ES"
+          "ca"
         ]
       },
       "conditions": []
@@ -60,7 +61,6 @@
           "accessDescription",
           "hasBusStop",
           "sandImage",
-          "basicDetails.name",
           "basicDetails.content",
           "basicDetails.shortDescription",
           "basicDetails.cover",
@@ -68,11 +68,13 @@
           "basicDetails.location",
           "basicDetails.amountOfPeople",
           "parking.type",
-          "parking.details"
+          "parking.details",
+          "slug",
+          "name"
         ],
         "locales": [
           "en",
-          "ca-ES"
+          "ca"
         ]
       },
       "conditions": []
@@ -86,7 +88,6 @@
           "accessDescription",
           "hasBusStop",
           "sandImage",
-          "basicDetails.name",
           "basicDetails.content",
           "basicDetails.shortDescription",
           "basicDetails.cover",
@@ -94,11 +95,13 @@
           "basicDetails.location",
           "basicDetails.amountOfPeople",
           "parking.type",
-          "parking.details"
+          "parking.details",
+          "slug",
+          "name"
         ],
         "locales": [
           "en",
-          "ca-ES"
+          "ca"
         ]
       },
       "conditions": []
@@ -108,11 +111,12 @@
       "subject": "api::landing.landing",
       "properties": {
         "fields": [
-          "heroTitle"
+          "heroTitle",
+          "heroDescription"
         ],
         "locales": [
           "en",
-          "ca-ES"
+          "ca"
         ]
       },
       "conditions": []
@@ -123,7 +127,7 @@
       "properties": {
         "locales": [
           "en",
-          "ca-ES"
+          "ca"
         ]
       },
       "conditions": []
@@ -134,7 +138,7 @@
       "properties": {
         "locales": [
           "en",
-          "ca-ES"
+          "ca"
         ]
       },
       "conditions": []
@@ -144,11 +148,12 @@
       "subject": "api::landing.landing",
       "properties": {
         "fields": [
-          "heroTitle"
+          "heroTitle",
+          "heroDescription"
         ],
         "locales": [
           "en",
-          "ca-ES"
+          "ca"
         ]
       },
       "conditions": []
@@ -158,11 +163,12 @@
       "subject": "api::landing.landing",
       "properties": {
         "fields": [
-          "heroTitle"
+          "heroTitle",
+          "heroDescription"
         ],
         "locales": [
           "en",
-          "ca-ES"
+          "ca"
         ]
       },
       "conditions": []
@@ -463,6 +469,24 @@
     },
     {
       "action": "plugin::seo.read",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::translate.batch-translate",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::translate.translate",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::translate.usage",
       "subject": null,
       "properties": {},
       "conditions": []
