@@ -1,9 +1,7 @@
 import { IconBeach } from '@tabler/icons-react'
 import { useTranslations, useLocale } from 'next-intl'
 import { MyLink } from '@/navigation'
-import { GetAllBeachesQuery } from '@/gql/graphql'
-import { graphql } from '@/gql'
-import { gqlClient } from '@/lib/graphql'
+import { GetAllBeachesQuery, graphql, gqlClient, simplifyResponse, SimplifiedStrapiResponse } from '@/lib/gql'
 
 const getAllBeachesQuery = graphql(`
   query getAllBeaches($locale: I18NLocaleCode!) {
@@ -21,17 +19,18 @@ const getAllBeachesQuery = graphql(`
 export default async function PageWrapper() {
   const locale = useLocale()
 
-  const { data: beaches } = await gqlClient().query({
+  const { data } = await gqlClient().query({
     query: getAllBeachesQuery,
     variables: { locale },
   })
+
+  const beaches = simplifyResponse(data)
 
   if (!beaches) return <h1>Error fetching data</h1> // TODO: Do better error handling
 
   return <Page beaches={beaches} />
 }
-
-function Page({ beaches }: { beaches: GetAllBeachesQuery }) {
+function Page({ beaches }: { beaches: Exclude<SimplifiedStrapiResponse<GetAllBeachesQuery>, null | undefined> }) {
   const t = useTranslations('AllBeachesView')
 
   return (
@@ -39,17 +38,17 @@ function Page({ beaches }: { beaches: GetAllBeachesQuery }) {
       <IconBeach className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1" />
       <h2 className="font-bold text-4xl">{t('beaches')}</h2>
       <ul className="mt-6">
-        {beaches.detailsBeaches?.data.map((beach) => (
-          <li key={beach.attributes?.slug}>
+        {beaches.map((beach) => beach && (
+          <li key={beach.slug}>
             <MyLink
               href={{
                 pathname: '/platjes/[slug]',
-                params: { slug: beach.attributes?.slug ?? 'null' },
+                params: { slug: beach.slug ?? 'null' },
               }}
               className="underline text-xl py-2 px-4 inline-block"
             >
               {' '}
-              {beach.attributes?.name}
+              {beach.name}
             </MyLink>
           </li>
         ))}

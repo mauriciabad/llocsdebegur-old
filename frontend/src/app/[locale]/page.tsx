@@ -1,9 +1,7 @@
 import { IconBeach } from '@tabler/icons-react'
 import { useTranslations, useLocale } from 'next-intl'
 import { MyLink } from '@/navigation'
-import { graphql } from '@/gql'
-import { GetLandingQuery } from '@/gql/graphql'
-import { gqlClient } from '@/lib/graphql'
+import { GetLandingQuery, graphql, gqlClient, simplifyResponse, SimplifiedStrapiResponse } from '@/lib/gql'
 
 const getLandingQuery = graphql(`
   query getLanding($locale: I18NLocaleCode!) {
@@ -21,27 +19,29 @@ const getLandingQuery = graphql(`
 export default async function PageWrapper() {
   const locale = useLocale()
 
-  const { data: landingInfo } = await gqlClient().query({
+  const { data } = await gqlClient().query({
     query: getLandingQuery,
     variables: { locale },
   })
+
+  const landingInfo = simplifyResponse(data)
 
   if (!landingInfo) return <h1>Error fetching data</h1> // TODO: Do better error handling
 
   return <Page landingInfo={landingInfo} />
 }
 
-function Page({ landingInfo }: { landingInfo: GetLandingQuery }) {
+function Page({ landingInfo }: { landingInfo: Exclude<SimplifiedStrapiResponse<GetLandingQuery>, null | undefined> }) {
   const t = useTranslations('Landing')
 
   return (
     <>
       <header className="bg-sky-900 text-white min-h-[50vh] flex items-center justify-center flex-col p-4 text-center">
         <h1 className="font-bold text-6xl">
-          {landingInfo.landing?.data?.attributes?.heroTitle}
+          {landingInfo.heroTitle}
         </h1>
         <p className="text-xl mt-4">
-          {landingInfo.landing?.data?.attributes?.heroDescription}
+          {landingInfo.heroDescription}
         </p>
       </header>
 

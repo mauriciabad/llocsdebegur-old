@@ -1,6 +1,6 @@
 'use client'
 
-import { gqlClient } from '@/lib/graphql'
+import { gqlClient } from '@/lib/gql'
 import { ApolloNextAppProvider } from '@apollo/experimental-nextjs-app-support/ssr'
 
 export function ApolloWrapper({ children }: React.PropsWithChildren) {
