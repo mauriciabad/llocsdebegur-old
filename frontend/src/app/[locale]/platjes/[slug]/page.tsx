@@ -2,7 +2,14 @@ import { IconBeach } from '@tabler/icons-react'
 import { BACKEND_URL } from '@/constants'
 import { useLocale, useTranslations } from 'next-intl'
 import { notFound } from 'next/navigation'
-import { GetBeachQuery, graphql, gqlClient, simplifyResponse, SimpleResponse, NonNullableItem } from '@/lib/gql'
+import {
+  GetBeachQuery,
+  graphql,
+  gqlClient,
+  simplifyResponse,
+  SimpleResponse,
+  NonNullableItem,
+} from '@/lib/gql'
 
 const getBeachQuery = graphql(`
   query getBeach($slug: String!, $locale: I18NLocaleCode!) {
@@ -47,7 +54,11 @@ export default async function PageWrapper({
   return <Page beach={beach} />
 }
 
-function Page({ beach }: { beach: NonNullableItem<SimpleResponse<GetBeachQuery>> }) {
+function Page({
+  beach,
+}: {
+  beach: NonNullableItem<SimpleResponse<GetBeachQuery>>
+}) {
   const t = useTranslations('BeachView')
 
   return (
@@ -63,12 +74,8 @@ function Page({ beach }: { beach: NonNullableItem<SimpleResponse<GetBeachQuery>>
         src={`${BACKEND_URL}${beach.basicDetails?.cover?.url}`}
         alt=""
         className="rounded-xl shadow-2xl max-w-xl mx-auto w-full mt-4"
-        height={String(
-          beach.basicDetails?.cover?.height
-        )}
-        width={String(
-          beach.basicDetails?.cover?.width
-        )}
+        height={String(beach.basicDetails?.cover?.height)}
+        width={String(beach.basicDetails?.cover?.width)}
       />
     </main>
   )

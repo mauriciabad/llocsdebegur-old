@@ -1,7 +1,13 @@
 import { IconBeach } from '@tabler/icons-react'
 import { useTranslations, useLocale } from 'next-intl'
 import { MyLink } from '@/navigation'
-import { GetLandingQuery, graphql, gqlClient, simplifyResponse, SimpleResponse } from '@/lib/gql'
+import {
+  GetLandingQuery,
+  graphql,
+  gqlClient,
+  simplifyResponse,
+  SimpleResponse,
+} from '@/lib/gql'
 
 const getLandingQuery = graphql(`
   query getLanding($locale: I18NLocaleCode!) {
@@ -31,18 +37,18 @@ export default async function PageWrapper() {
   return <Page landingInfo={landingInfo} />
 }
 
-function Page({ landingInfo }: { landingInfo: NonNullable<SimpleResponse<GetLandingQuery>> }) {
+function Page({
+  landingInfo,
+}: {
+  landingInfo: NonNullable<SimpleResponse<GetLandingQuery>>
+}) {
   const t = useTranslations('Landing')
 
   return (
     <>
       <header className="bg-sky-900 text-white min-h-[50vh] flex items-center justify-center flex-col p-4 text-center">
-        <h1 className="font-bold text-6xl">
-          {landingInfo.heroTitle}
-        </h1>
-        <p className="text-xl mt-4">
-          {landingInfo.heroDescription}
-        </p>
+        <h1 className="font-bold text-6xl">{landingInfo.heroTitle}</h1>
+        <p className="text-xl mt-4">{landingInfo.heroDescription}</p>
       </header>
 
       <main className="text-center mx-auto max-w-2xl p-4">
