@@ -1,7 +1,7 @@
 import { IconBeach } from '@tabler/icons-react'
 import { useTranslations, useLocale } from 'next-intl'
 import { MyLink } from '@/navigation'
-import { GetLandingQuery, graphql, gqlClient, simplifyResponse, SimplifiedStrapiResponse } from '@/lib/gql'
+import { GetLandingQuery, graphql, gqlClient, simplifyResponse, SimpleResponse } from '@/lib/gql'
 
 const getLandingQuery = graphql(`
   query getLanding($locale: I18NLocaleCode!) {
@@ -31,7 +31,7 @@ export default async function PageWrapper() {
   return <Page landingInfo={landingInfo} />
 }
 
-function Page({ landingInfo }: { landingInfo: Exclude<SimplifiedStrapiResponse<GetLandingQuery>, null | undefined> }) {
+function Page({ landingInfo }: { landingInfo: NonNullable<SimpleResponse<GetLandingQuery>> }) {
   const t = useTranslations('Landing')
 
   return (

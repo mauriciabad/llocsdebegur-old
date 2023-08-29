@@ -2,7 +2,7 @@ import { IconBeach } from '@tabler/icons-react'
 import { BACKEND_URL } from '@/constants'
 import { useLocale, useTranslations } from 'next-intl'
 import { notFound } from 'next/navigation'
-import { GetBeachQuery, graphql, gqlClient, simplifyResponse, SimplifiedStrapiResponse } from '@/lib/gql'
+import { GetBeachQuery, graphql, gqlClient, simplifyResponse, SimpleResponse, NonNullableItem } from '@/lib/gql'
 
 const getBeachQuery = graphql(`
   query getBeach($slug: String!, $locale: I18NLocaleCode!) {
@@ -47,7 +47,7 @@ export default async function PageWrapper({
   return <Page beach={beach} />
 }
 
-function Page({ beach }: { beach: Exclude<Exclude<SimplifiedStrapiResponse<GetBeachQuery>, null | undefined>[number], null> }) {
+function Page({ beach }: { beach: NonNullableItem<SimpleResponse<GetBeachQuery>> }) {
   const t = useTranslations('BeachView')
 
   return (

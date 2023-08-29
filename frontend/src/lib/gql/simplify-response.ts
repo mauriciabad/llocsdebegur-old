@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export function simplifyResponse<T extends ObjectType>(response: T): SimplifiedStrapiResponse<T> {
+export function simplifyResponse<T extends ObjectType>(response: T): SimpleResponse<T> {
   const entries = Object.entries(response).filter(([k]) => k !== '__typename')
   if (entries.length >= 2) throw new Error('Cannot simplify a Strapi response that contains an object with more than one key')
   return simplify(entries[0][1] as any)
 }
 
-export function simplify<T extends ValidType>(value: T): SimplifiedStrapiType<T>
+export function simplify<T extends ValidType>(value: T): SimpleType<T>
 export function simplify<T>(value: T) {
   if (Array.isArray(value)) return value.map(simplify)
 
@@ -50,19 +50,17 @@ type UntouchedType = boolean | number | string | symbol | null | undefined | big
 type ObjectType = { [key in string]?: ValidType }
 type ArrayType = ValidType[]
 
-
 type IsAny<T> = unknown extends T & string ? true : false;
 
-
-
-export type SimplifiedStrapiType<T extends ValidType> = IsAny<T> extends true ? any : (T extends UntouchedType ? T
-  : T extends [...(infer Ar extends ValidType[])] ? { [Index in keyof Ar]: SimplifiedStrapiType<Ar[Index]> }
-  : T extends { [K in 'data']?: infer Ob extends ValidType } ? SimplifiedStrapiType<Ob>
-  : T extends { [K in 'attributes']?: infer Ob extends ValidType } ? SimplifiedStrapiType<Ob>
-  : T extends Omit<ObjectType, 'data' | 'attributes'> ? { [key in Exclude<keyof T, '__typename'>]: SimplifiedStrapiType<T[key]> }
+export type SimpleType<T extends ValidType> = IsAny<T> extends true ? any : (T extends UntouchedType ? T
+  : T extends [...(infer Ar extends ValidType[])] ? { [Index in keyof Ar]: SimpleType<Ar[Index]> }
+  : T extends { [K in 'data']?: infer Ob extends ValidType } ? SimpleType<Ob>
+  : T extends { [K in 'attributes']?: infer Ob extends ValidType } ? SimpleType<Ob>
+  : T extends Omit<ObjectType, 'data' | 'attributes'> ? { [key in Exclude<keyof T, '__typename'>]: SimpleType<T[key]> }
   : T)
 
 type IsUnion<T, U extends T = T> = (T extends any ? (U extends T ? false : true) : never) extends false ? false : true
 type GetOnlyKeyOrNever<T extends ObjectType, Keys = Exclude<keyof T, '__typename'>> = IsUnion<Keys> extends true ? never : Keys
 
-export type SimplifiedStrapiResponse<T extends ObjectType> = SimplifiedStrapiType<T[GetOnlyKeyOrNever<T>]>
+export type SimpleResponse<T extends ObjectType> = SimpleType<T[GetOnlyKeyOrNever<T>]>
+export type NonNullableItem<T extends any[] | null | undefined> = NonNullable<NonNullable<T>[number]>
