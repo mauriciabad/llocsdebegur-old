@@ -27,6 +27,7 @@ export default function Error({
           <p className="mb-8 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl">
             {t('internal-server-error')}
           </p>
+
           <p className="mb-2 text-lg font-light text-gray-500">
             {t('message')}
           </p>
@@ -40,6 +41,7 @@ export default function Error({
           <p className="mb-8 py-4 px-6 rounded-md text-sm font-mono bg-slate-800 text-white text-left">
             {error.message}
           </p>
+
           <p className="mb-2 text-lg font-light text-gray-500">
             {t('actions')}
           </p>
