@@ -82,3 +82,5 @@ To run the code in production run:
 cd backend
 docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build
 ```
+
+> Remember to sync the settings changed during development by going to <https://cms.llocsdebegur.s.mauriciabad.com/admin/settings/config-sync> and import the settings. You have to do this after every deploy that changed something in the backend.
