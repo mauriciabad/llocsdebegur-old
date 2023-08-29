@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Llocs de Begur',
-  description: "Descobreix llocs increhibles d'es teu poble.",
+  description: "Descobreix llocs increïbles d'és teu poble.",
 }
 
 export default async function RootLayout({
