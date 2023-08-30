@@ -11,8 +11,6 @@
   "parserOptions": {
     "project": ["./tsconfig.json"]
   },
-  "rules": {
-    "@next/next/no-img-element": "off"
-  },
+  "rules": {},
   "ignorePatterns": ["/**/__generated__/**/*"]
 }

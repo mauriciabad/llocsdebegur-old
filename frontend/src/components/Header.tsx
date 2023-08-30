@@ -1,5 +1,7 @@
 import { MyLink } from '@/navigation'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
+import Logo from '@/public/logo.svg'
 
 export default function Header() {
   const t = useTranslations('Header')
@@ -8,11 +10,7 @@ export default function Header() {
     <nav className="bg-white border-gray-200">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <MyLink href="/" className="flex items-center">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8 mr-3"
-            alt="Flowbite Logo"
-          />
+          <Image src={Logo} className="h-8 mr-3" alt="Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap">
             {t('title')}
           </span>

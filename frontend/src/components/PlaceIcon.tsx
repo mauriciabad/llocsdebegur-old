@@ -11,7 +11,7 @@ export default function PlaceIcon({
   className,
 }: {
   type: `${Enum_Place_Type}`
-  className: string
+  className?: string
 }) {
   const Icon = iconsByPlaceType[type]
 

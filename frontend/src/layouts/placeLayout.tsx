@@ -1,5 +1,5 @@
 import PlaceIcon from '@/components/PlaceIcon'
-import { BACKEND_URL } from '@/constants'
+import StrapiImage from '@/components/StrapiImage'
 import { Place, SimpleType } from '@/lib/gql'
 import { DeepPick } from '@/lib/types'
 import { useTranslations } from 'next-intl'
@@ -16,6 +16,7 @@ export default function PlaceLayout({
     | 'cover.url'
     | 'cover.height'
     | 'cover.width'
+    | 'cover.alternativeText'
   >
   children: React.ReactNode
 }) {
@@ -36,13 +37,12 @@ export default function PlaceLayout({
           </div>
         </div>
 
-        <img
-          src={`${BACKEND_URL}${place.cover?.url}`}
-          alt=""
-          className="rounded-xl shadow-2xl w-full aspect-[4/3] object-cover"
-          height={String(place.cover?.height)}
-          width={String(place.cover?.width)}
-        />
+        {place.cover && (
+          <StrapiImage
+            image={place.cover}
+            className="rounded-xl shadow-2xl w-full aspect-[4/3] object-cover"
+          />
+        )}
       </div>
 
       <div className="text-left mt-8">{children}</div>

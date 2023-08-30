@@ -31,6 +31,7 @@ const getLandmarkQuery = graphql(`
                 url
                 height
                 width
+                alternativeText
               }
             }
           }
