@@ -1,26 +1,38 @@
 export default ({ env }) => {
   return [
-    'strapi::errors',
-    'strapi::security',
+    "strapi::errors",
     {
-      name: 'strapi::cors',
+      name: "strapi::security",
       config: {
-        origin: env('NODE_ENV') === 'production' ?
-          [
-            'https://llocsdebegur.mauriciabad.com',
-            'https://llocsdebegur.vercel.app',
-          ] : [
-            'http://localhost:3000',
-            'http://localhost:1337'
-          ],
+        contentSecurityPolicy: {
+          directives: {
+            "frame-src": [
+              "http://localhost:*",
+              "self",
+              "sandbox.embed.apollographql.com",
+            ],
+          },
+        },
       },
     },
-    'strapi::poweredBy',
-    'strapi::logger',
-    'strapi::query',
-    'strapi::body',
-    'strapi::session',
-    'strapi::favicon',
-    'strapi::public',
-  ]
-}
+    {
+      name: "strapi::cors",
+      config: {
+        origin:
+          env("NODE_ENV") === "production"
+            ? [
+                "https://llocsdebegur.mauriciabad.com",
+                "https://llocsdebegur.vercel.app",
+              ]
+            : ["http://localhost:3000", "http://localhost:1337"],
+      },
+    },
+    "strapi::poweredBy",
+    "strapi::logger",
+    "strapi::query",
+    "strapi::body",
+    "strapi::session",
+    "strapi::favicon",
+    "strapi::public",
+  ];
+};
