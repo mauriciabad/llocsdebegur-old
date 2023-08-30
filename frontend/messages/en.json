@@ -57,5 +57,14 @@
   "NotFoundPage": {
     "title": "Page not found",
     "go-home": "Go to homepage"
+  },
+  "ErrorPage": {
+    "internal-server-error": "Internal Server Error",
+    "message": "Your specific error code is",
+    "error-message": "Full error message",
+    "actions": "You can try...",
+    "contact-support": "Contact support",
+    "go-home": "Go to homepage",
+    "try-again": "Try again"
   }
 }

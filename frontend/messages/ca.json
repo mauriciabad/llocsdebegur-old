@@ -57,5 +57,14 @@
   "NotFoundPage": {
     "title": "Pàgina no trobada",
     "go-home": "Tornar a l'inici"
+  },
+  "ErrorPage": {
+    "internal-server-error": "Error Intern del Servidor",
+    "message": "Aquest és el codi del teu error específicament",
+    "error-message": "Missatge d'error complet",
+    "actions": "Pots intentar...",
+    "contact-support": "Contactar amb suport",
+    "go-home": "Tornar a l'inici",
+    "try-again": "Reintentar"
   }
 }

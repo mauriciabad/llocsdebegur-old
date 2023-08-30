@@ -2,7 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import classNames from 'classnames'
-import { useLocale } from 'next-intl'
+import { NextIntlClientProvider, useLocale } from 'next-intl'
 import { ApolloWrapper } from './ApolloWrapper'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
@@ -19,13 +19,16 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const locale = useLocale()
+  const messages = (await import(`../../messages/${locale}.json`)).default
 
   return (
     <html lang={locale}>
       <body className={classNames([inter.className, 'min-h-screen'])}>
-        <Header />
-        <ApolloWrapper>{children}</ApolloWrapper>
-        <Footer />
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Header />
+          <ApolloWrapper>{children}</ApolloWrapper>
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   )

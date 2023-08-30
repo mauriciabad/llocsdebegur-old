@@ -21,6 +21,7 @@ export default ({ env }) => {
         origin:
           env("NODE_ENV") === "production"
             ? [
+                "https://cms.llocsdebegur.s.mauriciabad.com",
                 "https://llocsdebegur.mauriciabad.com",
                 "https://llocsdebegur.vercel.app",
               ]
