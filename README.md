@@ -2,6 +2,7 @@
 
 ## Frontend
 
+> [!NOTE]
 > Uses: `React JS`, `Next.js`, `Apollo GraphQL`, `Tailwind`, and `TypeScript`.
 >
 > Deployment: Deployed on `Vercel`.
@@ -24,7 +25,8 @@ npm i
 npm run dev
 ```
 
-> ⚠️ Becaure of `codegen`, the backend needs to be running locally.
+> [!WARNING]
+> Becaure of `codegen`, the backend needs to be running locally.
 >
 > If you plan to not update any GraphQL query, you don't need to run the backend, simply run `npm run dev:next`. Otherwise, you have to run the backend.
 
@@ -44,6 +46,7 @@ npm run build
 
 ## Backend
 
+> [!NOTE]
 > Uses: `Strapi`, `GraphQL`, `Docker`
 >
 > Deployment: Deployed on Maurici's server automatically when there's a push in main.
@@ -72,6 +75,7 @@ npm run docker:dev
 - Admin panel URL: <http://localhost:1337/admin>
 - GraphQL URL: <http://localhost:1337/graphql>
 
+> [!IMPORTANT]
 > Remember that you can export the admin's config with the plugin [Config Sync](https://market.strapi.io/plugins/strapi-plugin-config-sync) or `npm run cs export`. **You should do this manually when the config changes** (Admin role, User role, Core store, or I18n locale). And after deploying, manually importing the config with the plugin [Config Sync](https://market.strapi.io/plugins/strapi-plugin-config-sync) or `npm run cs import` on the server's docker container.
 
 #### Production environment
@@ -83,4 +87,5 @@ cd backend
 docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build
 ```
 
+> [!IMPORTANT]
 > Remember to sync the settings changed during development by going to <https://cms.llocsdebegur.s.mauriciabad.com/admin/settings/config-sync> and import the settings. You have to do this after every deploy that changed something in the backend.
