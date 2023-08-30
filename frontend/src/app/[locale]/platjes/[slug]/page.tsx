@@ -11,6 +11,7 @@ import {
   NonNullableItem,
   typeDynamicZone,
 } from '@/lib/gql'
+import ReactMarkdown from 'react-markdown'
 
 const getBeachQuery = graphql(`
   query getBeach($locale: I18NLocaleCode!, $slug: String!) {
@@ -22,6 +23,7 @@ const getBeachQuery = graphql(`
         attributes {
           name
           description
+          content
           cover {
             data {
               attributes {
@@ -79,30 +81,33 @@ function Page({
       <IconBeach className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1" />
       <h2 className="font-bold text-4xl">{beach.name}</h2>
       <p className="max-w-[80ch] mx-auto text-left mt-4">{beach.description}</p>
-
-      <h3 className="text-center text-xl font-bold mt-4">{t('photos')}</h3>
-      <img
-        src={`${BACKEND_URL}${beach.cover?.url}`}
-        alt=""
-        className="rounded-xl shadow-2xl max-w-xl mx-auto w-full mt-2"
-        height={String(beach.cover?.height)}
-        width={String(beach.cover?.width)}
-      />
-
-      <div className="max-w-sm mx-auto border border-gray-300 bg-gray-100 rounded-xl p-4 mt-8 text-center">
-        <h3 className="text-center text-xl font-bold mb-4 leading-none">
-          {t('data')}
-        </h3>
-        <div className="text-left space-y-2">
-          <div>
-            <IconGrain className="inline-block mr-1" />
-            <span>{te(`sandType.${detailsGlobal.sandType}`)}</span>
-          </div>
-          <div>
-            <IconCompass className="inline-block mr-1" />
-            <span>{te(`orientation.${detailsGlobal.orientation}`)}</span>
+      <div className="flex flex-wrap [&>:nth-child(1)]:flex-grow [&>:nth-child(1)]:basis-32 [&>:nth-child(2)]:max-h-72 [&>:nth-child(2)]:basis-32 justify-center gap-4 my-8">
+        <div className="border border-gray-300 bg-gray-100 rounded-xl p-4 text-center max-w-xs">
+          <h3 className="text-center text-xl font-bold mb-4 leading-none">
+            {t('data')}
+          </h3>
+          <div className="text-left space-y-2">
+            <div className="flex items-center">
+              <IconGrain className="inline-block mr-1 shrink-0" />
+              <div>{te(`sandType.${detailsGlobal.sandType}`)}</div>
+            </div>
+            <div className="flex items-center">
+              <IconCompass className="inline-block mr-1 shrink-0" />
+              <div>{te(`orientation.${detailsGlobal.orientation}`)}</div>
+            </div>
           </div>
         </div>
+
+        <img
+          src={`${BACKEND_URL}${beach.cover?.url}`}
+          alt=""
+          className="rounded-xl shadow-2xl w-full aspect-[4/3] object-cover"
+          height={String(beach.cover?.height)}
+          width={String(beach.cover?.width)}
+        />
+      </div>
+      <div className="text-left mt-8 prose prose-h2:mt-4 prose-h2:mb-2">
+        {beach.content && <ReactMarkdown>{beach.content}</ReactMarkdown>}
       </div>
     </main>
   )
