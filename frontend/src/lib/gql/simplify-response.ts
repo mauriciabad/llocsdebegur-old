@@ -24,6 +24,19 @@ export function simplify<T>(value: T) {
   return value
 }
 
+export function typeDynamicZone<
+  T extends { [k in string]: any } | null | undefined,
+>(obj: T | { [k in never]: never }): T {
+  return obj as T
+}
+
+export function optionallyAccess<
+  T extends { [k in string]: any },
+  K extends keyof T,
+>(obj: T | null | undefined | { [k in never]: never }, key: K) {
+  return obj && 'sandType' in obj && obj?.[key]
+}
+
 function isPlainObject<
   O extends R | any,
   R extends Record<string | number | symbol, any>,

@@ -7,7 +7,9 @@
     "beaches": "Platjes"
   },
   "BeachView": {
-    "photos": "Fotos"
+    "photos": "Fotos",
+    "data": "Dades",
+    "sand-type": "Tipus de sorra"
   },
   "Footer": {
     "switch-locale-description": "Switch to ",
@@ -15,6 +17,25 @@
   },
   "Spinner": {
     "loading": "Carregant..."
+  },
+  "Enums": {
+    "sandType": {
+      "bigRocks": "Roques grans",
+      "concrete": "Ciment",
+      "smallGrain": "Grans petits",
+      "smallRocks": "Roques petites",
+      "verySmallGrain": "Grans molt fins"
+    },
+    "orientation": {
+      "east": "Est",
+      "north": "Nord",
+      "north_east": "Nord-Est",
+      "north_west": "Nord-Oest",
+      "south": "Sud",
+      "south_east": "Sud-East",
+      "south_west": "Sud-Oest",
+      "west": "Oest"
+    }
   },
   "NotFoundPage": {
     "title": "Pàgina no trobada",

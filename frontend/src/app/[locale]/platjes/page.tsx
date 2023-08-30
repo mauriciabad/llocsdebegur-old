@@ -10,7 +10,7 @@ import {
 } from '@/lib/gql'
 
 const getAllBeachesQuery = graphql(`
-  query getAllBeaches($locale: I18NLocaleCode) {
+  query getAllBeaches($locale: I18NLocaleCode!) {
     places(locale: $locale, filters: { type: { eq: "beach" } }) {
       data {
         attributes {

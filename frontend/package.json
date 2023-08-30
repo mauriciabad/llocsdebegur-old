@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm-run-all -p dev:*",
-    "dev:codegen": "npm run codegen --watch",
+    "dev:codegen": "npm run codegen -- --watch",
     "dev:next": "next dev",
     "build": "next build",
     "start": "next start",
