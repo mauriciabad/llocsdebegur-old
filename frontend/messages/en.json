@@ -1,15 +1,28 @@
 {
   "Landing": {
     "beaches": "Beaches",
+    "landmarks": "Landmarks",
+    "places": "Places",
     "view-all": "Explore all"
   },
   "AllBeachesView": {
     "beaches": "Beaches"
   },
+  "AllLandmarksView": {
+    "landmarks": "Landmarks"
+  },
+  "PlaceLayout": {
+    "map": "Map"
+  },
   "BeachView": {
-    "photos": "Photos",
+    "data": "Data"
+  },
+  "LandmarkView": {
     "data": "Data",
-    "sand-type": "Sand type"
+    "reference-price": "Reference price: {price}",
+    "year": "Year {year}",
+    "visitable": "Visitable",
+    "not-visitable": "Not visitable"
   },
   "Footer": {
     "switch-locale-description": "Veure en ",

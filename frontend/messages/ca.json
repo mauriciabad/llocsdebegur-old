@@ -1,15 +1,28 @@
 {
   "Landing": {
     "beaches": "Platjes",
+    "landmarks": "Monuments",
+    "places": "Llocs",
     "view-all": "Veure totes"
   },
   "AllBeachesView": {
     "beaches": "Platjes"
   },
+  "AllLandmarksView": {
+    "landmarks": "Monuments"
+  },
+  "PlaceLayout": {
+    "map": "Mapa"
+  },
   "BeachView": {
-    "photos": "Fotos",
+    "data": "Dades"
+  },
+  "LandmarkView": {
     "data": "Dades",
-    "sand-type": "Tipus de sorra"
+    "reference-price": "Preu de referència: {price}",
+    "year": "Any {year}",
+    "visitable": "Visitable",
+    "not-visitable": "No visitable"
   },
   "Footer": {
     "switch-locale-description": "Switch to ",
