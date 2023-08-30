@@ -1,0 +1,231 @@
+{
+  "kind": "collectionType",
+  "collectionName": "places",
+  "info": {
+    "singularName": "place",
+    "pluralName": "places",
+    "displayName": "Place",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "versions": {
+      "versioned": true
+    },
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "pluginOptions": {
+        "versions": {
+          "versioned": true
+        },
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "slug": {
+      "pluginOptions": {
+        "versions": {
+          "versioned": true
+        },
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "shortName",
+      "required": true
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {}
+    },
+    "hasBusStop": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "amountOfPeople": {
+      "type": "enumeration",
+      "enum": [
+        "tooManyPeople",
+        "manyPeople",
+        "somePeople",
+        "almostNoPeople",
+        "noPeople",
+        "unknown"
+      ],
+      "required": true,
+      "default": "unknown"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "pluginOptions": {}
+    },
+    "howExpensive": {
+      "type": "enumeration",
+      "enum": [
+        "free",
+        "cheap",
+        "normal",
+        "expensive",
+        "veryExpensive"
+      ]
+    },
+    "parkingType": {
+      "type": "customField",
+      "options": [
+        "free",
+        "paid",
+        "none"
+      ],
+      "required": false,
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "address": {
+      "type": "string",
+      "pluginOptions": {}
+    },
+    "latitude": {
+      "type": "float",
+      "required": true,
+      "max": 90,
+      "min": -90
+    },
+    "longitude": {
+      "type": "float",
+      "required": true,
+      "max": 180,
+      "min": -180
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "maxLength": 300,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "access": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "content": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "parkingNotes": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "alternativeNames": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "shortName": {
+      "type": "string",
+      "maxLength": 50,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "type": {
+      "pluginOptions": {
+        "versions": {
+          "versioned": true
+        },
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "beach",
+        "landmark"
+      ],
+      "required": true
+    },
+    "detailsGlobal": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "place-details-global.beach-global",
+        "place-details-global.landmark-global"
+      ],
+      "required": true,
+      "max": 1,
+      "min": 1
+    },
+    "detailsLocal": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "place-details-local.beach-local",
+        "place-details-local.landmark-local"
+      ],
+      "max": 1,
+      "required": true,
+      "min": 1
+    },
+    "googleMapsPlaceId": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "unique": false,
+      "regex": "[\\w\\d_-]+"
+    }
+  }
+}

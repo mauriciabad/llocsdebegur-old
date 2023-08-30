@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::plugin::todo.task",
+  "key": "plugin_content_manager_configuration_components::place-details-global.landmark-global",
   "value": {
-    "uid": "plugin::todo.task",
+    "uid": "place-details-global.landmark-global",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "name",
-      "defaultSortBy": "name",
+      "mainField": "id",
+      "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -16,62 +16,48 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": true,
-          "sortable": true
+          "searchable": false,
+          "sortable": false
         }
       },
-      "name": {
+      "year": {
         "edit": {
-          "label": "name",
+          "label": "year",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "year",
           "searchable": true,
           "sortable": true
         }
       },
-      "isDone": {
+      "isVisitable": {
         "edit": {
-          "label": "isDone",
+          "label": "isVisitable",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "isDone",
+          "label": "isVisitable",
           "searchable": true,
           "sortable": true
         }
       },
-      "createdAt": {
+      "referencePrice": {
         "edit": {
-          "label": "createdAt",
+          "label": "referencePrice",
           "description": "",
           "placeholder": "",
-          "visible": false,
+          "visible": true,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "updatedAt": {
-        "edit": {
-          "label": "updatedAt",
-          "description": "",
-          "placeholder": "",
-          "visible": false,
-          "editable": true
-        },
-        "list": {
-          "label": "updatedAt",
+          "label": "referencePrice",
           "searchable": true,
           "sortable": true
         }
@@ -80,23 +66,28 @@
     "layouts": {
       "list": [
         "id",
-        "name",
-        "isDone",
-        "createdAt"
+        "year",
+        "isVisitable",
+        "referencePrice"
       ],
       "edit": [
         [
           {
-            "name": "name",
-            "size": 6
+            "name": "year",
+            "size": 4
           },
           {
-            "name": "isDone",
+            "name": "isVisitable",
+            "size": 4
+          },
+          {
+            "name": "referencePrice",
             "size": 4
           }
         ]
       ]
-    }
+    },
+    "isComponent": true
   },
   "type": "object",
   "environment": null,

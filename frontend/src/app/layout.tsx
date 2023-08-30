@@ -5,11 +5,12 @@ import classNames from 'classnames'
 import { NextIntlClientProvider, useLocale } from 'next-intl'
 import { ApolloWrapper } from './ApolloWrapper'
 import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Llocs de Begur',
-  description: "Descobreix llocs increhibles d'es teu poble.",
+  description: "Descobreix llocs increïbles d'és teu poble.",
 }
 
 export default async function RootLayout({
@@ -24,9 +25,10 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={classNames([inter.className, 'min-h-screen'])}>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <Header />
           <ApolloWrapper>{children}</ApolloWrapper>
+          <Footer />
         </NextIntlClientProvider>
-        <Footer />
       </body>
     </html>
   )

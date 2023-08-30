@@ -2,6 +2,10 @@ name: Test backend
 
 on: push
 
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   health-check:
     runs-on: ubuntu-latest

@@ -1,7 +1,7 @@
 {
-  "key": "plugin_content_manager_configuration_components::place-details.parking",
+  "key": "plugin_content_manager_configuration_components::place-details-local.beach-local",
   "value": {
-    "uid": "place-details.parking",
+    "uid": "place-details-local.beach-local",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -20,30 +20,16 @@
           "sortable": false
         }
       },
-      "type": {
+      "waterEntryNotes": {
         "edit": {
-          "label": "type",
+          "label": "waterEntryNotes",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "type",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "details": {
-        "edit": {
-          "label": "details",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "details",
+          "label": "waterEntryNotes",
           "searchable": false,
           "sortable": false
         }
@@ -51,19 +37,12 @@
     },
     "layouts": {
       "list": [
-        "id",
-        "type"
+        "id"
       ],
       "edit": [
         [
           {
-            "name": "type",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "details",
+            "name": "waterEntryNotes",
             "size": 12
           }
         ]

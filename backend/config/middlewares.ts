@@ -1,7 +1,20 @@
 export default ({ env }) => {
   return [
     "strapi::errors",
-    "strapi::security",
+    {
+      name: "strapi::security",
+      config: {
+        contentSecurityPolicy: {
+          directives: {
+            "frame-src": [
+              "http://localhost:*",
+              "self",
+              "sandbox.embed.apollographql.com",
+            ],
+          },
+        },
+      },
+    },
     {
       name: "strapi::cors",
       config: {

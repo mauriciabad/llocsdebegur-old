@@ -5,23 +5,11 @@
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::details-beach.details-beach",
+      "subject": "api::landing.landing",
       "properties": {
         "fields": [
-          "sandType",
-          "accessDescription",
-          "hasBusStop",
-          "sandImage",
-          "basicDetails.content",
-          "basicDetails.shortDescription",
-          "basicDetails.cover",
-          "basicDetails.media",
-          "basicDetails.location",
-          "basicDetails.amountOfPeople",
-          "parking.type",
-          "parking.details",
-          "slug",
-          "name"
+          "heroTitle",
+          "heroDescription"
         ],
         "locales": [
           "en",
@@ -32,18 +20,7 @@
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::details-beach.details-beach",
-      "properties": {
-        "locales": [
-          "en",
-          "ca"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.publish",
-      "subject": "api::details-beach.details-beach",
+      "subject": "api::landing.landing",
       "properties": {
         "locales": [
           "en",
@@ -54,23 +31,11 @@
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::details-beach.details-beach",
+      "subject": "api::landing.landing",
       "properties": {
         "fields": [
-          "sandType",
-          "accessDescription",
-          "hasBusStop",
-          "sandImage",
-          "basicDetails.content",
-          "basicDetails.shortDescription",
-          "basicDetails.cover",
-          "basicDetails.media",
-          "basicDetails.location",
-          "basicDetails.amountOfPeople",
-          "parking.type",
-          "parking.details",
-          "slug",
-          "name"
+          "heroTitle",
+          "heroDescription"
         ],
         "locales": [
           "en",
@@ -81,23 +46,11 @@
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::details-beach.details-beach",
+      "subject": "api::landing.landing",
       "properties": {
         "fields": [
-          "sandType",
-          "accessDescription",
-          "hasBusStop",
-          "sandImage",
-          "basicDetails.content",
-          "basicDetails.shortDescription",
-          "basicDetails.cover",
-          "basicDetails.media",
-          "basicDetails.location",
-          "basicDetails.amountOfPeople",
-          "parking.type",
-          "parking.details",
-          "slug",
-          "name"
+          "heroTitle",
+          "heroDescription"
         ],
         "locales": [
           "en",
@@ -108,11 +61,30 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::landing.landing",
+      "subject": "api::place.place",
       "properties": {
         "fields": [
-          "heroTitle",
-          "heroDescription"
+          "name",
+          "slug",
+          "cover",
+          "hasBusStop",
+          "amountOfPeople",
+          "media",
+          "howExpensive",
+          "parkingType",
+          "address",
+          "latitude",
+          "longitude",
+          "description",
+          "access",
+          "content",
+          "parkingNotes",
+          "alternativeNames",
+          "shortName",
+          "type",
+          "detailsGlobal",
+          "detailsLocal",
+          "googleMapsPlaceId"
         ],
         "locales": [
           "en",
@@ -123,7 +95,7 @@
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::landing.landing",
+      "subject": "api::place.place",
       "properties": {
         "locales": [
           "en",
@@ -134,7 +106,7 @@
     },
     {
       "action": "plugin::content-manager.explorer.publish",
-      "subject": "api::landing.landing",
+      "subject": "api::place.place",
       "properties": {
         "locales": [
           "en",
@@ -145,11 +117,30 @@
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::landing.landing",
+      "subject": "api::place.place",
       "properties": {
         "fields": [
-          "heroTitle",
-          "heroDescription"
+          "name",
+          "slug",
+          "cover",
+          "hasBusStop",
+          "amountOfPeople",
+          "media",
+          "howExpensive",
+          "parkingType",
+          "address",
+          "latitude",
+          "longitude",
+          "description",
+          "access",
+          "content",
+          "parkingNotes",
+          "alternativeNames",
+          "shortName",
+          "type",
+          "detailsGlobal",
+          "detailsLocal",
+          "googleMapsPlaceId"
         ],
         "locales": [
           "en",
@@ -160,11 +151,30 @@
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::landing.landing",
+      "subject": "api::place.place",
       "properties": {
         "fields": [
-          "heroTitle",
-          "heroDescription"
+          "name",
+          "slug",
+          "cover",
+          "hasBusStop",
+          "amountOfPeople",
+          "media",
+          "howExpensive",
+          "parkingType",
+          "address",
+          "latitude",
+          "longitude",
+          "description",
+          "access",
+          "content",
+          "parkingNotes",
+          "alternativeNames",
+          "shortName",
+          "type",
+          "detailsGlobal",
+          "detailsLocal",
+          "googleMapsPlaceId"
         ],
         "locales": [
           "en",
@@ -432,12 +442,6 @@
       "conditions": []
     },
     {
-      "action": "plugin::content-versioning.save",
-      "subject": null,
-      "properties": {},
-      "conditions": []
-    },
-    {
       "action": "plugin::email.settings.read",
       "subject": null,
       "properties": {},
@@ -469,24 +473,6 @@
     },
     {
       "action": "plugin::seo.read",
-      "subject": null,
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::translate.batch-translate",
-      "subject": null,
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::translate.translate",
-      "subject": null,
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::translate.usage",
       "subject": null,
       "properties": {},
       "conditions": []

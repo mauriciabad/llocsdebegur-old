@@ -1,20 +1,58 @@
 {
   "Landing": {
     "beaches": "Platjes",
+    "landmarks": "Monuments",
+    "places": "Llocs",
     "view-all": "Veure totes"
   },
   "AllBeachesView": {
     "beaches": "Platjes"
   },
+  "AllLandmarksView": {
+    "landmarks": "Monuments"
+  },
+  "PlaceLayout": {
+    "map": "Mapa"
+  },
   "BeachView": {
-    "photos": "Fotos"
+    "data": "Dades"
+  },
+  "LandmarkView": {
+    "data": "Dades",
+    "reference-price": "Preu de referència: {price}",
+    "year": "Any {year}",
+    "visitable": "Visitable",
+    "not-visitable": "No visitable"
   },
   "Footer": {
     "switch-locale-description": "Switch to ",
     "switch-locale-name": "English"
   },
+  "Header": {
+    "title": "Llocs de Begur",
+    "home": "Inici"
+  },
   "Spinner": {
     "loading": "Carregant..."
+  },
+  "Enums": {
+    "sandType": {
+      "bigRocks": "Roques grans",
+      "concrete": "Ciment",
+      "smallGrain": "Grans petits",
+      "smallRocks": "Roques petites",
+      "verySmallGrain": "Grans molt fins"
+    },
+    "orientation": {
+      "east": "Est",
+      "north": "Nord",
+      "north_east": "Nord-Est",
+      "north_west": "Nord-Oest",
+      "south": "Sud",
+      "south_east": "Sud-East",
+      "south_west": "Sud-Oest",
+      "west": "Oest"
+    }
   },
   "NotFoundPage": {
     "title": "Pàgina no trobada",

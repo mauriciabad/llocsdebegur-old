@@ -78,23 +78,25 @@
       }
     },
     "layouts": {
+      "edit": [
+        [
+          {
+            "name": "heroTitle",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "heroDescription",
+            "size": 12
+          }
+        ]
+      ],
       "list": [
         "id",
         "heroTitle",
         "createdAt",
         "updatedAt"
-      ],
-      "edit": [
-        [
-          {
-            "name": "heroTitle",
-            "size": 6
-          },
-          {
-            "name": "heroDescription",
-            "size": 6
-          }
-        ]
       ]
     }
   },

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_place_details_beach_locals",
+  "info": {
+    "displayName": "beach",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "waterEntryNotes": {
+      "pluginOptions": {
+        "versions": {
+          "versioned": true
+        },
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    }
+  }
+}

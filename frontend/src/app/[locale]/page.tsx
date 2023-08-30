@@ -1,4 +1,3 @@
-import { IconBeach } from '@tabler/icons-react'
 import { useTranslations, useLocale } from 'next-intl'
 import { MyLink } from '@/navigation'
 import {
@@ -8,6 +7,7 @@ import {
   simplifyResponse,
   SimpleResponse,
 } from '@/lib/gql'
+import PlaceIcon from '@/components/PlaceIcon'
 
 const getLandingQuery = graphql(`
   query getLanding($locale: I18NLocaleCode!) {
@@ -51,15 +51,38 @@ function Page({
         <p className="text-xl mt-4">{landingInfo.heroDescription}</p>
       </header>
 
-      <main className="text-center mx-auto max-w-2xl p-4">
-        <IconBeach className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1" />
-        <h2 className="font-bold text-3xl">{t('beaches')}</h2>
-        <MyLink
-          href="/platjes"
-          className="p-4 leading-none bg-sky-900 text-white uppercase rounded-lg inline-block mt-6 outline-none hover:bg-sky-800 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-gray-700"
-        >
-          {t('view-all')}
-        </MyLink>
+      <main className="text-center mx-auto max-w-2xl px-4">
+        <h2 className="text-4xl font-bold text-center mt-8 mb-4">
+          {t('places')}
+        </h2>
+        <div className="flex flex-wrap justify-center gap-8">
+          <div className="border border-gray-300 rounded-lg p-4">
+            <PlaceIcon
+              type="beach"
+              className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1"
+            />
+            <h2 className="font-bold text-3xl">{t('beaches')}</h2>
+            <MyLink
+              href="/places/beaches"
+              className="p-4 leading-none bg-sky-900 text-white uppercase rounded-lg inline-block mt-6 outline-none hover:bg-sky-800 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-gray-700"
+            >
+              {t('view-all')}
+            </MyLink>
+          </div>
+          <div className="border border-gray-300 rounded-lg p-4">
+            <PlaceIcon
+              type="landmark"
+              className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1"
+            />
+            <h2 className="font-bold text-3xl">{t('landmarks')}</h2>
+            <MyLink
+              href="/places/landmarks"
+              className="p-4 leading-none bg-sky-900 text-white uppercase rounded-lg inline-block mt-6 outline-none hover:bg-sky-800 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-gray-700"
+            >
+              {t('view-all')}
+            </MyLink>
+          </div>
+        </div>
       </main>
     </>
   )

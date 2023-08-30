@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_place_details_landmark_locals",
+  "info": {
+    "displayName": "landmark",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "visitDetails": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    }
+  }
+}

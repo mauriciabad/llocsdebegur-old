@@ -20,6 +20,8 @@ export type Scalars = {
   I18NLocaleCode: { input: any; output: any; }
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: { input: any; output: any; }
+  PlaceDetailsGlobalDynamicZoneInput: { input: any; output: any; }
+  PlaceDetailsLocalDynamicZoneInput: { input: any; output: any; }
   /** The `Upload` scalar type represents a file upload. */
   Upload: { input: any; output: any; }
 };
@@ -49,63 +51,35 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type ComponentPlaceDetailsBasicDetails = {
-  __typename?: 'ComponentPlaceDetailsBasicDetails';
-  amountOfPeople?: Maybe<Enum_Componentplacedetailsbasicdetails_Amountofpeople>;
-  content: Scalars['String']['output'];
-  cover: UploadFileEntityResponse;
+export type ComponentPlaceDetailsGlobalBeachGlobal = {
+  __typename?: 'ComponentPlaceDetailsGlobalBeachGlobal';
+  boatOnly: Scalars['Boolean']['output'];
   id: Scalars['ID']['output'];
-  location?: Maybe<Scalars['String']['output']>;
-  media?: Maybe<UploadFileRelationResponseCollection>;
-  shortDescription: Scalars['String']['output'];
+  orientation?: Maybe<Enum_Componentplacedetailsglobalbeachglobal_Orientation>;
+  possibleJumps?: Maybe<Scalars['JSON']['output']>;
+  sandImage?: Maybe<UploadFileEntityResponse>;
+  sandType?: Maybe<Enum_Componentplacedetailsglobalbeachglobal_Sandtype>;
+  waterEntry?: Maybe<Scalars['JSON']['output']>;
 };
 
-
-export type ComponentPlaceDetailsBasicDetailsMediaArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type ComponentPlaceDetailsBasicDetailsFiltersInput = {
-  amountOfPeople?: InputMaybe<StringFilterInput>;
-  and?: InputMaybe<Array<InputMaybe<ComponentPlaceDetailsBasicDetailsFiltersInput>>>;
-  content?: InputMaybe<StringFilterInput>;
-  location?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<ComponentPlaceDetailsBasicDetailsFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentPlaceDetailsBasicDetailsFiltersInput>>>;
-  shortDescription?: InputMaybe<StringFilterInput>;
-};
-
-export type ComponentPlaceDetailsBasicDetailsInput = {
-  amountOfPeople?: InputMaybe<Enum_Componentplacedetailsbasicdetails_Amountofpeople>;
-  content?: InputMaybe<Scalars['String']['input']>;
-  cover?: InputMaybe<Scalars['ID']['input']>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  location?: InputMaybe<Scalars['String']['input']>;
-  media?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  shortDescription?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type ComponentPlaceDetailsParking = {
-  __typename?: 'ComponentPlaceDetailsParking';
-  details?: Maybe<Scalars['String']['output']>;
+export type ComponentPlaceDetailsGlobalLandmarkGlobal = {
+  __typename?: 'ComponentPlaceDetailsGlobalLandmarkGlobal';
   id: Scalars['ID']['output'];
-  type?: Maybe<Enum_Componentplacedetailsparking_Type>;
+  isVisitable: Scalars['Boolean']['output'];
+  referencePrice?: Maybe<Scalars['Float']['output']>;
+  year?: Maybe<Scalars['Int']['output']>;
 };
 
-export type ComponentPlaceDetailsParkingFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentPlaceDetailsParkingFiltersInput>>>;
-  details?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<ComponentPlaceDetailsParkingFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentPlaceDetailsParkingFiltersInput>>>;
-  type?: InputMaybe<StringFilterInput>;
+export type ComponentPlaceDetailsLocalBeachLocal = {
+  __typename?: 'ComponentPlaceDetailsLocalBeachLocal';
+  id: Scalars['ID']['output'];
+  waterEntryNotes?: Maybe<Scalars['String']['output']>;
 };
 
-export type ComponentPlaceDetailsParkingInput = {
-  details?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  type?: InputMaybe<Enum_Componentplacedetailsparking_Type>;
+export type ComponentPlaceDetailsLocalLandmarkLocal = {
+  __typename?: 'ComponentPlaceDetailsLocalLandmarkLocal';
+  id: Scalars['ID']['output'];
+  visitDetails?: Maybe<Scalars['String']['output']>;
 };
 
 export type ComponentSharedMetaSocial = {
@@ -172,104 +146,18 @@ export type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type DetailsBeach = {
-  __typename?: 'DetailsBeach';
-  accessDescription?: Maybe<Scalars['String']['output']>;
-  basicDetails?: Maybe<ComponentPlaceDetailsBasicDetails>;
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  hasBusStop?: Maybe<Scalars['Boolean']['output']>;
-  locale?: Maybe<Scalars['String']['output']>;
-  localizations?: Maybe<DetailsBeachRelationResponseCollection>;
-  name: Scalars['String']['output'];
-  parking?: Maybe<ComponentPlaceDetailsParking>;
-  publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  sandImage?: Maybe<UploadFileEntityResponse>;
-  sandType?: Maybe<Enum_Detailsbeach_Sandtype>;
-  slug: Scalars['String']['output'];
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-};
-
-
-export type DetailsBeachLocalizationsArgs = {
-  filters?: InputMaybe<DetailsBeachFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type DetailsBeachEntity = {
-  __typename?: 'DetailsBeachEntity';
-  attributes?: Maybe<DetailsBeach>;
-  id?: Maybe<Scalars['ID']['output']>;
-};
-
-export type DetailsBeachEntityResponse = {
-  __typename?: 'DetailsBeachEntityResponse';
-  data?: Maybe<DetailsBeachEntity>;
-};
-
-export type DetailsBeachEntityResponseCollection = {
-  __typename?: 'DetailsBeachEntityResponseCollection';
-  data: Array<DetailsBeachEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type DetailsBeachFiltersInput = {
-  accessDescription?: InputMaybe<StringFilterInput>;
-  and?: InputMaybe<Array<InputMaybe<DetailsBeachFiltersInput>>>;
-  basicDetails?: InputMaybe<ComponentPlaceDetailsBasicDetailsFiltersInput>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  hasBusStop?: InputMaybe<BooleanFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  locale?: InputMaybe<StringFilterInput>;
-  localizations?: InputMaybe<DetailsBeachFiltersInput>;
-  name?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<DetailsBeachFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<DetailsBeachFiltersInput>>>;
-  parking?: InputMaybe<ComponentPlaceDetailsParkingFiltersInput>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  sandType?: InputMaybe<StringFilterInput>;
-  slug?: InputMaybe<StringFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type DetailsBeachInput = {
-  accessDescription?: InputMaybe<Scalars['String']['input']>;
-  basicDetails?: InputMaybe<ComponentPlaceDetailsBasicDetailsInput>;
-  hasBusStop?: InputMaybe<Scalars['Boolean']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  parking?: InputMaybe<ComponentPlaceDetailsParkingInput>;
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  sandImage?: InputMaybe<Scalars['ID']['input']>;
-  sandType?: InputMaybe<Enum_Detailsbeach_Sandtype>;
-  slug?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type DetailsBeachRelationResponseCollection = {
-  __typename?: 'DetailsBeachRelationResponseCollection';
-  data: Array<DetailsBeachEntity>;
-};
-
-export enum Enum_Componentplacedetailsbasicdetails_Amountofpeople {
-  AlmosNoPeople = 'almosNoPeople',
-  ManyPeople = 'manyPeople',
-  NoPeople = 'noPeople',
-  SomePeople = 'somePeople',
-  TooManyPeople = 'tooManyPeople'
+export enum Enum_Componentplacedetailsglobalbeachglobal_Orientation {
+  East = 'east',
+  North = 'north',
+  NorthEast = 'north_east',
+  NorthWest = 'north_west',
+  South = 'south',
+  SouthEast = 'south_east',
+  SouthWest = 'south_west',
+  West = 'west'
 }
 
-export enum Enum_Componentplacedetailsparking_Type {
-  Free = 'free',
-  Mixed = 'mixed',
-  Paid = 'paid'
-}
-
-export enum Enum_Componentsharedmetasocial_Socialnetwork {
-  Facebook = 'Facebook',
-  Twitter = 'Twitter'
-}
-
-export enum Enum_Detailsbeach_Sandtype {
+export enum Enum_Componentplacedetailsglobalbeachglobal_Sandtype {
   BigRocks = 'bigRocks',
   Concrete = 'concrete',
   SmallGrain = 'smallGrain',
@@ -277,15 +165,38 @@ export enum Enum_Detailsbeach_Sandtype {
   VerySmallGrain = 'verySmallGrain'
 }
 
-export enum Enum_Translatebatchtranslatejob_Status {
-  Cancelled = 'cancelled',
-  Created = 'created',
-  Failed = 'failed',
-  Finished = 'finished',
-  Paused = 'paused',
-  Running = 'running',
-  Setup = 'setup'
+export enum Enum_Componentsharedmetasocial_Socialnetwork {
+  Facebook = 'Facebook',
+  Twitter = 'Twitter'
 }
+
+export enum Enum_Place_Amountofpeople {
+  AlmostNoPeople = 'almostNoPeople',
+  ManyPeople = 'manyPeople',
+  NoPeople = 'noPeople',
+  SomePeople = 'somePeople',
+  TooManyPeople = 'tooManyPeople',
+  Unknown = 'unknown'
+}
+
+export enum Enum_Place_Howexpensive {
+  Cheap = 'cheap',
+  Expensive = 'expensive',
+  Free = 'free',
+  Normal = 'normal',
+  VeryExpensive = 'veryExpensive'
+}
+
+export enum Enum_Place_Type {
+  Beach = 'beach',
+  Landmark = 'landmark'
+}
+
+export type Error = {
+  __typename?: 'Error';
+  code: Scalars['String']['output'];
+  message?: Maybe<Scalars['String']['output']>;
+};
 
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']['input']>;
@@ -318,7 +229,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = ComponentPlaceDetailsBasicDetails | ComponentPlaceDetailsParking | ComponentSharedMetaSocial | ComponentSharedSeo | DetailsBeach | I18NLocale | Landing | PublisherAction | TodoTask | TranslateBatchTranslateJob | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentPlaceDetailsGlobalBeachGlobal | ComponentPlaceDetailsGlobalLandmarkGlobal | ComponentPlaceDetailsLocalBeachLocal | ComponentPlaceDetailsLocalLandmarkLocal | ComponentSharedMetaSocial | ComponentSharedSeo | I18NLocale | Landing | Place | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -438,13 +349,7 @@ export type Landing = {
   heroTitle: Scalars['String']['output'];
   locale?: Maybe<Scalars['String']['output']>;
   localizations?: Maybe<LandingRelationResponseCollection>;
-  publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
-};
-
-
-export type LandingLocalizationsArgs = {
-  publicationState?: InputMaybe<PublicationState>;
 };
 
 export type LandingEntity = {
@@ -461,7 +366,6 @@ export type LandingEntityResponse = {
 export type LandingInput = {
   heroDescription?: InputMaybe<Scalars['String']['input']>;
   heroTitle?: InputMaybe<Scalars['String']['input']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type LandingRelationResponseCollection = {
@@ -473,23 +377,17 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
-  createDetailsBeach?: Maybe<DetailsBeachEntityResponse>;
-  createDetailsBeachLocalization?: Maybe<DetailsBeachEntityResponse>;
   createLandingLocalization?: Maybe<LandingEntityResponse>;
-  createPublisherAction?: Maybe<PublisherActionEntityResponse>;
-  createTodoTask?: Maybe<TodoTaskEntityResponse>;
-  createTranslateBatchTranslateJob?: Maybe<TranslateBatchTranslateJobEntityResponse>;
+  createPlace?: Maybe<PlaceEntityResponse>;
+  createPlaceLocalization?: Maybe<PlaceEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
-  deleteDetailsBeach?: Maybe<DetailsBeachEntityResponse>;
   deleteLanding?: Maybe<LandingEntityResponse>;
-  deletePublisherAction?: Maybe<PublisherActionEntityResponse>;
-  deleteTodoTask?: Maybe<TodoTaskEntityResponse>;
-  deleteTranslateBatchTranslateJob?: Maybe<TranslateBatchTranslateJobEntityResponse>;
+  deletePlace?: Maybe<PlaceEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -507,12 +405,9 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
-  updateDetailsBeach?: Maybe<DetailsBeachEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateLanding?: Maybe<LandingEntityResponse>;
-  updatePublisherAction?: Maybe<PublisherActionEntityResponse>;
-  updateTodoTask?: Maybe<TodoTaskEntityResponse>;
-  updateTranslateBatchTranslateJob?: Maybe<TranslateBatchTranslateJobEntityResponse>;
+  updatePlace?: Maybe<PlaceEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -530,19 +425,6 @@ export type MutationChangePasswordArgs = {
 };
 
 
-export type MutationCreateDetailsBeachArgs = {
-  data: DetailsBeachInput;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
-};
-
-
-export type MutationCreateDetailsBeachLocalizationArgs = {
-  data?: InputMaybe<DetailsBeachInput>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
-};
-
-
 export type MutationCreateLandingLocalizationArgs = {
   data?: InputMaybe<LandingInput>;
   id?: InputMaybe<Scalars['ID']['input']>;
@@ -550,18 +432,16 @@ export type MutationCreateLandingLocalizationArgs = {
 };
 
 
-export type MutationCreatePublisherActionArgs = {
-  data: PublisherActionInput;
+export type MutationCreatePlaceArgs = {
+  data: PlaceInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 
-export type MutationCreateTodoTaskArgs = {
-  data: TodoTaskInput;
-};
-
-
-export type MutationCreateTranslateBatchTranslateJobArgs = {
-  data: TranslateBatchTranslateJobInput;
+export type MutationCreatePlaceLocalizationArgs = {
+  data?: InputMaybe<PlaceInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 
@@ -585,29 +465,14 @@ export type MutationCreateUsersPermissionsUserArgs = {
 };
 
 
-export type MutationDeleteDetailsBeachArgs = {
-  id: Scalars['ID']['input'];
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
-};
-
-
 export type MutationDeleteLandingArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 
-export type MutationDeletePublisherActionArgs = {
+export type MutationDeletePlaceArgs = {
   id: Scalars['ID']['input'];
-};
-
-
-export type MutationDeleteTodoTaskArgs = {
-  id: Scalars['ID']['input'];
-};
-
-
-export type MutationDeleteTranslateBatchTranslateJobArgs = {
-  id: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 
@@ -671,13 +536,6 @@ export type MutationResetPasswordArgs = {
 };
 
 
-export type MutationUpdateDetailsBeachArgs = {
-  data: DetailsBeachInput;
-  id: Scalars['ID']['input'];
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
-};
-
-
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID']['input'];
   info?: InputMaybe<FileInfoInput>;
@@ -690,21 +548,10 @@ export type MutationUpdateLandingArgs = {
 };
 
 
-export type MutationUpdatePublisherActionArgs = {
-  data: PublisherActionInput;
+export type MutationUpdatePlaceArgs = {
+  data: PlaceInput;
   id: Scalars['ID']['input'];
-};
-
-
-export type MutationUpdateTodoTaskArgs = {
-  data: TodoTaskInput;
-  id: Scalars['ID']['input'];
-};
-
-
-export type MutationUpdateTranslateBatchTranslateJobArgs = {
-  data: TranslateBatchTranslateJobInput;
-  id: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 
@@ -755,72 +602,144 @@ export type PaginationArg = {
   start?: InputMaybe<Scalars['Int']['input']>;
 };
 
+export type Place = {
+  __typename?: 'Place';
+  access?: Maybe<Scalars['String']['output']>;
+  address?: Maybe<Scalars['String']['output']>;
+  alternativeNames?: Maybe<Scalars['String']['output']>;
+  amountOfPeople: Enum_Place_Amountofpeople;
+  content?: Maybe<Scalars['String']['output']>;
+  cover: UploadFileEntityResponse;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  description: Scalars['String']['output'];
+  detailsGlobal: Array<Maybe<PlaceDetailsGlobalDynamicZone>>;
+  detailsLocal: Array<Maybe<PlaceDetailsLocalDynamicZone>>;
+  googleMapsPlaceId?: Maybe<Scalars['String']['output']>;
+  hasBusStop: Scalars['Boolean']['output'];
+  howExpensive?: Maybe<Enum_Place_Howexpensive>;
+  latitude: Scalars['Float']['output'];
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations?: Maybe<PlaceRelationResponseCollection>;
+  longitude: Scalars['Float']['output'];
+  media?: Maybe<UploadFileRelationResponseCollection>;
+  name: Scalars['String']['output'];
+  parkingNotes?: Maybe<Scalars['String']['output']>;
+  parkingType?: Maybe<Scalars['JSON']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  shortName?: Maybe<Scalars['String']['output']>;
+  slug: Scalars['String']['output'];
+  type: Enum_Place_Type;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type PlaceLocalizationsArgs = {
+  filters?: InputMaybe<PlaceFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type PlaceMediaArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlaceDetailsGlobalDynamicZone = ComponentPlaceDetailsGlobalBeachGlobal | ComponentPlaceDetailsGlobalLandmarkGlobal | Error;
+
+export type PlaceDetailsLocalDynamicZone = ComponentPlaceDetailsLocalBeachLocal | ComponentPlaceDetailsLocalLandmarkLocal | Error;
+
+export type PlaceEntity = {
+  __typename?: 'PlaceEntity';
+  attributes?: Maybe<Place>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type PlaceEntityResponse = {
+  __typename?: 'PlaceEntityResponse';
+  data?: Maybe<PlaceEntity>;
+};
+
+export type PlaceEntityResponseCollection = {
+  __typename?: 'PlaceEntityResponseCollection';
+  data: Array<PlaceEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type PlaceFiltersInput = {
+  access?: InputMaybe<StringFilterInput>;
+  address?: InputMaybe<StringFilterInput>;
+  alternativeNames?: InputMaybe<StringFilterInput>;
+  amountOfPeople?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<PlaceFiltersInput>>>;
+  content?: InputMaybe<StringFilterInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  googleMapsPlaceId?: InputMaybe<StringFilterInput>;
+  hasBusStop?: InputMaybe<BooleanFilterInput>;
+  howExpensive?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  latitude?: InputMaybe<FloatFilterInput>;
+  locale?: InputMaybe<StringFilterInput>;
+  localizations?: InputMaybe<PlaceFiltersInput>;
+  longitude?: InputMaybe<FloatFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<PlaceFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<PlaceFiltersInput>>>;
+  parkingNotes?: InputMaybe<StringFilterInput>;
+  parkingType?: InputMaybe<JsonFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  shortName?: InputMaybe<StringFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
+  type?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type PlaceInput = {
+  access?: InputMaybe<Scalars['String']['input']>;
+  address?: InputMaybe<Scalars['String']['input']>;
+  alternativeNames?: InputMaybe<Scalars['String']['input']>;
+  amountOfPeople?: InputMaybe<Enum_Place_Amountofpeople>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  cover?: InputMaybe<Scalars['ID']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  detailsGlobal?: InputMaybe<Array<Scalars['PlaceDetailsGlobalDynamicZoneInput']['input']>>;
+  detailsLocal?: InputMaybe<Array<Scalars['PlaceDetailsLocalDynamicZoneInput']['input']>>;
+  googleMapsPlaceId?: InputMaybe<Scalars['String']['input']>;
+  hasBusStop?: InputMaybe<Scalars['Boolean']['input']>;
+  howExpensive?: InputMaybe<Enum_Place_Howexpensive>;
+  latitude?: InputMaybe<Scalars['Float']['input']>;
+  longitude?: InputMaybe<Scalars['Float']['input']>;
+  media?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  parkingNotes?: InputMaybe<Scalars['String']['input']>;
+  parkingType?: InputMaybe<Scalars['JSON']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  shortName?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Enum_Place_Type>;
+};
+
+export type PlaceRelationResponseCollection = {
+  __typename?: 'PlaceRelationResponseCollection';
+  data: Array<PlaceEntity>;
+};
+
 export enum PublicationState {
   Live = 'LIVE',
   Preview = 'PREVIEW'
 }
 
-export type PublisherAction = {
-  __typename?: 'PublisherAction';
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  entityId?: Maybe<Scalars['Int']['output']>;
-  entitySlug?: Maybe<Scalars['String']['output']>;
-  executeAt?: Maybe<Scalars['DateTime']['output']>;
-  mode?: Maybe<Scalars['String']['output']>;
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-};
-
-export type PublisherActionEntity = {
-  __typename?: 'PublisherActionEntity';
-  attributes?: Maybe<PublisherAction>;
-  id?: Maybe<Scalars['ID']['output']>;
-};
-
-export type PublisherActionEntityResponse = {
-  __typename?: 'PublisherActionEntityResponse';
-  data?: Maybe<PublisherActionEntity>;
-};
-
-export type PublisherActionEntityResponseCollection = {
-  __typename?: 'PublisherActionEntityResponseCollection';
-  data: Array<PublisherActionEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type PublisherActionFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<PublisherActionFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  entityId?: InputMaybe<IntFilterInput>;
-  entitySlug?: InputMaybe<StringFilterInput>;
-  executeAt?: InputMaybe<DateTimeFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  mode?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<PublisherActionFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<PublisherActionFiltersInput>>>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type PublisherActionInput = {
-  entityId?: InputMaybe<Scalars['Int']['input']>;
-  entitySlug?: InputMaybe<Scalars['String']['input']>;
-  executeAt?: InputMaybe<Scalars['DateTime']['input']>;
-  mode?: InputMaybe<Scalars['String']['input']>;
-};
-
 export type Query = {
   __typename?: 'Query';
-  detailsBeach?: Maybe<DetailsBeachEntityResponse>;
-  detailsBeaches?: Maybe<DetailsBeachEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   landing?: Maybe<LandingEntityResponse>;
   me?: Maybe<UsersPermissionsMe>;
-  publisherAction?: Maybe<PublisherActionEntityResponse>;
-  publisherActions?: Maybe<PublisherActionEntityResponseCollection>;
-  todoTask?: Maybe<TodoTaskEntityResponse>;
-  todoTasks?: Maybe<TodoTaskEntityResponseCollection>;
-  translateBatchTranslateJob?: Maybe<TranslateBatchTranslateJobEntityResponse>;
-  translateBatchTranslateJobs?: Maybe<TranslateBatchTranslateJobEntityResponseCollection>;
+  place?: Maybe<PlaceEntityResponse>;
+  places?: Maybe<PlaceEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -829,21 +748,6 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
-};
-
-
-export type QueryDetailsBeachArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
-};
-
-
-export type QueryDetailsBeachesArgs = {
-  filters?: InputMaybe<DetailsBeachFiltersInput>;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
@@ -861,42 +765,20 @@ export type QueryI18NLocalesArgs = {
 
 export type QueryLandingArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type QueryPlaceArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type QueryPlacesArgs = {
+  filters?: InputMaybe<PlaceFiltersInput>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
-};
-
-
-export type QueryPublisherActionArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-};
-
-
-export type QueryPublisherActionsArgs = {
-  filters?: InputMaybe<PublisherActionFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-export type QueryTodoTaskArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-};
-
-
-export type QueryTodoTasksArgs = {
-  filters?: InputMaybe<TodoTaskFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-export type QueryTranslateBatchTranslateJobArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-};
-
-
-export type QueryTranslateBatchTranslateJobsArgs = {
-  filters?: InputMaybe<TranslateBatchTranslateJobFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
@@ -976,107 +858,6 @@ export type StringFilterInput = {
   null?: InputMaybe<Scalars['Boolean']['input']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   startsWith?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type TodoTask = {
-  __typename?: 'TodoTask';
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  isDone?: Maybe<Scalars['Boolean']['output']>;
-  name: Scalars['String']['output'];
-  related?: Maybe<GenericMorph>;
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-};
-
-export type TodoTaskEntity = {
-  __typename?: 'TodoTaskEntity';
-  attributes?: Maybe<TodoTask>;
-  id?: Maybe<Scalars['ID']['output']>;
-};
-
-export type TodoTaskEntityResponse = {
-  __typename?: 'TodoTaskEntityResponse';
-  data?: Maybe<TodoTaskEntity>;
-};
-
-export type TodoTaskEntityResponseCollection = {
-  __typename?: 'TodoTaskEntityResponseCollection';
-  data: Array<TodoTaskEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type TodoTaskFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<TodoTaskFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  isDone?: InputMaybe<BooleanFilterInput>;
-  name?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<TodoTaskFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<TodoTaskFiltersInput>>>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type TodoTaskInput = {
-  isDone?: InputMaybe<Scalars['Boolean']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type TranslateBatchTranslateJob = {
-  __typename?: 'TranslateBatchTranslateJob';
-  autoPublish?: Maybe<Scalars['Boolean']['output']>;
-  contentType?: Maybe<Scalars['String']['output']>;
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  entityIds?: Maybe<Scalars['JSON']['output']>;
-  failureReason?: Maybe<Scalars['JSON']['output']>;
-  progress?: Maybe<Scalars['Float']['output']>;
-  sourceLocale?: Maybe<Scalars['String']['output']>;
-  status?: Maybe<Enum_Translatebatchtranslatejob_Status>;
-  targetLocale?: Maybe<Scalars['String']['output']>;
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-};
-
-export type TranslateBatchTranslateJobEntity = {
-  __typename?: 'TranslateBatchTranslateJobEntity';
-  attributes?: Maybe<TranslateBatchTranslateJob>;
-  id?: Maybe<Scalars['ID']['output']>;
-};
-
-export type TranslateBatchTranslateJobEntityResponse = {
-  __typename?: 'TranslateBatchTranslateJobEntityResponse';
-  data?: Maybe<TranslateBatchTranslateJobEntity>;
-};
-
-export type TranslateBatchTranslateJobEntityResponseCollection = {
-  __typename?: 'TranslateBatchTranslateJobEntityResponseCollection';
-  data: Array<TranslateBatchTranslateJobEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type TranslateBatchTranslateJobFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<TranslateBatchTranslateJobFiltersInput>>>;
-  autoPublish?: InputMaybe<BooleanFilterInput>;
-  contentType?: InputMaybe<StringFilterInput>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  entityIds?: InputMaybe<JsonFilterInput>;
-  failureReason?: InputMaybe<JsonFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<TranslateBatchTranslateJobFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<TranslateBatchTranslateJobFiltersInput>>>;
-  progress?: InputMaybe<FloatFilterInput>;
-  sourceLocale?: InputMaybe<StringFilterInput>;
-  status?: InputMaybe<StringFilterInput>;
-  targetLocale?: InputMaybe<StringFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type TranslateBatchTranslateJobInput = {
-  autoPublish?: InputMaybe<Scalars['Boolean']['input']>;
-  contentType?: InputMaybe<Scalars['String']['input']>;
-  entityIds?: InputMaybe<Scalars['JSON']['input']>;
-  failureReason?: InputMaybe<Scalars['JSON']['input']>;
-  progress?: InputMaybe<Scalars['Float']['input']>;
-  sourceLocale?: InputMaybe<Scalars['String']['input']>;
-  status?: InputMaybe<Enum_Translatebatchtranslatejob_Status>;
-  targetLocale?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type UploadFile = {
@@ -1460,21 +1241,38 @@ export type GetLandingQueryVariables = Exact<{
 export type GetLandingQuery = { __typename?: 'Query', landing?: { __typename?: 'LandingEntityResponse', data?: { __typename?: 'LandingEntity', attributes?: { __typename?: 'Landing', heroTitle: string, heroDescription: string } | null } | null } | null };
 
 export type GetBeachQueryVariables = Exact<{
-  slug: Scalars['String']['input'];
   locale: Scalars['I18NLocaleCode']['input'];
+  slug: Scalars['String']['input'];
 }>;
 
 
-export type GetBeachQuery = { __typename?: 'Query', detailsBeaches?: { __typename?: 'DetailsBeachEntityResponseCollection', data: Array<{ __typename?: 'DetailsBeachEntity', attributes?: { __typename?: 'DetailsBeach', name: string, basicDetails?: { __typename?: 'ComponentPlaceDetailsBasicDetails', shortDescription: string, cover: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, height?: number | null, width?: number | null } | null } | null } } | null } | null }> } | null };
+export type GetBeachQuery = { __typename?: 'Query', places?: { __typename?: 'PlaceEntityResponseCollection', data: Array<{ __typename?: 'PlaceEntity', attributes?: { __typename?: 'Place', name: string, description: string, content?: string | null, type: Enum_Place_Type, latitude: number, longitude: number, cover: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, height?: number | null, width?: number | null, alternativeText?: string | null } | null } | null }, detailsGlobal: Array<{ __typename?: 'ComponentPlaceDetailsGlobalBeachGlobal', waterEntry?: any | null, sandType?: Enum_Componentplacedetailsglobalbeachglobal_Sandtype | null, orientation?: Enum_Componentplacedetailsglobalbeachglobal_Orientation | null } | { __typename?: 'ComponentPlaceDetailsGlobalLandmarkGlobal' } | { __typename?: 'Error' } | null> } | null }> } | null };
 
 export type GetAllBeachesQueryVariables = Exact<{
   locale: Scalars['I18NLocaleCode']['input'];
 }>;
 
 
-export type GetAllBeachesQuery = { __typename?: 'Query', detailsBeaches?: { __typename?: 'DetailsBeachEntityResponseCollection', data: Array<{ __typename?: 'DetailsBeachEntity', attributes?: { __typename?: 'DetailsBeach', name: string, slug: string } | null }> } | null };
+export type GetAllBeachesQuery = { __typename?: 'Query', places?: { __typename?: 'PlaceEntityResponseCollection', data: Array<{ __typename?: 'PlaceEntity', attributes?: { __typename?: 'Place', name: string, slug: string } | null }> } | null };
+
+export type GetLandmarkQueryVariables = Exact<{
+  locale: Scalars['I18NLocaleCode']['input'];
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type GetLandmarkQuery = { __typename?: 'Query', places?: { __typename?: 'PlaceEntityResponseCollection', data: Array<{ __typename?: 'PlaceEntity', attributes?: { __typename?: 'Place', name: string, description: string, content?: string | null, type: Enum_Place_Type, latitude: number, longitude: number, cover: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, height?: number | null, width?: number | null, alternativeText?: string | null } | null } | null }, detailsGlobal: Array<{ __typename?: 'ComponentPlaceDetailsGlobalBeachGlobal' } | { __typename?: 'ComponentPlaceDetailsGlobalLandmarkGlobal', isVisitable: boolean, year?: number | null, referencePrice?: number | null } | { __typename?: 'Error' } | null> } | null }> } | null };
+
+export type GetAllLandmarksQueryVariables = Exact<{
+  locale: Scalars['I18NLocaleCode']['input'];
+}>;
+
+
+export type GetAllLandmarksQuery = { __typename?: 'Query', places?: { __typename?: 'PlaceEntityResponseCollection', data: Array<{ __typename?: 'PlaceEntity', attributes?: { __typename?: 'Place', name: string, slug: string } | null }> } | null };
 
 
 export const GetLandingDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getLanding"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"landing"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroTitle"}},{"kind":"Field","name":{"kind":"Name","value":"heroDescription"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetLandingQuery, GetLandingQueryVariables>;
-export const GetBeachDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getBeach"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"detailsBeaches"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"basicDetails"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"shortDescription"}},{"kind":"Field","name":{"kind":"Name","value":"cover"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}}]}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetBeachQuery, GetBeachQueryVariables>;
-export const GetAllBeachesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getAllBeaches"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"detailsBeaches"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetAllBeachesQuery, GetAllBeachesQueryVariables>;
+export const GetBeachDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getBeach"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"places"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"and"},"value":{"kind":"ListValue","values":[{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"StringValue","value":"beach","block":false}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}]}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"latitude"}},{"kind":"Field","name":{"kind":"Name","value":"longitude"}},{"kind":"Field","name":{"kind":"Name","value":"cover"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"detailsGlobal"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ComponentPlaceDetailsGlobalBeachGlobal"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"waterEntry"}},{"kind":"Field","name":{"kind":"Name","value":"sandType"}},{"kind":"Field","name":{"kind":"Name","value":"orientation"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetBeachQuery, GetBeachQueryVariables>;
+export const GetAllBeachesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getAllBeaches"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"places"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"StringValue","value":"beach","block":false}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetAllBeachesQuery, GetAllBeachesQueryVariables>;
+export const GetLandmarkDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getLandmark"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"places"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"and"},"value":{"kind":"ListValue","values":[{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"StringValue","value":"landmark","block":false}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}]}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"latitude"}},{"kind":"Field","name":{"kind":"Name","value":"longitude"}},{"kind":"Field","name":{"kind":"Name","value":"cover"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"detailsGlobal"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ComponentPlaceDetailsGlobalLandmarkGlobal"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"isVisitable"}},{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"referencePrice"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetLandmarkQuery, GetLandmarkQueryVariables>;
+export const GetAllLandmarksDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getAllLandmarks"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"places"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"StringValue","value":"landmark","block":false}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetAllLandmarksQuery, GetAllLandmarksQueryVariables>;

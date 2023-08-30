@@ -1,4 +1,3 @@
-import { IconBeach } from '@tabler/icons-react'
 import { useTranslations, useLocale } from 'next-intl'
 import { MyLink } from '@/navigation'
 import {
@@ -8,10 +7,11 @@ import {
   simplifyResponse,
   SimpleResponse,
 } from '@/lib/gql'
+import PlaceIcon from '@/components/PlaceIcon'
 
 const getAllBeachesQuery = graphql(`
   query getAllBeaches($locale: I18NLocaleCode!) {
-    detailsBeaches(locale: $locale) {
+    places(locale: $locale, filters: { type: { eq: "beach" } }) {
       data {
         attributes {
           name
@@ -36,6 +36,7 @@ export default async function PageWrapper() {
 
   return <Page beaches={beaches} />
 }
+
 function Page({
   beaches,
 }: {
@@ -45,7 +46,10 @@ function Page({
 
   return (
     <main className="text-center mx-auto max-w-2xl p-4">
-      <IconBeach className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1" />
+      <PlaceIcon
+        type="beach"
+        className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1"
+      />
       <h2 className="font-bold text-4xl">{t('beaches')}</h2>
       <ul className="mt-6">
         {beaches.map(
@@ -54,7 +58,7 @@ function Page({
               <li key={beach.slug}>
                 <MyLink
                   href={{
-                    pathname: '/platjes/[slug]',
+                    pathname: '/places/beaches/[slug]',
                     params: { slug: beach.slug ?? 'null' },
                   }}
                   className="underline text-xl py-2 px-4 inline-block"

@@ -1,20 +1,58 @@
 {
   "Landing": {
     "beaches": "Beaches",
+    "landmarks": "Landmarks",
+    "places": "Places",
     "view-all": "Explore all"
   },
   "AllBeachesView": {
     "beaches": "Beaches"
   },
+  "AllLandmarksView": {
+    "landmarks": "Landmarks"
+  },
+  "PlaceLayout": {
+    "map": "Map"
+  },
   "BeachView": {
-    "photos": "Photos"
+    "data": "Data"
+  },
+  "LandmarkView": {
+    "data": "Data",
+    "reference-price": "Reference price: {price}",
+    "year": "Year {year}",
+    "visitable": "Visitable",
+    "not-visitable": "Not visitable"
   },
   "Footer": {
     "switch-locale-description": "Veure en ",
     "switch-locale-name": "Català"
   },
+  "Header": {
+    "title": "Begur's places",
+    "home": "Home"
+  },
   "Spinner": {
     "loading": "Loading..."
+  },
+  "Enums": {
+    "sandType": {
+      "bigRocks": "Big rocks",
+      "concrete": "Concrete",
+      "smallGrain": "Small grain",
+      "smallRocks": "Small rocks",
+      "verySmallGrain": "Very small grain"
+    },
+    "orientation": {
+      "east": "East",
+      "north": "North",
+      "north_east": "North-East",
+      "north_west": "North-West",
+      "south": "South",
+      "south_east": "South-East",
+      "south_west": "South-West",
+      "west": "West"
+    }
   },
   "NotFoundPage": {
     "title": "Page not found",

@@ -9,14 +9,24 @@ export const defaultLocale = 'ca'
 export const pathnames = {
   '/': '/',
 
-  '/platjes': {
-    ca: '/platjes',
-    en: '/beaches',
+  '/places/beaches': {
+    ca: '/llocs/platjes',
+    en: '/places/beaches',
   },
 
-  '/platjes/[slug]': {
-    ca: '/platjes/[slug]',
-    en: '/beaches/[slug]',
+  '/places/beaches/[slug]': {
+    ca: '/llocs/platjes/[slug]',
+    en: '/places/beaches/[slug]',
+  },
+
+  '/places/landmarks': {
+    ca: '/llocs/monuments',
+    en: '/places/landmarks',
+  },
+
+  '/places/landmarks/[slug]': {
+    ca: '/llocs/monuments/[slug]',
+    en: '/places/landmarks/[slug]',
   },
 } satisfies Pathnames<typeof locales>
 
