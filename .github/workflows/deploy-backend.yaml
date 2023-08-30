@@ -56,3 +56,6 @@ jobs:
 
       - name: Build and deploy code
         run: ssh server 'cd /home/shared/llocsdebegur/backend/; docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build'
+
+      - name: Docker cleanup
+        run: ssh server 'cd /home/shared/llocsdebegur/backend/; docker system prune'
