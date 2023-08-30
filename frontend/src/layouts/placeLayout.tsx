@@ -41,8 +41,13 @@ export default function PlaceLayout({
         />
       )}
 
-      <h2 className="font-bold text-2xl mt-4 mb-2">{t('map')}</h2>
-      <div className="border border-gray-300 bg-gray-100 rounded-xl overflow-hidden">
+      <h2 className="font-bold text-2xl mt-8 mb-2 leading-none text-center">
+        {t('map')}
+      </h2>
+      <div
+        className="border border-gray-300 bg-gray-100 rounded-xl"
+        style={{ overflow: 'hidden' }}
+      >
         <Map
           location={{
             latitude: place.latitude,

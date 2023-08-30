@@ -82,10 +82,10 @@ function Page({
 
   return (
     <PlaceLayout place={beach}>
+      <h3 className="text-center text-2xl font-bold mb-2 leading-none">
+        {t('data')}
+      </h3>
       <div className="border border-gray-300 bg-gray-100 rounded-xl p-4">
-        <h3 className="text-center text-xl font-bold mb-4 leading-none">
-          {t('data')}
-        </h3>
         <div className="space-y-2">
           <div className="flex items-center">
             <IconGrain className="inline-block mr-1 shrink-0" />
@@ -98,7 +98,7 @@ function Page({
         </div>
       </div>
 
-      <div className="prose prose-h2:mt-4 prose-h2:mb-2">
+      <div className="prose mt-8 prose-h2:mt-4 prose-h2:mb-2">
         {beach.content && <ReactMarkdown>{beach.content}</ReactMarkdown>}
       </div>
     </PlaceLayout>
