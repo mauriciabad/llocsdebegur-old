@@ -32,7 +32,9 @@ export default function PlaceLayout({
         className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1"
       />
       <h1 className="font-bold text-4xl">{place.name}</h1>
-      <p className="max-w-[80ch] mx-auto text-left mt-4">{place.description}</p>
+      <p className="max-w-[80ch] mx-auto text-left mt-4 mb-4">
+        {place.description}
+      </p>
 
       {place.cover && (
         <StrapiImage
