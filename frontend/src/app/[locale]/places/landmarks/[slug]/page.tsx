@@ -25,6 +25,8 @@ const getLandmarkQuery = graphql(`
           description
           content
           type
+          latitude
+          longitude
           cover {
             data {
               attributes {
@@ -79,11 +81,11 @@ function Page({
 
   return (
     <PlaceLayout place={landmark}>
-      <div className="border border-gray-300 bg-gray-100 rounded-xl p-4 text-center max-w-xs">
+      <div className="border border-gray-300 bg-gray-100 rounded-xl p-4">
         <h3 className="text-center text-xl font-bold mb-4 leading-none">
           {t('data')}
         </h3>
-        <div className="text-left space-y-2">
+        <div className="space-y-2">
           <div className="flex items-center">
             <IconTicket className="inline-block mr-1 shrink-0" />
             <div>
