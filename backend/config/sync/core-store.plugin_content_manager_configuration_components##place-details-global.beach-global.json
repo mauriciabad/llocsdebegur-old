@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_components::place-details.basic-details",
+  "key": "plugin_content_manager_configuration_components::place-details-global.beach-global",
   "value": {
-    "uid": "place-details.basic-details",
+    "uid": "place-details-global.beach-global",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "location",
-      "defaultSortBy": "location",
+      "mainField": "id",
+      "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,86 +20,86 @@
           "sortable": false
         }
       },
-      "content": {
+      "sandType": {
         "edit": {
-          "label": "content",
+          "label": "sandType",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "content",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "shortDescription": {
-        "edit": {
-          "label": "shortDescription",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "shortDescription",
+          "label": "sandType",
           "searchable": true,
           "sortable": true
         }
       },
-      "cover": {
+      "sandImage": {
         "edit": {
-          "label": "cover",
+          "label": "sandImage",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "cover",
+          "label": "sandImage",
           "searchable": false,
           "sortable": false
         }
       },
-      "media": {
+      "orientation": {
         "edit": {
-          "label": "media",
+          "label": "orientation",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "media",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "location": {
-        "edit": {
-          "label": "location",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "location",
+          "label": "orientation",
           "searchable": true,
           "sortable": true
         }
       },
-      "amountOfPeople": {
+      "possibleJumps": {
         "edit": {
-          "label": "amountOfPeople",
+          "label": "possibleJumps",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "amountOfPeople",
+          "label": "possibleJumps",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "waterEntry": {
+        "edit": {
+          "label": "waterEntry",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "waterEntry",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "boatOnly": {
+        "edit": {
+          "label": "boatOnly",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "boatOnly",
           "searchable": true,
           "sortable": true
         }
@@ -108,40 +108,43 @@
     "layouts": {
       "list": [
         "id",
-        "shortDescription",
-        "cover"
+        "sandType",
+        "sandImage",
+        "orientation"
       ],
       "edit": [
         [
           {
-            "name": "content",
+            "name": "sandType",
+            "size": 6
+          },
+          {
+            "name": "sandImage",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "orientation",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "possibleJumps",
             "size": 12
           }
         ],
         [
           {
-            "name": "shortDescription",
-            "size": 6
-          },
-          {
-            "name": "cover",
-            "size": 6
+            "name": "waterEntry",
+            "size": 12
           }
         ],
         [
           {
-            "name": "media",
-            "size": 6
-          },
-          {
-            "name": "location",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "amountOfPeople",
-            "size": 6
+            "name": "boatOnly",
+            "size": 4
           }
         ]
       ]

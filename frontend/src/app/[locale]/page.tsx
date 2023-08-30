@@ -10,7 +10,7 @@ import {
 } from '@/lib/gql'
 
 const getLandingQuery = graphql(`
-  query getLanding($locale: I18NLocaleCode!) {
+  query getLanding($locale: I18NLocaleCode) {
     landing(locale: $locale) {
       data {
         attributes {

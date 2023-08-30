@@ -1,0 +1,68 @@
+{
+  "collectionName": "components_place_details_beach_globals",
+  "info": {
+    "displayName": "beach",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "sandType": {
+      "type": "enumeration",
+      "enum": [
+        "verySmallGrain",
+        "smallGrain",
+        "smallRocks",
+        "bigRocks",
+        "concrete"
+      ]
+    },
+    "sandImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {}
+    },
+    "orientation": {
+      "type": "enumeration",
+      "enum": [
+        "north",
+        "north-east",
+        "east",
+        "south-east",
+        "south-west",
+        "west",
+        "north-west"
+      ]
+    },
+    "possibleJumps": {
+      "type": "customField",
+      "options": [
+        "walking",
+        "short",
+        "medium",
+        "high",
+        "veryHigh",
+        "crazyHigh"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "waterEntry": {
+      "type": "customField",
+      "options": [
+        "walk",
+        "jump",
+        "ladder",
+        "extraAccessibility"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "boatOnly": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

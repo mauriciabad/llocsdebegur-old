@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_place_details_landmark_globals",
+  "info": {
+    "displayName": "landmark",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "year": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "max": 3000
+    },
+    "isVisitable": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "referencePrice": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "decimal",
+      "min": 0
+    }
+  }
+}

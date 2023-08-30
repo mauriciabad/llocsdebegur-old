@@ -12,20 +12,21 @@ import {
 } from '@/lib/gql'
 
 const getBeachQuery = graphql(`
-  query getBeach($slug: String!, $locale: I18NLocaleCode!) {
-    detailsBeaches(filters: { slug: { eq: $slug } }, locale: $locale) {
+  query getBeach($locale: I18NLocaleCode, $slug: String!) {
+    places(
+      locale: $locale
+      filters: { and: [{ type: { eq: "beach" }, slug: { eq: $slug } }] }
+    ) {
       data {
         attributes {
           name
-          basicDetails {
-            shortDescription
-            cover {
-              data {
-                attributes {
-                  url
-                  height
-                  width
-                }
+          description
+          cover {
+            data {
+              attributes {
+                url
+                height
+                width
               }
             }
           }
@@ -65,17 +66,15 @@ function Page({
     <main className="text-center mx-auto max-w-2xl p-4">
       <IconBeach className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1" />
       <h2 className="font-bold text-4xl">{beach.name}</h2>
-      <p className="max-w-[80ch] mx-auto text-left mt-4">
-        {beach.basicDetails?.shortDescription}
-      </p>
+      <p className="max-w-[80ch] mx-auto text-left mt-4">{beach.description}</p>
 
       <h3 className="text-center text-xl font-bold">{t('photos')}</h3>
       <img
-        src={`${BACKEND_URL}${beach.basicDetails?.cover?.url}`}
+        src={`${BACKEND_URL}${beach.cover?.url}`}
         alt=""
         className="rounded-xl shadow-2xl max-w-xl mx-auto w-full mt-4"
-        height={String(beach.basicDetails?.cover?.height)}
-        width={String(beach.basicDetails?.cover?.width)}
+        height={String(beach.cover?.height)}
+        width={String(beach.cover?.width)}
       />
     </main>
   )

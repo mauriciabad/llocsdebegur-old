@@ -1,0 +1,470 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::place.place",
+  "value": {
+    "uid": "api::place.place",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 100,
+      "mainField": "name",
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "name": {
+        "edit": {
+          "label": "name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "slug",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "cover": {
+        "edit": {
+          "label": "cover",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "cover",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "hasBusStop": {
+        "edit": {
+          "label": "hasBusStop",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hasBusStop",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "amountOfPeople": {
+        "edit": {
+          "label": "amountOfPeople",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "amountOfPeople",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "media": {
+        "edit": {
+          "label": "media",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "media",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "howExpensive": {
+        "edit": {
+          "label": "howExpensive",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "howExpensive",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "parkingType": {
+        "edit": {
+          "label": "parkingType",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "parkingType",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "address": {
+        "edit": {
+          "label": "address",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "address",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "latitude": {
+        "edit": {
+          "label": "latitude",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "latitude",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "longitude": {
+        "edit": {
+          "label": "longitude",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "longitude",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "description": {
+        "edit": {
+          "label": "description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "access": {
+        "edit": {
+          "label": "access",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "access",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "content": {
+        "edit": {
+          "label": "content",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "content",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "parkingNotes": {
+        "edit": {
+          "label": "parkingNotes",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "parkingNotes",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "alternativeNames": {
+        "edit": {
+          "label": "alternativeNames",
+          "description": "One per line",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "alternativeNames",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "shortName": {
+        "edit": {
+          "label": "shortName",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "shortName",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "type": {
+        "edit": {
+          "label": "type",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "type",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "detailsGlobal": {
+        "edit": {
+          "label": "detailsGlobal",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "detailsGlobal",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "detailsLocal": {
+        "edit": {
+          "label": "detailsLocal",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "detailsLocal",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "googleMapsPlaceId": {
+        "edit": {
+          "label": "googleMapsPlaceId",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "googleMapsPlaceId",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "name",
+            "size": 6
+          },
+          {
+            "name": "slug",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "shortName",
+            "size": 6
+          },
+          {
+            "name": "type",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "alternativeNames",
+            "size": 4
+          },
+          {
+            "name": "description",
+            "size": 8
+          }
+        ],
+        [
+          {
+            "name": "cover",
+            "size": 6
+          },
+          {
+            "name": "media",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "address",
+            "size": 8
+          },
+          {
+            "name": "googleMapsPlaceId",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "latitude",
+            "size": 6
+          },
+          {
+            "name": "longitude",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "content",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "hasBusStop",
+            "size": 4
+          },
+          {
+            "name": "amountOfPeople",
+            "size": 4
+          },
+          {
+            "name": "howExpensive",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "access",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "parkingType",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "parkingNotes",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "detailsGlobal",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "detailsLocal",
+            "size": 12
+          }
+        ]
+      ],
+      "list": [
+        "id",
+        "cover",
+        "type",
+        "name"
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
