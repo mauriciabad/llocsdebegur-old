@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import { useLocale } from 'next-intl'
 import { ApolloWrapper } from './ApolloWrapper'
 import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -22,8 +23,8 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={classNames([inter.className, 'min-h-screen'])}>
+        <Header />
         <ApolloWrapper>{children}</ApolloWrapper>
-
         <Footer />
       </body>
     </html>

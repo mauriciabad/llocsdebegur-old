@@ -8,7 +8,7 @@ export default function Footer() {
   const t = useTranslations('Footer')
 
   return (
-    <footer className="sticky top-full inset-x-0 p-4 bg-sky-100 text-center">
+    <footer className="sticky top-full inset-x-0 p-4 bg-sky-100 text-center mt-16">
       <div>
         <IconLanguage className="text-sky-500 inline-block mr-2" />
         <span>{t('switch-locale-description')}</span>

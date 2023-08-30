@@ -28,6 +28,10 @@
     "switch-locale-description": "Switch to ",
     "switch-locale-name": "English"
   },
+  "Header": {
+    "title": "Llocs de Begur",
+    "home": "Inici"
+  },
   "Spinner": {
     "loading": "Carregant..."
   },

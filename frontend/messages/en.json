@@ -28,6 +28,10 @@
     "switch-locale-description": "Veure en ",
     "switch-locale-name": "Català"
   },
+  "Header": {
+    "title": "Begur's places",
+    "home": "Home"
+  },
   "Spinner": {
     "loading": "Loading..."
   },
