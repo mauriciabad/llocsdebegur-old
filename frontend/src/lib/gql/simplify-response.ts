@@ -31,10 +31,10 @@ export function typeDynamicZone<
 }
 
 export function optionallyAccess<
-  T extends { [k in string]: any },
+  T extends { [k in string]: any } | null | undefined,
   K extends keyof T,
->(obj: T | null | undefined | { [k in never]: never }, key: K) {
-  return obj && 'sandType' in obj && obj?.[key]
+>(obj: T | { [k in never]: never }, key: K) {
+  return obj && key in obj && (obj as T)?.[key]
 }
 
 function isPlainObject<
