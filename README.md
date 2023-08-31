@@ -76,6 +76,9 @@ npm run docker:dev
 - GraphQL URL: <http://localhost:1337/graphql>
 
 > [!IMPORTANT]
+> *Importing data*
+> You can import all the data from production using `npm run strapi -- transfer --from https://cms.llocsdebegur.s.mauriciabad.com/admin`, then you provide a token. More info in <https://docs.strapi.io/dev-docs/data-management/transfer#setup-and-run-the-data-transfer>
+>
 > Remember that you can export the admin's config with the plugin [Config Sync](https://market.strapi.io/plugins/strapi-plugin-config-sync) or `npm run cs export`. **You should do this manually when the config changes** (Admin role, User role, Core store, or I18n locale). And after deploying, manually importing the config with the plugin [Config Sync](https://market.strapi.io/plugins/strapi-plugin-config-sync) or `npm run cs import` on the server's docker container.
 
 #### Production environment
