@@ -58,8 +58,8 @@ function Page({
               <li key={beach.slug}>
                 <MyLink
                   href={{
-                    pathname: '/beaches/[slug]',
-                    params: { slug: beach.slug ?? 'null' },
+                    pathname: '/beaches/[placeSlug]',
+                    params: { placeSlug: beach.slug ?? 'null' },
                   }}
                   className="underline text-xl py-2 px-4 inline-block"
                 >

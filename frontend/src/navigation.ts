@@ -14,9 +14,9 @@ export const pathnames = {
     en: '/beaches',
   },
 
-  '/beaches/[place-slug]': {
-    ca: '/platjes/[place-slug]',
-    en: '/beaches/[place-slug]',
+  '/beaches/[placeSlug]': {
+    ca: '/platjes/[placeSlug]',
+    en: '/beaches/[placeSlug]',
   },
 
   '/landmarks': {
@@ -24,9 +24,9 @@ export const pathnames = {
     en: '/landmarks',
   },
 
-  '/landmarks/[place-slug]': {
-    ca: '/monuments/[place-slug]',
-    en: '/landmarks/[place-slug]',
+  '/landmarks/[placeSlug]': {
+    ca: '/monuments/[placeSlug]',
+    en: '/landmarks/[placeSlug]',
   },
 } satisfies Pathnames<typeof locales>
 
