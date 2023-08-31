@@ -81,10 +81,10 @@ function Page({
 
   return (
     <PlaceLayout place={landmark}>
-      <h3 className="text-center text-2xl font-bold mb-2 leading-none">
+      <h3 className="text-center text-2xl font-bold mb-2 leading-none font-title text-stone-800">
         {t('data')}
       </h3>
-      <div className="border border-gray-300 bg-gray-100 rounded-xl p-4">
+      <div className="border border-stone-300 bg-stone-100 rounded-xl p-4">
         <div className="space-y-2">
           <div className="flex items-center">
             <IconTicket className="inline-block mr-1 shrink-0" />
@@ -107,7 +107,7 @@ function Page({
         </div>
       </div>
 
-      <div className="prose mt-8 prose-h2:mt-4 prose-h2:mb-2">
+      <div className="prose mt-8 prose-h2:mt-4 prose-h2:mb-2 prose-headings:font-title prose-headings:text-stone-800">
         {landmark.content && <ReactMarkdown>{landmark.content}</ReactMarkdown>}
       </div>
     </PlaceLayout>

@@ -48,9 +48,11 @@ function Page({
     <main className="text-center mx-auto max-w-2xl p-4">
       <PlaceIcon
         type="landmark"
-        className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1"
+        className="mx-auto text-brand-600 mb-4 mt-8 h-12 w-12 stroke-1"
       />
-      <h2 className="font-bold text-4xl">{t('landmarks')}</h2>
+      <h2 className="font-bold text-4xl font-title text-stone-800">
+        {t('landmarks')}
+      </h2>
       <ul className="mt-6">
         {landmarks.map(
           (landmark) =>

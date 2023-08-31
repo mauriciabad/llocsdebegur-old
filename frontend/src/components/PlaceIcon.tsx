@@ -1,16 +1,16 @@
-import { Enum_Place_Type } from '@/lib/gql'
+import { PlaceType } from '@/lib/gql'
 import { IconBeach, IconBuildingCastle, Icon } from '@tabler/icons-react'
 
 const iconsByPlaceType = {
   beach: IconBeach,
   landmark: IconBuildingCastle,
-} as const satisfies Record<`${Enum_Place_Type}`, Icon>
+} as const satisfies Record<PlaceType, Icon>
 
 export default function PlaceIcon({
   type,
   className,
 }: {
-  type: `${Enum_Place_Type}`
+  type: PlaceType
   className?: string
 }) {
   const Icon = iconsByPlaceType[type]

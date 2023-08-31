@@ -3,7 +3,7 @@
     "beaches": "Platjes",
     "landmarks": "Monuments",
     "places": "Llocs",
-    "view-all": "Veure totes"
+    "view-all": "Veure {gender, select, female {totes} male {tots} other {tots}}"
   },
   "AllBeachesView": {
     "beaches": "Platjes"
