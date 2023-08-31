@@ -63,7 +63,7 @@ function Page({
             />
             <h2 className="font-bold text-3xl">{t('beaches')}</h2>
             <MyLink
-              href="/places/beaches"
+              href="/beaches"
               className="p-4 leading-none bg-sky-900 text-white uppercase rounded-lg inline-block mt-6 outline-none hover:bg-sky-800 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-gray-700"
             >
               {t('view-all')}
@@ -76,7 +76,7 @@ function Page({
             />
             <h2 className="font-bold text-3xl">{t('landmarks')}</h2>
             <MyLink
-              href="/places/landmarks"
+              href="/landmarks"
               className="p-4 leading-none bg-sky-900 text-white uppercase rounded-lg inline-block mt-6 outline-none hover:bg-sky-800 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-gray-700"
             >
               {t('view-all')}
