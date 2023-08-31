@@ -1,15 +1,7 @@
 {
   "Landing": {
-    "beaches": "Beaches",
-    "landmarks": "Landmarks",
     "places": "Places",
     "view-all": "Explore all"
-  },
-  "AllBeachesView": {
-    "beaches": "Beaches"
-  },
-  "AllLandmarksView": {
-    "landmarks": "Landmarks"
   },
   "PlaceLayout": {
     "map": "Map"
@@ -52,6 +44,10 @@
       "south_east": "South-East",
       "south_west": "South-West",
       "west": "West"
+    },
+    "placeType": {
+      "beach": "{count, plural, =1 {Platja} other {Platjes}}",
+      "landmark": "{count, plural, =1 {Monument} other {Monuments}}"
     }
   },
   "NotFoundPage": {

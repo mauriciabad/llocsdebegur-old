@@ -1,13 +1,6 @@
-import { useTranslations, useLocale } from 'next-intl'
-import { MyLink } from '@/navigation'
-import {
-  GetAllBeachesQuery,
-  graphql,
-  gqlClient,
-  simplifyResponse,
-  SimpleResponse,
-} from '@/lib/gql'
-import PlaceIcon from '@/components/PlaceIcon'
+import { useLocale } from 'next-intl'
+import { graphql, gqlClient, simplifyResponse, nonNullable } from '@/lib/gql'
+import PlaceTypeLayout from '@/layouts/placeTypeLayout'
 
 const getAllBeachesQuery = graphql(`
   query getAllBeaches($locale: I18NLocaleCode!) {
@@ -22,7 +15,7 @@ const getAllBeachesQuery = graphql(`
   }
 `)
 
-export default async function PageWrapper() {
+export default async function Page() {
   const locale = useLocale()
 
   const { data } = await gqlClient().query({
@@ -34,44 +27,5 @@ export default async function PageWrapper() {
 
   if (!beaches) return <h1>Error fetching data</h1> // TODO: Do better error handling
 
-  return <Page beaches={beaches} />
-}
-
-function Page({
-  beaches,
-}: {
-  beaches: NonNullable<SimpleResponse<GetAllBeachesQuery>>
-}) {
-  const t = useTranslations('AllBeachesView')
-
-  return (
-    <main className="text-center mx-auto max-w-2xl p-4">
-      <PlaceIcon
-        type="beach"
-        className="mx-auto text-brand-600 mb-4 mt-8 h-12 w-12 stroke-1"
-      />
-      <h2 className="font-bold text-4xl font-title text-stone-800">
-        {t('beaches')}
-      </h2>
-      <ul className="mt-6">
-        {beaches.map(
-          (beach) =>
-            beach && (
-              <li key={beach.slug}>
-                <MyLink
-                  href={{
-                    pathname: '/beaches/[placeSlug]',
-                    params: { placeSlug: beach.slug ?? 'null' },
-                  }}
-                  className="underline text-xl py-2 px-4 inline-block"
-                >
-                  {' '}
-                  {beach.name}
-                </MyLink>
-              </li>
-            )
-        )}
-      </ul>
-    </main>
-  )
+  return <PlaceTypeLayout type="beach" places={beaches.filter(nonNullable)} />
 }
