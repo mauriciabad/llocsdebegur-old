@@ -4,15 +4,20 @@ import Map from '@/components/Map'
 import { Place, SimpleType } from '@/lib/gql'
 import { DeepPick } from '@/lib/types'
 import { useTranslations } from 'next-intl'
+import PlaceCustomData, {
+  PlaceCustomDataArray,
+} from '@/components/PlaceCustomData'
+import ReactMarkdown from 'react-markdown'
 
 export default function PlaceLayout({
   place,
-  children,
+  customData,
 }: {
   place: DeepPick<
     SimpleType<Place>,
     | 'name'
     | 'type'
+    | 'content'
     | 'description'
     | 'latitude'
     | 'longitude'
@@ -21,7 +26,7 @@ export default function PlaceLayout({
     | 'cover.width'
     | 'cover.alternativeText'
   >
-  children: React.ReactNode
+  customData: PlaceCustomDataArray
 }) {
   const t = useTranslations('PlaceLayout')
 
@@ -69,7 +74,14 @@ export default function PlaceLayout({
         />
       </div>
 
-      <div className="text-left mt-8">{children}</div>
+      <div className="text-left mt-8">
+        {customData && <PlaceCustomData data={customData} />}
+        {place.content && (
+          <div className="prose mt-8 prose-h2:mt-4 prose-h2:mb-2 prose-headings:font-title prose-headings:text-stone-800">
+            <ReactMarkdown>{place.content}</ReactMarkdown>
+          </div>
+        )}
+      </div>
     </main>
   )
 }

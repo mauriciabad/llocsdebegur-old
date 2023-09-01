@@ -55,7 +55,10 @@ export default async function Page({
 
   const places = simplifyResponse(data)
 
-  if (!places) throw new Error('Error fetching data')
+  if (!places)
+    throw new Error(
+      `Error fetching data of place type list "${placeTypePluralTranslated}"`
+    )
 
   return <SubPage type={type} places={places.filter(nonNullable)} />
 }

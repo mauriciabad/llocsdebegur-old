@@ -31,7 +31,7 @@ export default async function PageWrapper() {
 
   const landingInfo = simplifyResponse(data)
 
-  if (!landingInfo) throw new Error('Error fetching data')
+  if (!landingInfo) throw new Error(`Error fetching data of landing page`)
 
   return <Page landingInfo={landingInfo} />
 }

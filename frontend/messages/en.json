@@ -6,11 +6,10 @@
   "PlaceLayout": {
     "map": "Map"
   },
-  "BeachView": {
+  "PlaceView": {
     "data": "Data"
   },
   "LandmarkView": {
-    "data": "Data",
     "reference-price": "Reference price: {price}",
     "year": "Year {year}",
     "visitable": "Visitable",
