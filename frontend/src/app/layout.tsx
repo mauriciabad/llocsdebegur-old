@@ -7,10 +7,11 @@ import { NextIntlClientProvider, useLocale } from 'next-intl'
 import { ApolloWrapper } from '@/components/wrappers/ApolloWrapper'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '500', '700'],
   variable: '--font-poppins',
 })
 
@@ -25,7 +26,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const locale = useLocale()
-  const messages = (await import(`../../messages/${locale}.json`)).default
+  const messages = (await import(`/messages/${locale}.json`)).default
 
   return (
     <html lang={locale}>

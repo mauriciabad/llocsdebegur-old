@@ -31,7 +31,7 @@ export default async function PageWrapper() {
 
   const landingInfo = simplifyResponse(data)
 
-  if (!landingInfo) return <h1>Error fetching data</h1> // TODO: Do better error handling
+  if (!landingInfo) throw new Error(`Error fetching data of landing page`)
 
   return <Page landingInfo={landingInfo} />
 }
@@ -52,7 +52,7 @@ function Page({
         <p className="text-xl mt-4">{landingInfo.heroDescription}</p>
       </header>
 
-      <main className="text-center mx-auto max-w-2xl px-4 bg-white">
+      <main className="text-center mx-auto max-w-2xl px-4 ">
         <h2 className="text-4xl font-bold text-center mt-8 mb-4 font-title text-stone-800">
           {t('places')}
         </h2>

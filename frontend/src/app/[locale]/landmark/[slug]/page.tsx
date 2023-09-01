@@ -1,4 +1,3 @@
-import { IconTicket, IconCurrencyEuro, IconCalendar } from '@tabler/icons-react'
 import { useLocale, useTranslations } from 'next-intl'
 import { notFound } from 'next/navigation'
 import {
@@ -10,7 +9,6 @@ import {
   NonNullableItem,
   typeDynamicZone,
 } from '@/lib/gql'
-import ReactMarkdown from 'react-markdown'
 import PlaceLayout from '@/layouts/placeLayout'
 
 const getLandmarkQuery = graphql(`
@@ -22,11 +20,13 @@ const getLandmarkQuery = graphql(`
       data {
         attributes {
           name
+          slug
           description
           content
           type
           latitude
           longitude
+          googleMapsPlaceId
           cover {
             data {
               attributes {
@@ -77,39 +77,28 @@ function Page({
   const t = useTranslations('LandmarkView')
 
   const detailsGlobal = typeDynamicZone(landmark.detailsGlobal[0])
-  if (!detailsGlobal) return <h1>Error fetching data</h1> // TODO: Do better error handling
+  if (!detailsGlobal)
+    throw new Error(`Error fetching data of place "${landmark.slug}"`)
 
   return (
-    <PlaceLayout place={landmark}>
-      <h3 className="text-center text-2xl font-bold mb-2 leading-none font-title text-stone-800">
-        {t('data')}
-      </h3>
-      <div className="border border-stone-300 bg-stone-100 rounded-xl p-4">
-        <div className="space-y-2">
-          <div className="flex items-center">
-            <IconTicket className="inline-block mr-1 shrink-0" />
-            <div>
-              {detailsGlobal.isVisitable ? t('visitable') : t('not-visitable')}
-            </div>
-          </div>
-          <div className="flex items-center">
-            <IconCalendar className="inline-block mr-1 shrink-0" />
-            <div>{t('year', { year: detailsGlobal.year })}</div>
-          </div>
-          <div className="flex items-center">
-            <IconCurrencyEuro className="inline-block mr-1 shrink-0" />
-            <div>
-              {t('reference-price', {
-                price: `${detailsGlobal.referencePrice?.toFixed(2)}€`,
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="prose mt-8 prose-h2:mt-4 prose-h2:mb-2 prose-headings:font-title prose-headings:text-stone-800">
-        {landmark.content && <ReactMarkdown>{landmark.content}</ReactMarkdown>}
-      </div>
-    </PlaceLayout>
+    <PlaceLayout
+      place={landmark}
+      customData={[
+        {
+          icon: 'visitable',
+          text: detailsGlobal.isVisitable ? t('visitable') : t('not-visitable'),
+        },
+        {
+          icon: 'year',
+          text: t('year', { year: detailsGlobal.year }),
+        },
+        {
+          icon: 'reference-price',
+          text: t('reference-price', {
+            price: `${detailsGlobal.referencePrice?.toFixed(2)}€`,
+          }),
+        },
+      ]}
+    />
   )
 }

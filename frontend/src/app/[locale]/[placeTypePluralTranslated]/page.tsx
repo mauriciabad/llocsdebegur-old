@@ -55,7 +55,10 @@ export default async function Page({
 
   const places = simplifyResponse(data)
 
-  if (!places) return <h1>Error fetching data</h1> // TODO: Do better error handling
+  if (!places)
+    throw new Error(
+      `Error fetching data of place type list "${placeTypePluralTranslated}"`
+    )
 
   return <SubPage type={type} places={places.filter(nonNullable)} />
 }
@@ -97,7 +100,7 @@ function SubPage({
                     pathname: `/${type}/[placeSlug]`,
                     params: { placeSlug: place.slug ?? 'null' },
                   }}
-                  className="block overflow-hidden border border-stone-200 bg-white rounded-2xl group outline-2 hover:outline outline-brand-100"
+                  className="block overflow-hidden shadow-md border border-stone-200 bg-white rounded-2xl group outline-2 hover:outline outline-brand-100"
                 >
                   {place.cover && (
                     <StrapiImage

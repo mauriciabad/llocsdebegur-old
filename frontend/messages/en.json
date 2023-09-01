@@ -4,13 +4,11 @@
     "view-all": "Explore all"
   },
   "PlaceLayout": {
-    "map": "Map"
-  },
-  "BeachView": {
+    "map": "Map",
+    "links": "Links",
     "data": "Data"
   },
   "LandmarkView": {
-    "data": "Data",
     "reference-price": "Reference price: {price}",
     "year": "Year {year}",
     "visitable": "Visitable",
@@ -26,6 +24,9 @@
   },
   "Spinner": {
     "loading": "Loading..."
+  },
+  "Links": {
+    "view-in": "View in"
   },
   "Enums": {
     "sandType": {

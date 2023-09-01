@@ -18,14 +18,13 @@ export default function PlaceTypeBlock({
   const t2 = useTranslations('Enums.placeType')
 
   const typeGender = gender(type, locale)
-  console.log(typeGender)
 
   return (
     <MyLink
       href={`/${type}`}
       className={classNames([
         className,
-        'border border-stone-200 bg-white rounded-2xl p-4 group outline-2 hover:outline outline-brand-100',
+        'border border-stone-200 shadow-md bg-white rounded-2xl p-4 group outline-2 hover:outline outline-brand-100',
       ])}
     >
       <PlaceIcon

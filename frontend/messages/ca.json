@@ -4,13 +4,11 @@
     "view-all": "Veure {gender, select, female {totes} male {tots} other {tots}}"
   },
   "PlaceLayout": {
-    "map": "Mapa"
-  },
-  "BeachView": {
+    "map": "Mapa",
+    "links": "Enllaços",
     "data": "Dades"
   },
   "LandmarkView": {
-    "data": "Dades",
     "reference-price": "Preu de referència: {price}",
     "year": "Any {year}",
     "visitable": "Visitable",
@@ -26,6 +24,9 @@
   },
   "Spinner": {
     "loading": "Carregant..."
+  },
+  "Links": {
+    "view-in": "Veure a"
   },
   "Enums": {
     "sandType": {
