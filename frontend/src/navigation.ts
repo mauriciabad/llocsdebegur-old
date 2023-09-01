@@ -2,6 +2,7 @@ import {
   createLocalizedPathnamesNavigation,
   Pathnames,
 } from 'next-intl/navigation'
+import {  plural } from './lib/gql'
 
 export const locales = ['en', 'ca'] as const
 export type Locale = (typeof locales)[number]
@@ -10,26 +11,26 @@ export const defaultLocale = 'ca'
 export const pathnames = {
   '/': '/',
 
-  '/beaches': {
-    ca: '/platjes',
-    en: '/beaches',
+  '/beach': {
+    ca: `/${plural('beach', 'ca')}`,
+    en: `/${plural('beach', 'en')}`,
   },
 
-  '/beaches/[placeSlug]': {
-    ca: '/platjes/[placeSlug]',
-    en: '/beaches/[placeSlug]',
+  '/beach/[placeSlug]': {
+    ca: `/${plural('beach', 'ca')}/[placeSlug]`,
+    en: `/${plural('beach', 'en')}/[placeSlug]`,
   },
 
-  '/landmarks': {
-    ca: '/monuments',
-    en: '/landmarks',
+  '/landmark': {
+    ca: `/${plural('landmark', 'ca')}`,
+    en: `/${plural('landmark', 'en')}`,
   },
 
-  '/landmarks/[placeSlug]': {
-    ca: '/monuments/[placeSlug]',
-    en: '/landmarks/[placeSlug]',
+  '/landmark/[placeSlug]': {
+    ca: `/${plural('landmark', 'ca')}/[placeSlug]`,
+    en: `/${plural('landmark', 'en')}/[placeSlug]`,
   },
-} satisfies Pathnames<typeof locales>
+} as const satisfies Pathnames<typeof locales>
 
 export const {
   Link: MyLink,

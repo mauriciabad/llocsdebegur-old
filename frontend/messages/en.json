@@ -46,8 +46,8 @@
       "west": "West"
     },
     "placeType": {
-      "beach": "{count, plural, =1 {Platja} other {Platjes}}",
-      "landmark": "{count, plural, =1 {Monument} other {Monuments}}"
+      "beach": "{count, plural, =1 {Beach} other {Beaches}}",
+      "landmark": "{count, plural, =1 {Landmark} other {Landmarks}}"
     }
   },
   "NotFoundPage": {

@@ -1,6 +1,6 @@
 'use client'
 
-import { PlaceType, placeTypeGenderByLocale, placeTypePlural } from '@/lib/gql'
+import { PlaceType, gender } from '@/lib/gql'
 import { Locale, MyLink } from '@/navigation'
 import { useLocale, useTranslations } from 'use-intl'
 import PlaceIcon from './PlaceIcon'
@@ -17,13 +17,12 @@ export default function PlaceTypeBlock({
   const t = useTranslations('Landing')
   const t2 = useTranslations('Enums.placeType')
 
-  const typePlural = placeTypePlural[type]
-  const typeGender = placeTypeGenderByLocale[locale][type]
+  const typeGender = gender(type, locale)
   console.log(typeGender)
 
   return (
     <MyLink
-      href={`/${typePlural}`}
+      href={`/${type}`}
       className={classNames([
         className,
         'border border-stone-200 bg-white rounded-2xl p-4 group outline-2 hover:outline outline-brand-100',

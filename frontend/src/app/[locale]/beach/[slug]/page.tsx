@@ -1,17 +1,17 @@
-import { IconGrain, IconCompass } from '@tabler/icons-react'
+import PlaceLayout from '@/layouts/placeLayout'
+import {
+GetBeachQuery,
+NonNullableItem,
+SimpleResponse,
+gqlClient,
+graphql,
+simplifyResponse,
+typeDynamicZone,
+} from '@/lib/gql'
+import { IconCompass, IconGrain } from '@tabler/icons-react'
 import { useLocale, useTranslations } from 'next-intl'
 import { notFound } from 'next/navigation'
-import {
-  GetBeachQuery,
-  graphql,
-  gqlClient,
-  simplifyResponse,
-  SimpleResponse,
-  NonNullableItem,
-  typeDynamicZone,
-} from '@/lib/gql'
 import ReactMarkdown from 'react-markdown'
-import PlaceLayout from '@/layouts/placeLayout'
 
 const getBeachQuery = graphql(`
   query getBeach($locale: I18NLocaleCode!, $slug: String!) {
