@@ -2,7 +2,13 @@
 
 ## UI
 
-- [ ] Nav bar
+- [ ] Real navbar
+- [ ] Explore page map
+- [ ] Map in /place page with all
+
+## Dev Exp
+
+- [ ] Research why components using useTranslations have to be client components? can I make them server components?
 
 ## Interesting plugins
 
