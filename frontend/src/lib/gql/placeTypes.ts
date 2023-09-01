@@ -13,7 +13,7 @@ export function defaultName(x: string): PlaceType | null {
 export const gender = (x: PlaceType, locale: Locale): Gender =>
   placeTypeTranslations[x][locale].gender
 
-export function plural<P extends PlaceType, L extends Locale>(
+export function plural<P extends PlaceType>(
   x: P
 ): (typeof placeTypeTranslations)[P]['en']['plural']
 export function plural<P extends PlaceType, L extends Locale>(
