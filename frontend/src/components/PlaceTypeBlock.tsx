@@ -18,7 +18,6 @@ export default function PlaceTypeBlock({
   const t2 = useTranslations('Enums.placeType')
 
   const typeGender = gender(type, locale)
-  console.log(typeGender)
 
   return (
     <MyLink
