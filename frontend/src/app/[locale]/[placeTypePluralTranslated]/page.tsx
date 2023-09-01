@@ -17,7 +17,11 @@ import { notFound } from 'next/navigation'
 
 const getAllPlacesOfTypeQuery = graphql(`
   query getAllPlacesOfType($locale: I18NLocaleCode!, $type: String!) {
-    places(locale: $locale, filters: { type: { eq: $type } }) {
+    places(
+      locale: $locale
+      filters: { type: { eq: $type } }
+      pagination: { limit: 1000 }
+    ) {
       data {
         attributes {
           name
@@ -90,6 +94,9 @@ function SubPage({
       <h2 className="font-bold text-4xl font-title text-stone-800 text-center">
         {t(type, { count: 2 })}
       </h2>
+      <p className="text-center text-stone-500 font-semibold mt-4">
+        {t('showing-n-places', { count: places.length })}
+      </p>
       <ul className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(theme(spacing.64),1fr))] gap-6">
         {places.map(
           (place) =>
