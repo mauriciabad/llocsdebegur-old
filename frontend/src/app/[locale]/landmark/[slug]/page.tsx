@@ -77,7 +77,7 @@ function Page({
   const t = useTranslations('LandmarkView')
 
   const detailsGlobal = typeDynamicZone(landmark.detailsGlobal[0])
-  if (!detailsGlobal) return <h1>Error fetching data</h1> // TODO: Do better error handling
+  if (!detailsGlobal) throw new Error('Error fetching data')
 
   return (
     <PlaceLayout place={landmark}>

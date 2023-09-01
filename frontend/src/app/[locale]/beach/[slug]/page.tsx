@@ -78,7 +78,7 @@ function Page({
   const te = useTranslations('Enums')
 
   const detailsGlobal = typeDynamicZone(beach.detailsGlobal[0])
-  if (!detailsGlobal) return <h1>Error fetching data</h1> // TODO: Do better error handling
+  if (!detailsGlobal) throw new Error('Error fetching data')
 
   return (
     <PlaceLayout place={beach}>
@@ -98,9 +98,11 @@ function Page({
         </div>
       </div>
 
-      <div className="prose mt-8 prose-h2:mt-4 prose-h2:mb-2 prose-headings:font-title prose-headings:text-stone-800">
-        {beach.content && <ReactMarkdown>{beach.content}</ReactMarkdown>}
-      </div>
+      {beach.content && (
+        <div className="prose mt-8 prose-h2:mt-4 prose-h2:mb-2 prose-headings:font-title prose-headings:text-stone-800">
+          <ReactMarkdown>{beach.content}</ReactMarkdown>
+        </div>
+      )}
     </PlaceLayout>
   )
 }

@@ -55,7 +55,7 @@ export default async function Page({
 
   const places = simplifyResponse(data)
 
-  if (!places) return <h1>Error fetching data</h1> // TODO: Do better error handling
+  if (!places) throw new Error('Error fetching data')
 
   return <SubPage type={type} places={places.filter(nonNullable)} />
 }
