@@ -5,9 +5,7 @@
   },
   "PlaceLayout": {
     "map": "Mapa",
-    "links": "Enllaços"
-  },
-  "PlaceView": {
+    "links": "Enllaços",
     "data": "Dades"
   },
   "LandmarkView": {

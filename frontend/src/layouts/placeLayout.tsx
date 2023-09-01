@@ -53,10 +53,7 @@ export default function PlaceLayout({
       <h2 className="font-bold text-2xl mt-8 mb-2 leading-none text-center font-title text-stone-800">
         {t('map')}
       </h2>
-      <div
-        className="border border-stone-300 bg-stone-100 rounded-xl"
-        style={{ overflow: 'hidden' }}
-      >
+      <div className="border border-stone-300 bg-stone-100 rounded-xl overflow-hidden">
         <Map
           location={{
             latitude: place.latitude,
@@ -74,23 +71,33 @@ export default function PlaceLayout({
         />
       </div>
 
-      {place.googleMapsPlaceId && (
-        <div className="mt-4 text-center">
-          <h2 className="font-bold text-2xl mt-8 mb-2 leading-none text-center font-title text-stone-800">
-            {t('links')}
-          </h2>
-          <ViewInGoogleMaps googleMapsPlaceId={place.googleMapsPlaceId} />
-        </div>
-      )}
+      <div className="grid mt-8 grid-cols-[repeat(auto-fit,minmax(theme(spacing.64),1fr))] gap-6 items-stretch">
+        {customData && (
+          <div>
+            <h3 className="text-center text-2xl font-bold mb-2 leading-none font-title text-stone-800">
+              {t('data')}
+            </h3>
+            <PlaceCustomData data={customData} />
+          </div>
+        )}
 
-      <div className="text-left mt-8">
-        {customData && <PlaceCustomData data={customData} />}
-        {place.content && (
-          <div className="prose mt-8 prose-h2:mt-4 prose-h2:mb-2 prose-headings:font-title prose-headings:text-stone-800">
-            <ReactMarkdown>{place.content}</ReactMarkdown>
+        {place.googleMapsPlaceId && (
+          <div className="flex flex-col">
+            <h2 className="font-bold text-2xl mb-2 leading-none text-center font-title text-stone-800">
+              {t('links')}
+            </h2>
+            <div className="grow flex flex-col justify-center items-center">
+              <ViewInGoogleMaps googleMapsPlaceId={place.googleMapsPlaceId} />
+            </div>
           </div>
         )}
       </div>
+
+      {place.content && (
+        <div className="prose mt-8 prose-h2:mt-4 prose-h2:mb-2 prose-headings:font-title prose-headings:text-stone-800">
+          <ReactMarkdown>{place.content}</ReactMarkdown>
+        </div>
+      )}
     </main>
   )
 }
