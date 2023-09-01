@@ -1,4 +1,5 @@
 import PlaceIcon from '@/components/PlaceIcon'
+import StrapiImage from '@/components/StrapiImage'
 import {
   Place,
   PlaceType,
@@ -21,6 +22,17 @@ const getAllPlacesOfTypeQuery = graphql(`
         attributes {
           name
           slug
+          description
+          cover {
+            data {
+              attributes {
+                url
+                height
+                width
+                alternativeText
+              }
+            }
+          }
         }
       }
     }
@@ -53,20 +65,29 @@ function SubPage({
   places,
 }: {
   type: PlaceType
-  places: DeepPick<SimpleType<Place>, 'name' | 'slug'>[]
+  places: DeepPick<
+    SimpleType<Place>,
+    | 'name'
+    | 'slug'
+    | 'description'
+    | 'cover.url'
+    | 'cover.height'
+    | 'cover.width'
+    | 'cover.alternativeText'
+  >[]
 }) {
   const t = useTranslations('Enums.placeType')
 
   return (
-    <main className="text-center mx-auto max-w-2xl p-4">
+    <main className="mx-auto max-w-6xl p-4">
       <PlaceIcon
         type={type}
         className="mx-auto text-brand-600 mb-4 mt-8 h-12 w-12 stroke-1"
       />
-      <h2 className="font-bold text-4xl font-title text-stone-800">
+      <h2 className="font-bold text-4xl font-title text-stone-800 text-center">
         {t(type, { count: 2 })}
       </h2>
-      <ul className="mt-6">
+      <ul className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(theme(spacing.64),1fr))] gap-6">
         {places.map(
           (place) =>
             place && (
@@ -76,10 +97,18 @@ function SubPage({
                     pathname: `/${type}/[placeSlug]`,
                     params: { placeSlug: place.slug ?? 'null' },
                   }}
-                  className="underline text-xl py-2 px-4 inline-block"
+                  className="block overflow-hidden border border-stone-200 bg-white rounded-2xl group outline-2 hover:outline outline-brand-100"
                 >
-                  {' '}
-                  {place.name}
+                  {place.cover && (
+                    <StrapiImage
+                      image={place.cover}
+                      className="aspect-[4/3] object-cover"
+                    />
+                  )}
+                  <h2 className="mx-4 mt-3 text-xl font-title font-bold text-stone-800">
+                    {place.name}
+                  </h2>
+                  <p className="mx-4 mt-1 mb-4">{place.description}</p>
                 </MyLink>
               </li>
             )

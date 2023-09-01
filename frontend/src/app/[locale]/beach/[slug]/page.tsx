@@ -1,12 +1,12 @@
 import PlaceLayout from '@/layouts/placeLayout'
 import {
-GetBeachQuery,
-NonNullableItem,
-SimpleResponse,
-gqlClient,
-graphql,
-simplifyResponse,
-typeDynamicZone,
+  GetBeachQuery,
+  NonNullableItem,
+  SimpleResponse,
+  gqlClient,
+  graphql,
+  simplifyResponse,
+  typeDynamicZone,
 } from '@/lib/gql'
 import { IconCompass, IconGrain } from '@tabler/icons-react'
 import { useLocale, useTranslations } from 'next-intl'

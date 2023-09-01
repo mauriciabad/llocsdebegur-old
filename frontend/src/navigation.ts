@@ -2,7 +2,7 @@ import {
   createLocalizedPathnamesNavigation,
   Pathnames,
 } from 'next-intl/navigation'
-import {  plural } from './lib/gql'
+import { plural } from './lib/gql'
 
 export const locales = ['en', 'ca'] as const
 export type Locale = (typeof locales)[number]
