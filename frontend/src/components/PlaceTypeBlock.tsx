@@ -24,7 +24,7 @@ export default function PlaceTypeBlock({
       href={`/${type}`}
       className={classNames([
         className,
-        'border border-stone-200 bg-white rounded-2xl p-4 group outline-2 hover:outline outline-brand-100',
+        'border border-stone-200 shadow-md bg-white rounded-2xl p-4 group outline-2 hover:outline outline-brand-100',
       ])}
     >
       <PlaceIcon

@@ -11,7 +11,7 @@ import Header from '@/components/Header'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '500', '700'],
   variable: '--font-poppins',
 })
 

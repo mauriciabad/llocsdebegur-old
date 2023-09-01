@@ -100,7 +100,7 @@ function SubPage({
                     pathname: `/${type}/[placeSlug]`,
                     params: { placeSlug: place.slug ?? 'null' },
                   }}
-                  className="block overflow-hidden border border-stone-200 bg-white rounded-2xl group outline-2 hover:outline outline-brand-100"
+                  className="block overflow-hidden shadow-md border border-stone-200 bg-white rounded-2xl group outline-2 hover:outline outline-brand-100"
                 >
                   {place.cover && (
                     <StrapiImage

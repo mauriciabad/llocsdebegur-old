@@ -52,7 +52,7 @@ function Page({
         <p className="text-xl mt-4">{landingInfo.heroDescription}</p>
       </header>
 
-      <main className="text-center mx-auto max-w-2xl px-4 bg-white">
+      <main className="text-center mx-auto max-w-2xl px-4 ">
         <h2 className="text-4xl font-bold text-center mt-8 mb-4 font-title text-stone-800">
           {t('places')}
         </h2>

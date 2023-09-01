@@ -26,6 +26,7 @@ const getLandmarkQuery = graphql(`
           type
           latitude
           longitude
+          googleMapsPlaceId
           cover {
             data {
               attributes {

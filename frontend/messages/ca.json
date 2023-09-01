@@ -4,7 +4,8 @@
     "view-all": "Veure {gender, select, female {totes} male {tots} other {tots}}"
   },
   "PlaceLayout": {
-    "map": "Mapa"
+    "map": "Mapa",
+    "links": "Enllaços"
   },
   "PlaceView": {
     "data": "Dades"
@@ -25,6 +26,9 @@
   },
   "Spinner": {
     "loading": "Carregant..."
+  },
+  "Links": {
+    "view-in": "Veure a"
   },
   "Enums": {
     "sandType": {

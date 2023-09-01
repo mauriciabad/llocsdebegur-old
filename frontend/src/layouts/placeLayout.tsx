@@ -8,6 +8,7 @@ import PlaceCustomData, {
   PlaceCustomDataArray,
 } from '@/components/PlaceCustomData'
 import ReactMarkdown from 'react-markdown'
+import ViewInGoogleMaps from '@/components/ViewInGoogleMaps'
 
 export default function PlaceLayout({
   place,
@@ -21,6 +22,7 @@ export default function PlaceLayout({
     | 'description'
     | 'latitude'
     | 'longitude'
+    | 'googleMapsPlaceId'
     | 'cover.url'
     | 'cover.height'
     | 'cover.width'
@@ -42,14 +44,12 @@ export default function PlaceLayout({
       <p className="max-w-[80ch] mx-auto text-left mt-4 mb-4">
         {place.description}
       </p>
-
       {place.cover && (
         <StrapiImage
           image={place.cover}
           className="rounded-xl shadow-2xl aspect-[4/3] object-cover"
         />
       )}
-
       <h2 className="font-bold text-2xl mt-8 mb-2 leading-none text-center font-title text-stone-800">
         {t('map')}
       </h2>
@@ -73,6 +73,15 @@ export default function PlaceLayout({
           ]}
         />
       </div>
+
+      {place.googleMapsPlaceId && (
+        <div className="mt-4 text-center">
+          <h2 className="font-bold text-2xl mt-8 mb-2 leading-none text-center font-title text-stone-800">
+            {t('links')}
+          </h2>
+          <ViewInGoogleMaps googleMapsPlaceId={place.googleMapsPlaceId} />
+        </div>
+      )}
 
       <div className="text-left mt-8">
         {customData && <PlaceCustomData data={customData} />}

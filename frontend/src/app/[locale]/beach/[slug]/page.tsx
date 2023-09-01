@@ -26,6 +26,7 @@ const getBeachQuery = graphql(`
           type
           latitude
           longitude
+          googleMapsPlaceId
           cover {
             data {
               attributes {
