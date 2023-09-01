@@ -29,9 +29,11 @@ export default function PlaceLayout({
     <main className="mx-auto max-w-2xl p-4">
       <PlaceIcon
         type={place.type}
-        className="mx-auto text-sky-950 mb-4 mt-8 h-12 w-12 stroke-1"
+        className="mx-auto text-brand-600 mb-4 mt-8 h-12 w-12 stroke-1"
       />
-      <h1 className="font-bold text-4xl text-center">{place.name}</h1>
+      <h1 className="font-bold text-4xl text-center font-title text-stone-800">
+        {place.name}
+      </h1>
       <p className="max-w-[80ch] mx-auto text-left mt-4 mb-4">
         {place.description}
       </p>
@@ -43,11 +45,11 @@ export default function PlaceLayout({
         />
       )}
 
-      <h2 className="font-bold text-2xl mt-8 mb-2 leading-none text-center">
+      <h2 className="font-bold text-2xl mt-8 mb-2 leading-none text-center font-title text-stone-800">
         {t('map')}
       </h2>
       <div
-        className="border border-gray-300 bg-gray-100 rounded-xl"
+        className="border border-stone-300 bg-stone-100 rounded-xl"
         style={{ overflow: 'hidden' }}
       >
         <Map

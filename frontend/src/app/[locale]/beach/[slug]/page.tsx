@@ -1,17 +1,17 @@
-import { IconGrain, IconCompass } from '@tabler/icons-react'
-import { useLocale, useTranslations } from 'next-intl'
-import { notFound } from 'next/navigation'
+import PlaceLayout from '@/layouts/placeLayout'
 import {
   GetBeachQuery,
-  graphql,
-  gqlClient,
-  simplifyResponse,
-  SimpleResponse,
   NonNullableItem,
+  SimpleResponse,
+  gqlClient,
+  graphql,
+  simplifyResponse,
   typeDynamicZone,
 } from '@/lib/gql'
+import { IconCompass, IconGrain } from '@tabler/icons-react'
+import { useLocale, useTranslations } from 'next-intl'
+import { notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
-import PlaceLayout from '@/layouts/placeLayout'
 
 const getBeachQuery = graphql(`
   query getBeach($locale: I18NLocaleCode!, $slug: String!) {
@@ -82,10 +82,10 @@ function Page({
 
   return (
     <PlaceLayout place={beach}>
-      <h3 className="text-center text-2xl font-bold mb-2 leading-none">
+      <h3 className="text-center text-2xl font-bold mb-2 leading-none font-title text-stone-800">
         {t('data')}
       </h3>
-      <div className="border border-gray-300 bg-gray-100 rounded-xl p-4">
+      <div className="border border-stone-300 bg-stone-100 rounded-xl p-4">
         <div className="space-y-2">
           <div className="flex items-center">
             <IconGrain className="inline-block mr-1 shrink-0" />
@@ -98,7 +98,7 @@ function Page({
         </div>
       </div>
 
-      <div className="prose mt-8 prose-h2:mt-4 prose-h2:mb-2">
+      <div className="prose mt-8 prose-h2:mt-4 prose-h2:mb-2 prose-headings:font-title prose-headings:text-stone-800">
         {beach.content && <ReactMarkdown>{beach.content}</ReactMarkdown>}
       </div>
     </PlaceLayout>

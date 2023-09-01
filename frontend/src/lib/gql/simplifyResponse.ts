@@ -115,3 +115,7 @@ export type SimpleResponse<T extends ObjectType> = SimpleType<
 export type NonNullableItem<T extends any[] | null | undefined> = NonNullable<
   NonNullable<T>[number]
 >
+
+export function nonNullable<T>(x: T | null | undefined): x is T {
+  return x !== null && x !== undefined
+}
