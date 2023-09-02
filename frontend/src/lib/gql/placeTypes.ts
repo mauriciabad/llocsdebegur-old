@@ -36,7 +36,7 @@ export type PlaceTypePlural<T extends PlaceType = PlaceType> =
 const placeTypeTranslations = {
   beach: {
     en: { singular: 'beach', plural: 'beaches', gender: null },
-    ca: { singular: 'platja', plural: 'platjes', gender: 'male' },
+    ca: { singular: 'platja', plural: 'platges', gender: 'male' },
   },
   landmark: {
     en: { singular: 'landmark', plural: 'landmarks', gender: null },
