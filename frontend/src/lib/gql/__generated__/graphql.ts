@@ -863,6 +863,7 @@ export type StringFilterInput = {
 export type UploadFile = {
   __typename?: 'UploadFile';
   alternativeText?: Maybe<Scalars['String']['output']>;
+  blurhash?: Maybe<Scalars['String']['output']>;
   caption?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   ext?: Maybe<Scalars['String']['output']>;
@@ -901,6 +902,7 @@ export type UploadFileEntityResponseCollection = {
 export type UploadFileFiltersInput = {
   alternativeText?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<UploadFileFiltersInput>>>;
+  blurhash?: InputMaybe<StringFilterInput>;
   caption?: InputMaybe<StringFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   ext?: InputMaybe<StringFilterInput>;
@@ -925,6 +927,7 @@ export type UploadFileFiltersInput = {
 
 export type UploadFileInput = {
   alternativeText?: InputMaybe<Scalars['String']['input']>;
+  blurhash?: InputMaybe<Scalars['String']['input']>;
   caption?: InputMaybe<Scalars['String']['input']>;
   ext?: InputMaybe<Scalars['String']['input']>;
   folder?: InputMaybe<Scalars['ID']['input']>;

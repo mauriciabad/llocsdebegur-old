@@ -7,4 +7,10 @@ export default ({ env }) => ({
   "apollo-sandbox": {
     enabled: process.env.NODE_ENV === "production" ? false : true,
   },
+  "strapi-blurhash": {
+    enabled: true,
+    config: {
+      regenerateOnUpdate: true,
+    },
+  },
 });

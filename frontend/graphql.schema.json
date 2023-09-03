@@ -6965,6 +6965,18 @@
             "deprecationReason": null
           },
           {
+            "name": "blurhash",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "caption",
             "description": null,
             "args": [],
@@ -7334,6 +7346,18 @@
             "deprecationReason": null
           },
           {
+            "name": "blurhash",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringFilterInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "caption",
             "description": null,
             "type": {
@@ -7590,6 +7614,18 @@
         "inputFields": [
           {
             "name": "alternativeText",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "blurhash",
             "description": null,
             "type": {
               "kind": "SCALAR",
