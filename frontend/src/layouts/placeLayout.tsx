@@ -27,6 +27,7 @@ export default function PlaceLayout({
     | 'cover.height'
     | 'cover.width'
     | 'cover.alternativeText'
+    | 'cover.placeholder'
   >
   customData: PlaceCustomDataArray
 }) {

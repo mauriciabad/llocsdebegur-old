@@ -34,6 +34,7 @@ const getAllPlacesOfTypeQuery = graphql(`
                 height
                 width
                 alternativeText
+                placeholder
               }
             }
           }
@@ -81,6 +82,7 @@ function SubPage({
     | 'cover.height'
     | 'cover.width'
     | 'cover.alternativeText'
+    | 'cover.placeholder'
   >[]
 }) {
   const t = useTranslations('Enums.placeType')

@@ -34,6 +34,7 @@ const getBeachQuery = graphql(`
                 height
                 width
                 alternativeText
+                placeholder
               }
             }
           }

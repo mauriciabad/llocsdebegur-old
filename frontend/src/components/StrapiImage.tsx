@@ -10,6 +10,7 @@ export default function StrapiImage({
     width?: number | null
     height?: number | null
     alternativeText?: string | null
+    placeholder?: string | null
   }
   className?: string
 }) {
@@ -21,6 +22,8 @@ export default function StrapiImage({
       height={image.height ?? undefined}
       width={image.width ?? undefined}
       unoptimized
+      placeholder="blur"
+      blurDataURL={image.placeholder ?? undefined}
     />
   )
 }
