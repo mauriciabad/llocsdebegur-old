@@ -61,6 +61,85 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::place-type.place-type",
+      "properties": {
+        "fields": [
+          "name",
+          "content",
+          "namePlural",
+          "nameGender",
+          "places",
+          "slug"
+        ],
+        "locales": [
+          "en",
+          "ca"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::place-type.place-type",
+      "properties": {
+        "locales": [
+          "en",
+          "ca"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::place-type.place-type",
+      "properties": {
+        "locales": [
+          "en",
+          "ca"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::place-type.place-type",
+      "properties": {
+        "fields": [
+          "name",
+          "content",
+          "namePlural",
+          "nameGender",
+          "places",
+          "slug"
+        ],
+        "locales": [
+          "en",
+          "ca"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::place-type.place-type",
+      "properties": {
+        "fields": [
+          "name",
+          "content",
+          "namePlural",
+          "nameGender",
+          "places",
+          "slug"
+        ],
+        "locales": [
+          "en",
+          "ca"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::place.place",
       "properties": {
         "fields": [
@@ -81,10 +160,10 @@
           "parkingNotes",
           "alternativeNames",
           "shortName",
-          "type",
           "detailsGlobal",
           "detailsLocal",
-          "googleMapsPlaceId"
+          "googleMapsPlaceId",
+          "type"
         ],
         "locales": [
           "en",
@@ -137,10 +216,10 @@
           "parkingNotes",
           "alternativeNames",
           "shortName",
-          "type",
           "detailsGlobal",
           "detailsLocal",
-          "googleMapsPlaceId"
+          "googleMapsPlaceId",
+          "type"
         ],
         "locales": [
           "en",
@@ -171,10 +250,10 @@
           "parkingNotes",
           "alternativeNames",
           "shortName",
-          "type",
           "detailsGlobal",
           "detailsLocal",
-          "googleMapsPlaceId"
+          "googleMapsPlaceId",
+          "type"
         ],
         "locales": [
           "en",

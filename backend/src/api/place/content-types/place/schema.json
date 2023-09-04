@@ -171,22 +171,6 @@
         }
       }
     },
-    "type": {
-      "pluginOptions": {
-        "versions": {
-          "versioned": true
-        },
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "beach",
-        "landmark"
-      ],
-      "required": true
-    },
     "detailsGlobal": {
       "pluginOptions": {
         "i18n": {
@@ -226,6 +210,12 @@
       "type": "string",
       "unique": false,
       "regex": "[\\w\\d_-]+"
+    },
+    "type": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::place-type.place-type",
+      "inversedBy": "places"
     }
   }
 }

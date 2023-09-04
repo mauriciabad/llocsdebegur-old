@@ -47,9 +47,7 @@
       "west": "West"
     },
     "placeType": {
-      "showing-n-places": "Showing {count, plural, =1 {# place} other {# places}}",
-      "beach": "{count, plural, =1 {Beach} other {Beaches}}",
-      "landmark": "{count, plural, =1 {Landmark} other {Landmarks}}"
+      "showing-n-places": "Showing {count, plural, =1 {# place} other {# places}}"
     }
   },
   "NotFoundPage": {

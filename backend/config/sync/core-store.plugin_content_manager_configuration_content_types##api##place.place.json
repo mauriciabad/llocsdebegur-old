@@ -258,20 +258,6 @@
           "sortable": true
         }
       },
-      "type": {
-        "edit": {
-          "label": "type",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "type",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "detailsGlobal": {
         "edit": {
           "label": "detailsGlobal",
@@ -310,6 +296,21 @@
         },
         "list": {
           "label": "googleMapsPlaceId",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "type": {
+        "edit": {
+          "label": "type",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "type",
           "searchable": true,
           "sortable": true
         }
@@ -457,10 +458,9 @@
         ]
       ],
       "list": [
-        "id",
         "cover",
-        "type",
-        "name"
+        "name",
+        "type"
       ]
     }
   },

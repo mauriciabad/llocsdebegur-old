@@ -5,8 +5,24 @@ import {
   gqlClient,
   simplifyResponse,
   SimpleResponse,
+  GetAllPlaceTypesQuery,
 } from '@/lib/gql'
 import PlaceTypeBlock from '@/components/PlaceTypeBlock'
+
+const getAllPlaceTypesQuery = graphql(`
+  query getAllPlaceTypes($locale: I18NLocaleCode!) {
+    placeTypes(locale: $locale) {
+      data {
+        attributes {
+          name
+          namePlural
+          nameGender
+          slug
+        }
+      }
+    }
+  }
+`)
 
 const getLandingQuery = graphql(`
   query getLanding($locale: I18NLocaleCode!) {
@@ -24,22 +40,35 @@ const getLandingQuery = graphql(`
 export default async function PageWrapper() {
   const locale = useLocale()
 
-  const { data } = await gqlClient().query({
+  const { data: rawLandingInfo } = await gqlClient().query({
     query: getLandingQuery,
     variables: { locale },
   })
 
-  const landingInfo = simplifyResponse(data)
+  const landingInfo = simplifyResponse(rawLandingInfo)
 
   if (!landingInfo) throw new Error(`Error fetching data of landing page`)
 
-  return <Page landingInfo={landingInfo} />
+  const { data: rawPlaceTypes } = await gqlClient().query({
+    query: getAllPlaceTypesQuery,
+    variables: { locale },
+  })
+
+  const placeTypes = simplifyResponse(rawPlaceTypes)
+
+  if (!placeTypes) throw new Error(`Error fetching data of landing page`)
+
+  getAllPlaceTypesQuery
+
+  return <Page landingInfo={landingInfo} placeTypes={placeTypes} />
 }
 
 function Page({
   landingInfo,
+  placeTypes,
 }: {
   landingInfo: NonNullable<SimpleResponse<GetLandingQuery>>
+  placeTypes: NonNullable<SimpleResponse<GetAllPlaceTypesQuery>>
 }) {
   const t = useTranslations('Landing')
 
@@ -57,8 +86,12 @@ function Page({
           {t('places')}
         </h2>
         <div className="flex flex-wrap justify-center gap-8">
-          <PlaceTypeBlock type="beach" />
-          <PlaceTypeBlock type="landmark" />
+          {placeTypes.map(
+            (placeType) =>
+              placeType && (
+                <PlaceTypeBlock key={placeType.slug} placeType={placeType} />
+              )
+          )}
         </div>
       </main>
     </>
