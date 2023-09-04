@@ -7073,6 +7073,18 @@
             "deprecationReason": null
           },
           {
+            "name": "placeholder",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "previewUrl",
             "description": null,
             "args": [],
@@ -7494,6 +7506,18 @@
             "deprecationReason": null
           },
           {
+            "name": "placeholder",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringFilterInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "previewUrl",
             "description": null,
             "type": {
@@ -7698,6 +7722,18 @@
           },
           {
             "name": "name",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "placeholder",
             "description": null,
             "type": {
               "kind": "SCALAR",

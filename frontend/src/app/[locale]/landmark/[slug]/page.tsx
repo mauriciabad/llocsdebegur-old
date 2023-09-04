@@ -34,6 +34,7 @@ const getLandmarkQuery = graphql(`
                 height
                 width
                 alternativeText
+                placeholder
               }
             }
           }
