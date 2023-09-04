@@ -24,13 +24,13 @@ export default function PlaceCustomData({
   data: PlaceCustomDataArray
 }) {
   return (
-    <div className="border border-stone-300 bg-stone-100 rounded-xl p-4">
+    <div className="rounded-xl border border-stone-300 bg-stone-100 p-4">
       <div className="space-y-2">
         {data.map((d) => {
           const Icon = icons[d.icon]
           return (
             <div key={d.text} className="flex items-center">
-              <Icon className="inline-block mr-1 shrink-0" />
+              <Icon className="mr-1 inline-block shrink-0" />
               <div>{d.text}</div>
             </div>
           )

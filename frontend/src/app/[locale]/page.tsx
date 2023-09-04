@@ -45,15 +45,15 @@ function Page({
 
   return (
     <>
-      <header className="bg-stone-100 text-stone-800 min-h-[50vh] flex items-center justify-center flex-col p-4 text-center">
-        <h1 className="font-bold text-6xl font-title text-stone-800">
+      <header className="flex min-h-[50vh] flex-col items-center justify-center bg-stone-100 p-4 text-center text-stone-800">
+        <h1 className="font-title text-6xl font-bold text-stone-800">
           {landingInfo.heroTitle}
         </h1>
-        <p className="text-xl mt-4">{landingInfo.heroDescription}</p>
+        <p className="mt-4 text-xl">{landingInfo.heroDescription}</p>
       </header>
 
-      <main className="text-center mx-auto max-w-2xl px-4 ">
-        <h2 className="text-4xl font-bold text-center mt-8 mb-4 font-title text-stone-800">
+      <main className="mx-auto max-w-2xl px-4 text-center ">
+        <h2 className="mb-4 mt-8 text-center font-title text-4xl font-bold text-stone-800">
           {t('places')}
         </h2>
         <div className="flex flex-wrap justify-center gap-8">

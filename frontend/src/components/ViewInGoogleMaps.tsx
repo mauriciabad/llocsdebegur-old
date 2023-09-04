@@ -16,11 +16,11 @@ export default function ViewInGoogleMaps({
     <a
       href={`https://goo.gl/maps/${googleMapsPlaceId}`}
       className={classNames(
-        'max-w-[theme(spacing.48)] shadow-md bg-white outline-2 hover:outline outline-brand-100 inline-block border border-stone-200 rounded-xl mx-auto p-2 text-center',
+        'mx-auto inline-block max-w-[theme(spacing.48)] rounded-xl border border-stone-200 bg-white p-2 text-center shadow-md outline-2 outline-brand-100 hover:outline',
         className
       )}
     >
-      <span className="block font-title font-medium text-sm text-stone-400 tracking-wide leading-none">
+      <span className="block font-title text-sm font-medium leading-none tracking-wide text-stone-400">
         {t('view-in')}
       </span>
       <Image src={GoogleMapsLogo} alt="Google Maps" className=" block" />

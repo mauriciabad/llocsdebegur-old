@@ -34,72 +34,74 @@ export default function PlaceLayout({
   const t = useTranslations('PlaceLayout')
 
   return (
-    <main className="mx-auto max-w-2xl p-4">
-      <PlaceIcon
-        type={place.type}
-        className="mx-auto text-brand-600 mb-4 mt-8 h-12 w-12 stroke-1"
-      />
-      <h1 className="font-bold text-4xl text-center font-title text-stone-800">
-        {place.name}
-      </h1>
-      <p className="max-w-[80ch] mx-auto text-left mt-4 mb-4">
-        {place.description}
-      </p>
+    <main>
       {place.cover && (
         <StrapiImage
           image={place.cover}
-          className="rounded-xl shadow-2xl aspect-[4/3] object-cover w-full"
-          width="full"
+          className="mx-auto aspect-[4/3] w-full md:mt-4 md:max-w-2xl md:rounded-lg md:shadow-2xl"
+          width={640 * 2}
         />
       )}
-      <h2 className="font-bold text-2xl mt-8 mb-2 leading-none text-center font-title text-stone-800">
-        {t('map')}
-      </h2>
-      <div className="border border-stone-300 bg-stone-100 rounded-xl overflow-hidden">
-        <Map
-          location={{
-            latitude: place.latitude,
-            longitude: place.longitude,
-          }}
-          markers={[
-            {
-              text: place.name,
-              location: {
-                latitude: place.latitude,
-                longitude: place.longitude,
+      <div className="mx-auto max-w-2xl px-4">
+        <PlaceIcon
+          type={place.type}
+          className="mx-auto mb-4 mt-8 h-12 w-12 stroke-1 text-brand-600"
+        />
+        <h1 className="text-center font-title text-4xl font-bold text-stone-800">
+          {place.name}
+        </h1>
+        <p className="mx-auto mb-4 mt-4 max-w-[80ch] text-left">
+          {place.description}
+        </p>
+        <h2 className="mb-2 mt-8 text-center font-title text-2xl font-bold leading-none text-stone-800">
+          {t('map')}
+        </h2>
+        <div className="overflow-hidden rounded-xl border border-stone-300 bg-stone-100">
+          <Map
+            location={{
+              latitude: place.latitude,
+              longitude: place.longitude,
+            }}
+            markers={[
+              {
+                text: place.name,
+                location: {
+                  latitude: place.latitude,
+                  longitude: place.longitude,
+                },
               },
-            },
-          ]}
-        />
-      </div>
-
-      <div className="grid mt-8 grid-cols-[repeat(auto-fit,minmax(theme(spacing.64),1fr))] gap-6 items-stretch">
-        {customData && (
-          <div>
-            <h3 className="text-center text-2xl font-bold mb-2 leading-none font-title text-stone-800">
-              {t('data')}
-            </h3>
-            <PlaceCustomData data={customData} />
-          </div>
-        )}
-
-        {place.googleMapsPlaceId && (
-          <div className="flex flex-col">
-            <h2 className="font-bold text-2xl mb-2 leading-none text-center font-title text-stone-800">
-              {t('links')}
-            </h2>
-            <div className="grow flex flex-col justify-center items-center">
-              <ViewInGoogleMaps googleMapsPlaceId={place.googleMapsPlaceId} />
-            </div>
-          </div>
-        )}
-      </div>
-
-      {place.content && (
-        <div className="prose mt-8 prose-h2:mt-4 prose-h2:mb-2 prose-headings:font-title prose-headings:text-stone-800">
-          <ReactMarkdown>{place.content}</ReactMarkdown>
+            ]}
+          />
         </div>
-      )}
+
+        <div className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(theme(spacing.64),1fr))] items-stretch gap-6">
+          {customData && (
+            <div>
+              <h3 className="mb-2 text-center font-title text-2xl font-bold leading-none text-stone-800">
+                {t('data')}
+              </h3>
+              <PlaceCustomData data={customData} />
+            </div>
+          )}
+
+          {place.googleMapsPlaceId && (
+            <div className="flex flex-col">
+              <h2 className="mb-2 text-center font-title text-2xl font-bold leading-none text-stone-800">
+                {t('links')}
+              </h2>
+              <div className="flex grow flex-col items-center justify-center">
+                <ViewInGoogleMaps googleMapsPlaceId={place.googleMapsPlaceId} />
+              </div>
+            </div>
+          )}
+        </div>
+
+        {place.content && (
+          <div className="prose mt-8 prose-headings:font-title prose-headings:text-stone-800 prose-h2:mb-2 prose-h2:mt-4">
+            <ReactMarkdown>{place.content}</ReactMarkdown>
+          </div>
+        )}
+      </div>
     </main>
   )
 }

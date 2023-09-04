@@ -24,17 +24,17 @@ export default function PlaceTypeBlock({
       href={`/${type}`}
       className={classNames([
         className,
-        'border border-stone-200 shadow-md bg-white rounded-2xl p-4 group outline-2 hover:outline outline-brand-100',
+        'group rounded-2xl border border-stone-200 bg-white p-4 shadow-md outline-2 outline-brand-100 hover:outline',
       ])}
     >
       <PlaceIcon
         type={type}
-        className="mx-auto text-brand-600 mb-4 mt-6 h-12 w-12 stroke-1"
+        className="mx-auto mb-4 mt-6 h-12 w-12 stroke-1 text-brand-600"
       />
-      <h2 className="font-bold text-3xl font-title text-stone-800">
+      <h2 className="font-title text-3xl font-bold text-stone-800">
         {t2(type, { count: 2 })}
       </h2>
-      <span className="px-8 py-3 leading-none bg-brand-600 text-white uppercase rounded-full inline-block mt-6 outline-none group-hover:bg-brand-800 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-stone-700">
+      <span className="mt-6 inline-block rounded-full bg-brand-600 px-8 py-3 uppercase leading-none text-white outline-none focus-visible:ring-2 focus-visible:ring-stone-700 focus-visible:ring-offset-1 group-hover:bg-brand-800">
         {t('view-all', { gender: typeGender })}
       </span>
     </MyLink>
