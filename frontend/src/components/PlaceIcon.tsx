@@ -4,11 +4,13 @@ import {
   IconBuildingCastle,
   Icon,
   IconCircle,
+  IconFlag,
 } from '@tabler/icons-react'
 
 const iconsByPlaceType = {
   beach: IconBeach,
   monument: IconBuildingCastle,
+  viewpoint: IconFlag,
 } as const satisfies Record<PlaceTypeSlug, Icon>
 
 export default function PlaceIcon({

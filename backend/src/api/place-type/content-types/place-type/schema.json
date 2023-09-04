@@ -70,7 +70,8 @@
       "type": "enumeration",
       "enum": [
         "beach",
-        "monument"
+        "monument",
+        "viewpoint"
       ],
       "required": true
     }

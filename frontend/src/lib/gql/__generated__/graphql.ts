@@ -177,7 +177,8 @@ export enum Enum_Placetype_Namegender {
 
 export enum Enum_Placetype_Slug {
   Beach = 'beach',
-  Monument = 'monument'
+  Monument = 'monument',
+  Viewpoint = 'viewpoint'
 }
 
 export enum Enum_Place_Amountofpeople {
