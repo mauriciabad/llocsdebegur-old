@@ -114,7 +114,8 @@ function SubPage({
                   {place.cover && (
                     <StrapiImage
                       image={place.cover}
-                      className="aspect-[4/3] object-cover"
+                      className="aspect-[4/3] w-full"
+                      width={256 * 2}
                     />
                   )}
                   <h2 className="mx-4 mt-3 text-xl font-title font-bold text-stone-800">
