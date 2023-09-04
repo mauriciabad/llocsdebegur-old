@@ -16,22 +16,20 @@ export default function StrapiImage({
     placeholder?: string | null
   }
   height?: number
-  width?: number | 'full'
+  width?: number
   className?: string
 }) {
-  const widthFull = width === 'full' ? window.screen.width : width
-
   const imgHeight = (() => {
     if (height) return height
-    if (widthFull) {
+    if (width) {
       if (!image.height || !image.width) return undefined
-      return (image.height / image.width) * widthFull
+      return (image.height / image.width) * width
     }
     return image.height ?? undefined
   })()
 
   const imgWidth = (() => {
-    if (widthFull) return widthFull
+    if (width) return width
     if (height) {
       if (!image.width || !image.height) return undefined
       return (image.width / image.height) * height

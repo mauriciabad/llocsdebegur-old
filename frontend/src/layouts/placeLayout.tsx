@@ -49,7 +49,7 @@ export default function PlaceLayout({
         <StrapiImage
           image={place.cover}
           className="rounded-xl shadow-2xl aspect-[4/3] object-cover w-full"
-          width="full"
+          width={640 * 2}
         />
       )}
       <h2 className="font-bold text-2xl mt-8 mb-2 leading-none text-center font-title text-stone-800">
