@@ -13,6 +13,7 @@ import { DeepPick } from '@/lib/types'
 import { useLocale, useTranslations } from 'next-intl'
 import { notFound } from 'next/navigation'
 import Link from 'next-intl/link'
+import ReactMarkdown from 'react-markdown'
 
 const getPlaceTypeQuery = graphql(`
   query getPlaceType($locale: I18NLocaleCode!, $slug: String!) {
@@ -23,6 +24,7 @@ const getPlaceTypeQuery = graphql(`
           namePlural
           nameGender
           slug
+          content
         }
       }
     }
@@ -90,7 +92,7 @@ function SubPage({
 }: {
   placeType: DeepPick<
     SimpleType<PlaceType>,
-    'name' | 'namePlural' | 'nameGender' | 'slug'
+    'name' | 'namePlural' | 'nameGender' | 'slug' | 'content'
   >
   places: DeepPick<
     SimpleType<Place>,
@@ -118,6 +120,12 @@ function SubPage({
       <p className="mt-4 text-center font-semibold text-stone-500">
         {t('showing-n-places', { count: places.length })}
       </p>
+
+      {placeType.content && (
+        <div className="prose mx-auto mt-8 max-w-sm text-center prose-headings:font-title prose-headings:text-stone-800 prose-h2:mb-2 prose-h2:mt-4">
+          <ReactMarkdown>{placeType.content}</ReactMarkdown>
+        </div>
+      )}
       <ul className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(theme(spacing.64),1fr))] gap-6">
         {places.map(
           (place) =>
