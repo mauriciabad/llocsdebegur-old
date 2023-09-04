@@ -1,0 +1,79 @@
+{
+  "kind": "collectionType",
+  "collectionName": "place_types",
+  "info": {
+    "singularName": "place-type",
+    "pluralName": "place-types",
+    "displayName": "Place type",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    },
+    "namePlural": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "nameGender": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "male",
+        "female"
+      ],
+      "required": false
+    },
+    "places": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::place.place",
+      "mappedBy": "type"
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "beach",
+        "monument",
+        "viewpoint"
+      ],
+      "required": true
+    }
+  }
+}

@@ -245,6 +245,20 @@
           "sortable": true
         }
       },
+      "placeholder": {
+        "edit": {
+          "label": "placeholder",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "placeholder",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -363,6 +377,12 @@
           },
           {
             "name": "folderPath",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "placeholder",
             "size": 6
           }
         ]

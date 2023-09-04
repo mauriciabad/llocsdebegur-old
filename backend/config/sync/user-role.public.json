@@ -7,6 +7,12 @@
       "action": "api::landing.landing.find"
     },
     {
+      "action": "api::place-type.place-type.find"
+    },
+    {
+      "action": "api::place-type.place-type.findOne"
+    },
+    {
       "action": "api::place.place.find"
     },
     {

@@ -1,6 +1,6 @@
-import { MyLink } from '@/navigation'
 import { IconLanguage } from '@tabler/icons-react'
 import { useTranslations, useLocale } from 'next-intl'
+import Link from 'next-intl/link'
 
 export default function Footer() {
   const currentLocale = useLocale()
@@ -12,15 +12,15 @@ export default function Footer() {
       <div>
         <IconLanguage className="mr-2 inline-block text-stone-700" />
         <span>{t('switch-locale-description')}</span>
-        <MyLink
+        <Link
           key={targetLocale}
-          href={`/`}
+          href="/"
           locale={targetLocale}
           hrefLang={targetLocale}
           className="underline"
         >
           {t('switch-locale-name')}
-        </MyLink>
+        </Link>
       </div>
     </footer>
   )

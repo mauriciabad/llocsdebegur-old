@@ -4,23 +4,39 @@ import {
   Place,
   PlaceType,
   SimpleType,
-  defaultName,
   gqlClient,
   graphql,
   nonNullable,
   simplifyResponse,
 } from '@/lib/gql'
 import { DeepPick } from '@/lib/types'
-import { MyLink } from '@/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { notFound } from 'next/navigation'
+import Link from 'next-intl/link'
+import ReactMarkdown from 'react-markdown'
+
+const getPlaceTypeQuery = graphql(`
+  query getPlaceType($locale: I18NLocaleCode!, $slug: String!) {
+    placeTypes(locale: $locale, filters: { slug: { eq: $slug } }) {
+      data {
+        attributes {
+          name
+          namePlural
+          nameGender
+          slug
+          content
+        }
+      }
+    }
+  }
+`)
 
 const getAllPlacesOfTypeQuery = graphql(`
-  query getAllPlacesOfType($locale: I18NLocaleCode!, $type: String!) {
+  query getAllPlacesOfType($locale: I18NLocaleCode!, $placeTypeSlug: String!) {
     places(
       locale: $locale
-      filters: { type: { eq: $type } }
       pagination: { limit: 1000 }
+      filters: { type: { slug: { eq: $placeTypeSlug } } }
     ) {
       data {
         attributes {
@@ -45,34 +61,39 @@ const getAllPlacesOfTypeQuery = graphql(`
 `)
 
 export default async function Page({
-  params: { placeTypePluralTranslated },
+  params: { placeTypeSlug },
 }: {
-  params: { placeTypePluralTranslated: string }
+  params: { placeTypeSlug: string }
 }) {
-  const type = defaultName(placeTypePluralTranslated)
-  if (!type) notFound()
-
   const locale = useLocale()
-  const { data } = await gqlClient().query({
+  const { data: rawPlaces } = await gqlClient().query({
     query: getAllPlacesOfTypeQuery,
-    variables: { locale, type },
+    variables: {
+      locale,
+      placeTypeSlug,
+    },
   })
+  const places = simplifyResponse(rawPlaces)
+  if (!places) notFound()
 
-  const places = simplifyResponse(data)
+  const { data: rawPlaceType } = await gqlClient().query({
+    query: getPlaceTypeQuery,
+    variables: { locale, slug: placeTypeSlug },
+  })
+  const placeType = simplifyResponse(rawPlaceType)?.[0]
+  if (!placeType) notFound()
 
-  if (!places)
-    throw new Error(
-      `Error fetching data of place type list "${placeTypePluralTranslated}"`
-    )
-
-  return <SubPage type={type} places={places.filter(nonNullable)} />
+  return <SubPage placeType={placeType} places={places.filter(nonNullable)} />
 }
 
 function SubPage({
-  type,
   places,
+  placeType,
 }: {
-  type: PlaceType
+  placeType: DeepPick<
+    SimpleType<PlaceType>,
+    'name' | 'namePlural' | 'nameGender' | 'slug' | 'content'
+  >
   places: DeepPick<
     SimpleType<Place>,
     | 'name'
@@ -90,25 +111,28 @@ function SubPage({
   return (
     <main className="mx-auto max-w-6xl p-4">
       <PlaceIcon
-        type={type}
+        type={placeType.slug}
         className="mx-auto mb-4 mt-8 h-12 w-12 stroke-1 text-brand-600"
       />
-      <h2 className="text-center font-title text-4xl font-bold text-stone-800">
-        {t(type, { count: 2 })}
+      <h2 className="text-center font-title text-4xl font-bold capitalize text-stone-800">
+        {placeType.namePlural}
       </h2>
       <p className="mt-4 text-center font-semibold text-stone-500">
         {t('showing-n-places', { count: places.length })}
       </p>
+
+      {placeType.content && (
+        <div className="prose mx-auto mt-8 max-w-sm text-center prose-headings:font-title prose-headings:text-stone-800 prose-h2:mb-2 prose-h2:mt-4">
+          <ReactMarkdown>{placeType.content}</ReactMarkdown>
+        </div>
+      )}
       <ul className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(theme(spacing.64),1fr))] gap-6">
         {places.map(
           (place) =>
             place && (
               <li key={place.slug} className="h-full">
-                <MyLink
-                  href={{
-                    pathname: `/${type}/[placeSlug]`,
-                    params: { placeSlug: place.slug ?? 'null' },
-                  }}
+                <Link
+                  href={`/${placeType.slug}/${place.slug}`}
                   className="group block h-full overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-md outline-2 outline-brand-100 hover:outline"
                 >
                   {place.cover && (
@@ -124,7 +148,7 @@ function SubPage({
                   <p className="mx-4 mb-4 mt-1 line-clamp-3">
                     {place.description}
                   </p>
-                </MyLink>
+                </Link>
               </li>
             )
         )}

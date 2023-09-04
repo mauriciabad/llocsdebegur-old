@@ -5,8 +5,24 @@ import {
   gqlClient,
   simplifyResponse,
   SimpleResponse,
+  GetAllPlaceTypesQuery,
 } from '@/lib/gql'
 import PlaceTypeBlock from '@/components/PlaceTypeBlock'
+
+const getAllPlaceTypesQuery = graphql(`
+  query getAllPlaceTypes($locale: I18NLocaleCode!) {
+    placeTypes(locale: $locale) {
+      data {
+        attributes {
+          name
+          namePlural
+          nameGender
+          slug
+        }
+      }
+    }
+  }
+`)
 
 const getLandingQuery = graphql(`
   query getLanding($locale: I18NLocaleCode!) {
@@ -24,22 +40,35 @@ const getLandingQuery = graphql(`
 export default async function PageWrapper() {
   const locale = useLocale()
 
-  const { data } = await gqlClient().query({
+  const { data: rawLandingInfo } = await gqlClient().query({
     query: getLandingQuery,
     variables: { locale },
   })
 
-  const landingInfo = simplifyResponse(data)
+  const landingInfo = simplifyResponse(rawLandingInfo)
 
   if (!landingInfo) throw new Error(`Error fetching data of landing page`)
 
-  return <Page landingInfo={landingInfo} />
+  const { data: rawPlaceTypes } = await gqlClient().query({
+    query: getAllPlaceTypesQuery,
+    variables: { locale },
+  })
+
+  const placeTypes = simplifyResponse(rawPlaceTypes)
+
+  if (!placeTypes) throw new Error(`Error fetching data of landing page`)
+
+  getAllPlaceTypesQuery
+
+  return <Page landingInfo={landingInfo} placeTypes={placeTypes} />
 }
 
 function Page({
   landingInfo,
+  placeTypes,
 }: {
   landingInfo: NonNullable<SimpleResponse<GetLandingQuery>>
+  placeTypes: NonNullable<SimpleResponse<GetAllPlaceTypesQuery>>
 }) {
   const t = useTranslations('Landing')
 
@@ -52,13 +81,17 @@ function Page({
         <p className="mt-4 text-xl">{landingInfo.heroDescription}</p>
       </header>
 
-      <main className="mx-auto max-w-2xl px-4 text-center ">
+      <main className="mx-auto max-w-6xl px-4 text-center ">
         <h2 className="mb-4 mt-8 text-center font-title text-4xl font-bold text-stone-800">
           {t('places')}
         </h2>
         <div className="flex flex-wrap justify-center gap-8">
-          <PlaceTypeBlock type="beach" />
-          <PlaceTypeBlock type="landmark" />
+          {placeTypes.map(
+            (placeType) =>
+              placeType && (
+                <PlaceTypeBlock key={placeType.slug} placeType={placeType} />
+              )
+          )}
         </div>
       </main>
     </>

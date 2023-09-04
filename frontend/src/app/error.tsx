@@ -1,6 +1,7 @@
 'use client'
 
-import { MyLink } from '@/navigation'
+import Link from 'next-intl/link'
+
 import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
 
@@ -38,20 +39,20 @@ export default function Error({
           <p className="mb-2 text-lg font-light text-stone-500">
             {t('error-message')}
           </p>
-          <p className="mb-8 rounded-md bg-stone-800 px-6 py-4 text-left font-mono text-sm text-white">
+          <pre className="mb-8 whitespace-normal break-normal rounded-md bg-stone-800 px-6 py-4 text-left font-mono text-sm text-white">
             {error.message}
-          </p>
+          </pre>
 
           <p className="mb-2 text-lg font-light text-stone-500">
             {t('actions')}
           </p>
           <div>
-            <MyLink
+            <Link
               href="/"
               className="mb-2 mr-2 rounded-full bg-brand-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-brand-800 focus:outline-none focus:ring-4 focus:ring-brand-300"
             >
               {t('go-home')}
-            </MyLink>
+            </Link>
             <button
               className="mb-2 mr-2 rounded-full bg-brand-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-brand-800 focus:outline-none focus:ring-4 focus:ring-brand-300"
               onClick={() => reset()}

@@ -47,9 +47,7 @@
       "west": "Oest"
     },
     "placeType": {
-      "showing-n-places": "Mostrant {count, plural, =1 {# lloc} other {# llocs}}",
-      "beach": "{count, plural, =1 {Platja} other {Platges}}",
-      "landmark": "{count, plural, =1 {Monument} other {Monuments}}"
+      "showing-n-places": "Mostrant {count, plural, =1 {# lloc} other {# llocs}}"
     }
   },
   "NotFoundPage": {

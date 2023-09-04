@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_components::place-details-global.beach-global",
+  "key": "plugin_content_manager_configuration_content_types::api::place-type.place-type",
   "value": {
-    "uid": "place-details-global.beach-global",
+    "uid": "api::place-type.place-type",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 10,
-      "mainField": "id",
-      "defaultSortBy": "id",
+      "pageSize": 50,
+      "mainField": "name",
+      "defaultSortBy": "name",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -16,158 +16,163 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "sandType": {
-        "edit": {
-          "label": "sandType",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "sandType",
           "searchable": true,
           "sortable": true
         }
       },
-      "sandImage": {
+      "name": {
         "edit": {
-          "label": "sandImage",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "sandImage",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "orientation": {
-        "edit": {
-          "label": "orientation",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "orientation",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
       },
-      "possibleJumps": {
+      "content": {
         "edit": {
-          "label": "possibleJumps",
+          "label": "content",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "possibleJumps",
+          "label": "content",
           "searchable": false,
           "sortable": false
         }
       },
-      "waterEntry": {
+      "namePlural": {
         "edit": {
-          "label": "waterEntry",
+          "label": "namePlural",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "waterEntry",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "boatOnly": {
-        "edit": {
-          "label": "boatOnly",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "boatOnly",
+          "label": "namePlural",
           "searchable": true,
           "sortable": true
         }
       },
-      "hasBusStop": {
+      "nameGender": {
         "edit": {
-          "label": "hasBusStop",
+          "label": "nameGender",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "hasBusStop",
+          "label": "nameGender",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "places": {
+        "edit": {
+          "label": "places",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "places",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "slug",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "sandType",
-        "sandImage",
-        "orientation"
-      ],
       "edit": [
         [
           {
-            "name": "sandType",
-            "size": 6
-          },
-          {
-            "name": "sandImage",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "orientation",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "possibleJumps",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "waterEntry",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "boatOnly",
+            "name": "name",
             "size": 4
           },
           {
-            "name": "hasBusStop",
+            "name": "namePlural",
+            "size": 4
+          },
+          {
+            "name": "nameGender",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "content",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "places",
+            "size": 8
+          },
+          {
+            "name": "slug",
             "size": 4
           }
         ]
+      ],
+      "list": [
+        "name",
+        "places",
+        "slug"
       ]
-    },
-    "isComponent": true
+    }
   },
   "type": "object",
   "environment": null,

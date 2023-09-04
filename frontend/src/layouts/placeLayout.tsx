@@ -17,19 +17,19 @@ export default function PlaceLayout({
   place: DeepPick<
     SimpleType<Place>,
     | 'name'
-    | 'type'
     | 'content'
     | 'description'
     | 'latitude'
     | 'longitude'
     | 'googleMapsPlaceId'
+    | 'type.slug'
     | 'cover.url'
     | 'cover.height'
     | 'cover.width'
     | 'cover.alternativeText'
     | 'cover.placeholder'
   >
-  customData: PlaceCustomDataArray
+  customData?: PlaceCustomDataArray
 }) {
   const t = useTranslations('PlaceLayout')
 
@@ -44,7 +44,7 @@ export default function PlaceLayout({
       )}
       <div className="mx-auto max-w-2xl px-4">
         <PlaceIcon
-          type={place.type}
+          type={place.type?.slug}
           className="mx-auto mb-4 mt-8 h-12 w-12 stroke-1 text-brand-600"
         />
         <h1 className="text-center font-title text-4xl font-bold text-stone-800">

@@ -47,28 +47,13 @@
           "searchable": true,
           "sortable": true
         }
-      },
-      "referencePrice": {
-        "edit": {
-          "label": "referencePrice",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "referencePrice",
-          "searchable": true,
-          "sortable": true
-        }
       }
     },
     "layouts": {
       "list": [
         "id",
         "year",
-        "isVisitable",
-        "referencePrice"
+        "isVisitable"
       ],
       "edit": [
         [
@@ -78,10 +63,6 @@
           },
           {
             "name": "isVisitable",
-            "size": 4
-          },
-          {
-            "name": "referencePrice",
             "size": 4
           }
         ]
