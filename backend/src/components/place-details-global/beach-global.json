@@ -64,6 +64,11 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "hasBusStop": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

@@ -103,6 +103,20 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "hasBusStop": {
+        "edit": {
+          "label": "hasBusStop",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hasBusStop",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
@@ -144,6 +158,10 @@
         [
           {
             "name": "boatOnly",
+            "size": 4
+          },
+          {
+            "name": "hasBusStop",
             "size": 4
           }
         ]

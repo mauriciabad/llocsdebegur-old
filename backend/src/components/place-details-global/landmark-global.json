@@ -24,15 +24,6 @@
       "type": "boolean",
       "default": true,
       "required": true
-    },
-    "referencePrice": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "decimal",
-      "min": 0
     }
   }
 }

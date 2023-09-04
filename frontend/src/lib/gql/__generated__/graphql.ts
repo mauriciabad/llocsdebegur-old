@@ -54,6 +54,7 @@ export type BooleanFilterInput = {
 export type ComponentPlaceDetailsGlobalBeachGlobal = {
   __typename?: 'ComponentPlaceDetailsGlobalBeachGlobal';
   boatOnly: Scalars['Boolean']['output'];
+  hasBusStop: Scalars['Boolean']['output'];
   id: Scalars['ID']['output'];
   orientation?: Maybe<Enum_Componentplacedetailsglobalbeachglobal_Orientation>;
   possibleJumps?: Maybe<Scalars['JSON']['output']>;
@@ -66,8 +67,12 @@ export type ComponentPlaceDetailsGlobalLandmarkGlobal = {
   __typename?: 'ComponentPlaceDetailsGlobalLandmarkGlobal';
   id: Scalars['ID']['output'];
   isVisitable: Scalars['Boolean']['output'];
-  referencePrice?: Maybe<Scalars['Float']['output']>;
   year?: Maybe<Scalars['Int']['output']>;
+};
+
+export type ComponentPlaceDetailsGlobalViewpoint = {
+  __typename?: 'ComponentPlaceDetailsGlobalViewpoint';
+  id: Scalars['ID']['output'];
 };
 
 export type ComponentPlaceDetailsLocalBeachLocal = {
@@ -80,6 +85,11 @@ export type ComponentPlaceDetailsLocalLandmarkLocal = {
   __typename?: 'ComponentPlaceDetailsLocalLandmarkLocal';
   id: Scalars['ID']['output'];
   visitDetails?: Maybe<Scalars['String']['output']>;
+};
+
+export type ComponentPlaceDetailsLocalViewpoint = {
+  __typename?: 'ComponentPlaceDetailsLocalViewpoint';
+  id: Scalars['ID']['output'];
 };
 
 export type ComponentSharedMetaSocial = {
@@ -190,6 +200,14 @@ export enum Enum_Place_Amountofpeople {
   Unknown = 'unknown'
 }
 
+export enum Enum_Place_Difficulty {
+  Accessible = 'accessible',
+  Dangerous = 'dangerous',
+  Hard = 'hard',
+  Normal = 'normal',
+  SmallEffort = 'smallEffort'
+}
+
 export enum Enum_Place_Howexpensive {
   Cheap = 'cheap',
   Expensive = 'expensive',
@@ -235,7 +253,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = ComponentPlaceDetailsGlobalBeachGlobal | ComponentPlaceDetailsGlobalLandmarkGlobal | ComponentPlaceDetailsLocalBeachLocal | ComponentPlaceDetailsLocalLandmarkLocal | ComponentSharedMetaSocial | ComponentSharedSeo | I18NLocale | Landing | Place | PlaceType | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentPlaceDetailsGlobalBeachGlobal | ComponentPlaceDetailsGlobalLandmarkGlobal | ComponentPlaceDetailsGlobalViewpoint | ComponentPlaceDetailsLocalBeachLocal | ComponentPlaceDetailsLocalLandmarkLocal | ComponentPlaceDetailsLocalViewpoint | ComponentSharedMetaSocial | ComponentSharedSeo | I18NLocale | Landing | Place | PlaceType | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -650,22 +668,31 @@ export type Place = {
   description: Scalars['String']['output'];
   detailsGlobal: Array<Maybe<PlaceDetailsGlobalDynamicZone>>;
   detailsLocal: Array<Maybe<PlaceDetailsLocalDynamicZone>>;
+  difficulty: Enum_Place_Difficulty;
+  difficultyNotes?: Maybe<Scalars['String']['output']>;
   googleMapsPlaceId?: Maybe<Scalars['String']['output']>;
-  hasBusStop: Scalars['Boolean']['output'];
+  hasBeenRelatedWith?: Maybe<PlaceRelationResponseCollection>;
   howExpensive?: Maybe<Enum_Place_Howexpensive>;
   latitude: Scalars['Float']['output'];
   locale?: Maybe<Scalars['String']['output']>;
   localizations?: Maybe<PlaceRelationResponseCollection>;
   longitude: Scalars['Float']['output'];
+  mapPolygons?: Maybe<Scalars['String']['output']>;
   media?: Maybe<UploadFileRelationResponseCollection>;
   name: Scalars['String']['output'];
-  parkingNotes?: Maybe<Scalars['String']['output']>;
-  parkingType?: Maybe<Scalars['JSON']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  shortName?: Maybe<Scalars['String']['output']>;
+  relatedPlaces?: Maybe<PlaceRelationResponseCollection>;
   slug: Scalars['String']['output'];
   type?: Maybe<PlaceTypeEntityResponse>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type PlaceHasBeenRelatedWithArgs = {
+  filters?: InputMaybe<PlaceFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
@@ -683,9 +710,17 @@ export type PlaceMediaArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type PlaceDetailsGlobalDynamicZone = ComponentPlaceDetailsGlobalBeachGlobal | ComponentPlaceDetailsGlobalLandmarkGlobal | Error;
 
-export type PlaceDetailsLocalDynamicZone = ComponentPlaceDetailsLocalBeachLocal | ComponentPlaceDetailsLocalLandmarkLocal | Error;
+export type PlaceRelatedPlacesArgs = {
+  filters?: InputMaybe<PlaceFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlaceDetailsGlobalDynamicZone = ComponentPlaceDetailsGlobalBeachGlobal | ComponentPlaceDetailsGlobalLandmarkGlobal | ComponentPlaceDetailsGlobalViewpoint | Error;
+
+export type PlaceDetailsLocalDynamicZone = ComponentPlaceDetailsLocalBeachLocal | ComponentPlaceDetailsLocalLandmarkLocal | ComponentPlaceDetailsLocalViewpoint | Error;
 
 export type PlaceEntity = {
   __typename?: 'PlaceEntity';
@@ -713,21 +748,22 @@ export type PlaceFiltersInput = {
   content?: InputMaybe<StringFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   description?: InputMaybe<StringFilterInput>;
+  difficulty?: InputMaybe<StringFilterInput>;
+  difficultyNotes?: InputMaybe<StringFilterInput>;
   googleMapsPlaceId?: InputMaybe<StringFilterInput>;
-  hasBusStop?: InputMaybe<BooleanFilterInput>;
+  hasBeenRelatedWith?: InputMaybe<PlaceFiltersInput>;
   howExpensive?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   latitude?: InputMaybe<FloatFilterInput>;
   locale?: InputMaybe<StringFilterInput>;
   localizations?: InputMaybe<PlaceFiltersInput>;
   longitude?: InputMaybe<FloatFilterInput>;
+  mapPolygons?: InputMaybe<StringFilterInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<PlaceFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<PlaceFiltersInput>>>;
-  parkingNotes?: InputMaybe<StringFilterInput>;
-  parkingType?: InputMaybe<JsonFilterInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
-  shortName?: InputMaybe<StringFilterInput>;
+  relatedPlaces?: InputMaybe<PlaceFiltersInput>;
   slug?: InputMaybe<StringFilterInput>;
   type?: InputMaybe<PlaceTypeFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
@@ -743,17 +779,18 @@ export type PlaceInput = {
   description?: InputMaybe<Scalars['String']['input']>;
   detailsGlobal?: InputMaybe<Array<Scalars['PlaceDetailsGlobalDynamicZoneInput']['input']>>;
   detailsLocal?: InputMaybe<Array<Scalars['PlaceDetailsLocalDynamicZoneInput']['input']>>;
+  difficulty?: InputMaybe<Enum_Place_Difficulty>;
+  difficultyNotes?: InputMaybe<Scalars['String']['input']>;
   googleMapsPlaceId?: InputMaybe<Scalars['String']['input']>;
-  hasBusStop?: InputMaybe<Scalars['Boolean']['input']>;
+  hasBeenRelatedWith?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   howExpensive?: InputMaybe<Enum_Place_Howexpensive>;
   latitude?: InputMaybe<Scalars['Float']['input']>;
   longitude?: InputMaybe<Scalars['Float']['input']>;
+  mapPolygons?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   name?: InputMaybe<Scalars['String']['input']>;
-  parkingNotes?: InputMaybe<Scalars['String']['input']>;
-  parkingType?: InputMaybe<Scalars['JSON']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  shortName?: InputMaybe<Scalars['String']['input']>;
+  relatedPlaces?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   slug?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -1376,7 +1413,7 @@ export type GetPlaceQueryVariables = Exact<{
 }>;
 
 
-export type GetPlaceQuery = { __typename?: 'Query', places?: { __typename?: 'PlaceEntityResponseCollection', data: Array<{ __typename?: 'PlaceEntity', attributes?: { __typename?: 'Place', name: string, content?: string | null, description: string, latitude: number, longitude: number, googleMapsPlaceId?: string | null, cover: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, height?: number | null, width?: number | null, placeholder?: string | null, alternativeText?: string | null } | null } | null }, detailsGlobal: Array<{ __typename?: 'ComponentPlaceDetailsGlobalBeachGlobal', sandType?: Enum_Componentplacedetailsglobalbeachglobal_Sandtype | null, orientation?: Enum_Componentplacedetailsglobalbeachglobal_Orientation | null } | { __typename?: 'ComponentPlaceDetailsGlobalLandmarkGlobal', isVisitable: boolean, referencePrice?: number | null, year?: number | null } | { __typename?: 'Error' } | null>, type?: { __typename?: 'PlaceTypeEntityResponse', data?: { __typename?: 'PlaceTypeEntity', attributes?: { __typename?: 'PlaceType', name: string, nameGender?: Enum_Placetype_Namegender | null, namePlural: string, slug: Enum_Placetype_Slug } | null } | null } | null } | null }> } | null };
+export type GetPlaceQuery = { __typename?: 'Query', places?: { __typename?: 'PlaceEntityResponseCollection', data: Array<{ __typename?: 'PlaceEntity', attributes?: { __typename?: 'Place', name: string, content?: string | null, description: string, latitude: number, longitude: number, googleMapsPlaceId?: string | null, cover: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, height?: number | null, width?: number | null, placeholder?: string | null, alternativeText?: string | null } | null } | null }, detailsGlobal: Array<{ __typename?: 'ComponentPlaceDetailsGlobalBeachGlobal', sandType?: Enum_Componentplacedetailsglobalbeachglobal_Sandtype | null, orientation?: Enum_Componentplacedetailsglobalbeachglobal_Orientation | null } | { __typename?: 'ComponentPlaceDetailsGlobalLandmarkGlobal', isVisitable: boolean, year?: number | null } | { __typename?: 'ComponentPlaceDetailsGlobalViewpoint' } | { __typename?: 'Error' } | null>, type?: { __typename?: 'PlaceTypeEntityResponse', data?: { __typename?: 'PlaceTypeEntity', attributes?: { __typename?: 'PlaceType', name: string, nameGender?: Enum_Placetype_Namegender | null, namePlural: string, slug: Enum_Placetype_Slug } | null } | null } | null } | null }> } | null };
 
 export type GetPlaceTypeQueryVariables = Exact<{
   locale: Scalars['I18NLocaleCode']['input'];
@@ -1409,7 +1446,7 @@ export type GetLandingQueryVariables = Exact<{
 export type GetLandingQuery = { __typename?: 'Query', landing?: { __typename?: 'LandingEntityResponse', data?: { __typename?: 'LandingEntity', attributes?: { __typename?: 'Landing', heroTitle: string, heroDescription: string } | null } | null } | null };
 
 
-export const GetPlaceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getPlace"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"places"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"latitude"}},{"kind":"Field","name":{"kind":"Name","value":"longitude"}},{"kind":"Field","name":{"kind":"Name","value":"googleMapsPlaceId"}},{"kind":"Field","name":{"kind":"Name","value":"cover"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"placeholder"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"detailsGlobal"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ComponentPlaceDetailsGlobalBeachGlobal"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sandType"}},{"kind":"Field","name":{"kind":"Name","value":"orientation"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ComponentPlaceDetailsGlobalLandmarkGlobal"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"isVisitable"}},{"kind":"Field","name":{"kind":"Name","value":"referencePrice"}},{"kind":"Field","name":{"kind":"Name","value":"year"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"type"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"nameGender"}},{"kind":"Field","name":{"kind":"Name","value":"namePlural"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPlaceQuery, GetPlaceQueryVariables>;
+export const GetPlaceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getPlace"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"places"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"latitude"}},{"kind":"Field","name":{"kind":"Name","value":"longitude"}},{"kind":"Field","name":{"kind":"Name","value":"googleMapsPlaceId"}},{"kind":"Field","name":{"kind":"Name","value":"cover"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"placeholder"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"detailsGlobal"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ComponentPlaceDetailsGlobalBeachGlobal"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sandType"}},{"kind":"Field","name":{"kind":"Name","value":"orientation"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ComponentPlaceDetailsGlobalLandmarkGlobal"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"isVisitable"}},{"kind":"Field","name":{"kind":"Name","value":"year"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"type"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"nameGender"}},{"kind":"Field","name":{"kind":"Name","value":"namePlural"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPlaceQuery, GetPlaceQueryVariables>;
 export const GetPlaceTypeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getPlaceType"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"placeTypes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"namePlural"}},{"kind":"Field","name":{"kind":"Name","value":"nameGender"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"content"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPlaceTypeQuery, GetPlaceTypeQueryVariables>;
 export const GetAllPlacesOfTypeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getAllPlacesOfType"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"placeTypeSlug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"places"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}},{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1000"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"type"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"placeTypeSlug"}}}]}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"cover"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"placeholder"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetAllPlacesOfTypeQuery, GetAllPlacesOfTypeQueryVariables>;
 export const GetAllPlaceTypesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getAllPlaceTypes"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"placeTypes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"namePlural"}},{"kind":"Field","name":{"kind":"Name","value":"nameGender"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetAllPlaceTypesQuery, GetAllPlaceTypesQueryVariables>;
