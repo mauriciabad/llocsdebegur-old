@@ -40,7 +40,7 @@ export default function StrapiImage({
   })()
 
   const imageUrl = `${BACKEND_URL}${image.url}?${new URLSearchParams({
-    format: 'avif',
+    format: 'webp',
     ...(imgWidth ? { width: imgWidth.toFixed() } : {}),
     ...(imgHeight ? { height: imgHeight.toFixed() } : {}),
   })}`
