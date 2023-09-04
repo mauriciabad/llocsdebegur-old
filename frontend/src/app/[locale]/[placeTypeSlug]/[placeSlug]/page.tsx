@@ -42,7 +42,6 @@ const getPlaceQuery = graphql(`
             }
             ... on ComponentPlaceDetailsGlobalLandmarkGlobal {
               isVisitable
-              referencePrice
               year
             }
           }
@@ -127,12 +126,6 @@ function useCustomData(
           {
             icon: 'year',
             text: t('year', { year: detailsGlobal.year }),
-          },
-          {
-            icon: 'reference-price',
-            text: t('reference-price', {
-              price: `${detailsGlobal.referencePrice?.toFixed(2)}€`,
-            }),
           },
         ]
       }
