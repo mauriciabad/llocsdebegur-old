@@ -103,13 +103,13 @@ function SubPage({
         {places.map(
           (place) =>
             place && (
-              <li key={place.slug}>
+              <li key={place.slug} className="h-full">
                 <MyLink
                   href={{
                     pathname: `/${type}/[placeSlug]`,
                     params: { placeSlug: place.slug ?? 'null' },
                   }}
-                  className="block overflow-hidden shadow-md border border-stone-200 bg-white rounded-2xl group outline-2 hover:outline outline-brand-100"
+                  className="block overflow-hidden shadow-md border border-stone-200 h-full bg-white rounded-2xl group outline-2 hover:outline outline-brand-100"
                 >
                   {place.cover && (
                     <StrapiImage
@@ -121,7 +121,9 @@ function SubPage({
                   <h2 className="mx-4 mt-3 text-xl font-title font-bold text-stone-800">
                     {place.name}
                   </h2>
-                  <p className="mx-4 mt-1 mb-4">{place.description}</p>
+                  <p className="mx-4 mt-1 mb-4 line-clamp-3">
+                    {place.description}
+                  </p>
                 </MyLink>
               </li>
             )
