@@ -8,9 +8,9 @@ export default function Footer() {
   const t = useTranslations('Footer')
 
   return (
-    <footer className="sticky top-full inset-x-0 p-4 bg-stone-100 text-center text-stone-900 mt-16">
+    <footer className="sticky inset-x-0 top-full mt-16 bg-stone-100 p-4 text-center text-stone-900">
       <div>
-        <IconLanguage className="text-stone-700 inline-block mr-2" />
+        <IconLanguage className="mr-2 inline-block text-stone-700" />
         <span>{t('switch-locale-description')}</span>
         <MyLink
           key={targetLocale}

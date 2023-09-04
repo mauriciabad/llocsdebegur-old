@@ -91,12 +91,12 @@ function SubPage({
     <main className="mx-auto max-w-6xl p-4">
       <PlaceIcon
         type={type}
-        className="mx-auto text-brand-600 mb-4 mt-8 h-12 w-12 stroke-1"
+        className="mx-auto mb-4 mt-8 h-12 w-12 stroke-1 text-brand-600"
       />
-      <h2 className="font-bold text-4xl font-title text-stone-800 text-center">
+      <h2 className="text-center font-title text-4xl font-bold text-stone-800">
         {t(type, { count: 2 })}
       </h2>
-      <p className="text-center text-stone-500 font-semibold mt-4">
+      <p className="mt-4 text-center font-semibold text-stone-500">
         {t('showing-n-places', { count: places.length })}
       </p>
       <ul className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(theme(spacing.64),1fr))] gap-6">
@@ -109,7 +109,7 @@ function SubPage({
                     pathname: `/${type}/[placeSlug]`,
                     params: { placeSlug: place.slug ?? 'null' },
                   }}
-                  className="block overflow-hidden shadow-md border border-stone-200 h-full bg-white rounded-2xl group outline-2 hover:outline outline-brand-100"
+                  className="group block h-full overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-md outline-2 outline-brand-100 hover:outline"
                 >
                   {place.cover && (
                     <StrapiImage
@@ -118,10 +118,10 @@ function SubPage({
                       width={256 * 2 + 64}
                     />
                   )}
-                  <h2 className="mx-4 mt-3 text-xl font-title font-bold text-stone-800">
+                  <h2 className="mx-4 mt-3 font-title text-xl font-bold text-stone-800">
                     {place.name}
                   </h2>
-                  <p className="mx-4 mt-1 mb-4 line-clamp-3">
+                  <p className="mx-4 mb-4 mt-1 line-clamp-3">
                     {place.description}
                   </p>
                 </MyLink>

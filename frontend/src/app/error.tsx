@@ -19,26 +19,26 @@ export default function Error({
 
   return (
     <section className="bg-white">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div className="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
         <div className="mx-auto max-w-screen-sm text-center">
-          <h1 className="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-primary-600 font-title">
+          <h1 className="text-primary-600 mb-4 font-title text-7xl font-extrabold tracking-tight lg:text-9xl">
             500
           </h1>
-          <p className="mb-8 text-3xl tracking-tight font-bold text-stone-900 md:text-4xl font-title">
+          <p className="mb-8 font-title text-3xl font-bold tracking-tight text-stone-900 md:text-4xl">
             {t('internal-server-error')}
           </p>
 
           <p className="mb-2 text-lg font-light text-stone-500">
             {t('message')}
           </p>
-          <p className="mb-8 font-bold font-mono p-2 leading-none bg-stone-200 rounded-md inline-block mx-auto">
+          <p className="mx-auto mb-8 inline-block rounded-md bg-stone-200 p-2 font-mono font-bold leading-none">
             {error.digest}
           </p>
 
           <p className="mb-2 text-lg font-light text-stone-500">
             {t('error-message')}
           </p>
-          <p className="mb-8 py-4 px-6 rounded-md text-sm font-mono bg-stone-800 text-white text-left">
+          <p className="mb-8 rounded-md bg-stone-800 px-6 py-4 text-left font-mono text-sm text-white">
             {error.message}
           </p>
 
@@ -48,12 +48,12 @@ export default function Error({
           <div>
             <MyLink
               href="/"
-              className="text-white bg-brand-700 hover:bg-brand-800 focus:outline-none focus:ring-4 focus:ring-brand-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              className="mb-2 mr-2 rounded-full bg-brand-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-brand-800 focus:outline-none focus:ring-4 focus:ring-brand-300"
             >
               {t('go-home')}
             </MyLink>
             <button
-              className="text-white bg-brand-700 hover:bg-brand-800 focus:outline-none focus:ring-4 focus:ring-brand-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              className="mb-2 mr-2 rounded-full bg-brand-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-brand-800 focus:outline-none focus:ring-4 focus:ring-brand-300"
               onClick={() => reset()}
             >
               {t('try-again')}
@@ -61,7 +61,7 @@ export default function Error({
             <a
               href="mailto:hello@mauriciabad.com"
               target="_blank"
-              className="text-white bg-brand-700 hover:bg-brand-800 focus:outline-none focus:ring-4 focus:ring-brand-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              className="mb-2 mr-2 rounded-full bg-brand-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-brand-800 focus:outline-none focus:ring-4 focus:ring-brand-300"
             >
               {t('contact-support')}
             </a>

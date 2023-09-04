@@ -7,13 +7,13 @@ export default function Page() {
   const t = useTranslations('NotFoundPage')
 
   return (
-    <main className="flex items-center justify-center py-32 flex-col">
-      <h1 className="text-6xl mt-4 mb-8 font-title text-stone-800 text-center">
+    <main className="flex flex-col items-center justify-center py-32">
+      <h1 className="mb-8 mt-4 text-center font-title text-6xl text-stone-800">
         {t('title')}
       </h1>
       <MyLink
         href="/"
-        className="text-white bg-brand-700 hover:bg-brand-800 focus:outline-none focus:ring-4 focus:ring-brand-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2"
+        className="mb-2 mr-2 rounded-full bg-brand-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-brand-800 focus:outline-none focus:ring-4 focus:ring-brand-300"
       >
         {t('go-home')}
       </MyLink>
