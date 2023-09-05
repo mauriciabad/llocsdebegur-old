@@ -22,7 +22,7 @@ services:
       - caddy
     labels:
       caddy: db.llocsdebegur.s.mauriciabad.com
-      caddy.reverse_proxy: "{{upstreams 9090}}"
+      caddy.reverse_proxy: "{{upstreams 800800}}"
 
 networks:
   caddy:
