@@ -39,19 +39,22 @@ const config: Config = {
         ],
         sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
       },
-    },
-    animation: {
-      hover: 'hover 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
-      wiggle: 'wiggle 10s -5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
-    },
-    keyframes: {
-      hover: {
-        '0%, 100%': { transform: 'translateY(-5%)' },
-        '50%': { transform: 'translateY(5%)' },
+      animation: {
+        hover: 'hover 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
+        wiggle: 'wiggle 10s -5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
       },
-      wiggle: {
-        '0%, 100%': { transform: 'rotate(3deg)' },
-        '50%': { transform: 'rotate(-3deg)' },
+      keyframes: {
+        hover: {
+          '0%, 100%': { transform: 'translateY(-5%)' },
+          '50%': { transform: 'translateY(5%)' },
+        },
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(3deg)' },
+          '50%': { transform: 'rotate(-3deg)' },
+        },
+      },
+      screens: {
+        xs: '475px',
       },
     },
   },

@@ -1,3 +1,4 @@
+import Header from '@/components/Header'
 import Map from '@/components/Map'
 import {
   Place,
@@ -58,18 +59,27 @@ function SubPage({
   const t = useTranslations('Explore')
 
   return (
-    <main className="">
-      <h1>{t('map')}</h1>
-      <Map
-        className="h-[80vh]"
-        markers={places.map((place) => ({
-          text: place.name,
-          location: {
-            latitude: place.latitude,
-            longitude: place.longitude,
-          },
-        }))}
-      />
-    </main>
+    <div className="h-[calc(100dvh)]!important grid h-screen grid-cols-[475px,auto]">
+      <aside className="z-10 shadow-lg">
+        <Header />
+        <div className="p-4">
+          <h1 className="text-center text-2xl font-bold">{t('map')}</h1>
+        </div>
+      </aside>
+      <main className="h-full">
+        <Map
+          className="h-full"
+          fullControl
+          zoom={13}
+          markers={places.map((place) => ({
+            text: place.name,
+            location: {
+              latitude: place.latitude,
+              longitude: place.longitude,
+            },
+          }))}
+        />
+      </main>
+    </div>
   )
 }
