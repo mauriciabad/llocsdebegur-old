@@ -23,12 +23,17 @@ function toLatLang(
   return { lat: location.latitude, lng: location.longitude }
 }
 
+const DEFAULT_LOCATION = {
+  latitude: 41.958627,
+  longitude: 3.213765,
+} as const satisfies Location
+
 export default function Map({
   location,
   className,
   markers,
 }: {
-  location: Location
+  location?: Location
   className?: string
   markers?: {
     location: Location
@@ -38,7 +43,7 @@ export default function Map({
   return (
     <div>
       <MapContainer
-        center={toLatLang(location)}
+        center={toLatLang(location ?? DEFAULT_LOCATION)}
         zoom={13}
         scrollWheelZoom={false}
         className={classNames(className, 'z-0 h-64 w-full')}

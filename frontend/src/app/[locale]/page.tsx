@@ -9,6 +9,7 @@ import {
 } from '@/lib/gql'
 import PlaceTypeBlock from '@/components/PlaceTypeBlock'
 import Logo from '@/components/Logo'
+import Link from 'next-intl/link'
 
 const getAllPlaceTypesQuery = graphql(`
   query getAllPlaceTypes($locale: I18NLocaleCode!) {
@@ -76,9 +77,9 @@ function Page({
   return (
     <>
       <header className="flex min-h-[50vh] flex-col items-center justify-center bg-stone-100 p-4 text-center text-stone-800">
-        <div className="animate-wiggle origin-bottom">
+        <div className="origin-bottom animate-wiggle">
           <Logo
-            className="anima animate-hover mb-4 h-24 text-brand-600"
+            className="anima mb-4 h-24 animate-hover text-brand-600"
             outline
           />
         </div>
@@ -86,6 +87,13 @@ function Page({
           {landingInfo.heroTitle}
         </h1>
         <p className="mt-4 text-xl">{landingInfo.heroDescription}</p>
+
+        <Link
+          href="/map"
+          className=" mt-6 inline-block rounded-full bg-brand-600 px-8 py-3 uppercase leading-none text-white shadow-md outline-none hover:bg-brand-700 hover:outline hover:outline-2 hover:outline-brand-100 focus-visible:ring-2 focus-visible:ring-stone-700 focus-visible:ring-offset-1"
+        >
+          {t('explore-map')}
+        </Link>
       </header>
 
       <main className="mx-auto max-w-6xl px-4 text-center ">

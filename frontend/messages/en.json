@@ -1,14 +1,15 @@
 {
   "Landing": {
     "places": "Places",
-    "view-all": "Explore all"
+    "view-all": "Explore all",
+    "explore-map": "Explore the map"
   },
   "PlaceLayout": {
     "map": "Map",
     "links": "Links",
     "data": "Data"
   },
-  "LandmarkView": {
+  "MonumentView": {
     "reference-price": "Reference price: {price}",
     "year": "Year {year}",
     "visitable": "Visitable",
@@ -20,7 +21,11 @@
   },
   "Header": {
     "title": "Begur's places",
-    "home": "Home"
+    "home": "Home",
+    "map": "Map"
+  },
+  "Explore": {
+    "map": "Map"
   },
   "Spinner": {
     "loading": "Loading..."
