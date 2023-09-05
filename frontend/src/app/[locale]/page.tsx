@@ -8,6 +8,7 @@ import {
   GetAllPlaceTypesQuery,
 } from '@/lib/gql'
 import PlaceTypeBlock from '@/components/PlaceTypeBlock'
+import Logo from '@/components/Logo'
 
 const getAllPlaceTypesQuery = graphql(`
   query getAllPlaceTypes($locale: I18NLocaleCode!) {
@@ -75,7 +76,13 @@ function Page({
   return (
     <>
       <header className="flex min-h-[50vh] flex-col items-center justify-center bg-stone-100 p-4 text-center text-stone-800">
-        <h1 className="font-title text-6xl font-bold text-stone-800">
+        <div className="animate-wiggle origin-bottom">
+          <Logo
+            className="anima animate-hover mb-4 h-24 text-brand-600"
+            outline
+          />
+        </div>
+        <h1 className="font-title text-6xl font-extrabold uppercase text-stone-800">
           {landingInfo.heroTitle}
         </h1>
         <p className="mt-4 text-xl">{landingInfo.heroDescription}</p>

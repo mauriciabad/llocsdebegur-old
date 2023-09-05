@@ -1,7 +1,6 @@
 import { useTranslations } from 'next-intl'
 import Link from 'next-intl/link'
-import Image from 'next/image'
-import Logo from '/public/logo.svg'
+import Logo from './Logo'
 
 export default function Header() {
   const t = useTranslations('Header')
@@ -10,7 +9,7 @@ export default function Header() {
     <nav className="border-stone-200 bg-brand text-white">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
         <Link href="/" className="flex items-center">
-          <Image src={Logo} className="mr-3 h-8" alt="Logo" />
+          <Logo className="mr-3 h-10" />
           <span className="self-center whitespace-nowrap text-2xl font-bold">
             {t('title')}
           </span>
