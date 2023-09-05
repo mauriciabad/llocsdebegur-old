@@ -18,6 +18,13 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: 'Llocs de Begur',
   description: "Descobreix llocs increïbles d'és teu poble.",
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#5F797A' },
+    { media: '(prefers-color-scheme: dark)', color: '#222222' },
+  ],
+  icons: {
+    apple: '/favicon/apple-icon.png',
+  },
 }
 
 export default async function RootLayout({
