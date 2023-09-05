@@ -42,7 +42,8 @@
         }
       },
       "type": "uid",
-      "required": true
+      "required": true,
+      "targetField": "name"
     },
     "cover": {
       "type": "media",
