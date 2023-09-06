@@ -100,11 +100,15 @@ function Page({
         <h2 className="mb-4 mt-8 text-center font-title text-4xl font-bold text-stone-800">
           {t('places')}
         </h2>
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(theme(spacing.64),1fr))] gap-8">
           {placeTypes.map(
             (placeType) =>
               placeType && (
-                <PlaceTypeBlock key={placeType.slug} placeType={placeType} />
+                <PlaceTypeBlock
+                  key={placeType.slug}
+                  placeType={placeType}
+                  className="flex flex-col justify-between"
+                />
               )
           )}
         </div>
