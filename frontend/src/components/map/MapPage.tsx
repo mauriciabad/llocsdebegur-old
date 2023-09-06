@@ -90,9 +90,9 @@ export default function MapPage({
               </ul>
             </div>
           </div>
-          <div className="absolute bottom-1 left-0 right-0 z-20 flex justify-center">
+          <div className="pointer-events-none absolute bottom-1 left-0 right-0 z-20 flex justify-center">
             <button
-              className="mb-2 mr-2 rounded-full bg-brand-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-brand-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-300"
+              className="pointer-events-auto mb-2 mr-2 rounded-full bg-brand-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-brand-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-300"
               onClick={() => {
                 setIsExpanded(false)
               }}
@@ -115,7 +115,7 @@ export default function MapPage({
         <Map
           className="h-full"
           fullControl
-          zoom={13}
+          zoom={14}
           markers={places.map((place) => ({
             text: place.name,
             location: {
@@ -126,9 +126,9 @@ export default function MapPage({
         />
 
         {!isExpanded && (
-          <div className="fixed bottom-1 left-0 right-0 z-20 flex justify-center">
+          <div className="pointer-events-none fixed bottom-1 left-0 right-0 z-20 flex justify-center">
             <button
-              className="mb-2 mr-2 rounded-full border-2 border-brand-200 bg-white px-5 py-2.5 text-center font-title text-sm font-bold uppercase text-brand-800 shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-800"
+              className="pointer-events-auto mb-2 mr-2 rounded-full border-2 border-brand-200 bg-white px-5 py-2.5 text-center font-title text-sm font-bold uppercase text-brand-800 shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-800"
               onClick={() => {
                 setIsExpanded(true)
               }}

@@ -10,6 +10,7 @@ import {
   Marker,
   Popup,
   TileLayer,
+  ZoomControl,
 } from 'react-leaflet'
 import IconMapPin from '/public/icon-map-pin.svg'
 import { useEffect, useState } from 'react'
@@ -42,7 +43,7 @@ export default function Map({
   className,
   markers,
   fullControl,
-  zoom = 13,
+  zoom = 14,
 }: {
   location?: Location
   className?: string
@@ -61,6 +62,7 @@ export default function Map({
         .locate({
           flyTo: true,
           showPopup: false,
+          position: 'bottomright',
         })
         .addTo(map)
       new ResizeObserver(() => map.invalidateSize()).observe(map.getContainer())
@@ -71,6 +73,7 @@ export default function Map({
     <MapContainer
       center={toLatLang(location)}
       zoom={zoom}
+      zoomControl={false}
       scrollWheelZoom={fullControl}
       dragging={fullControl || !L.Browser.mobile}
       className={classNames(className, 'z-0 h-64 w-full')}
@@ -94,8 +97,11 @@ export default function Map({
           {text && <Popup>{text}</Popup>}
         </Marker>
       ))}
-      <LayersControl position="topright">
-        <LayersControl.BaseLayer checked name="Classic (ICGC)">
+
+      <ZoomControl position="bottomright" />
+
+      <LayersControl position="bottomleft">
+        <LayersControl.BaseLayer name="Classic (ICGC)">
           <TileLayer
             maxZoom={20}
             attribution="ICGC"
@@ -130,7 +136,7 @@ export default function Map({
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
         </LayersControl.BaseLayer>
-        <LayersControl.BaseLayer name="Satelite (IGN)">
+        <LayersControl.BaseLayer checked name="Satelite (IGN)">
           <TileLayer
             maxZoom={20}
             attribution="<a href='http://www.ign.es/'>IGN</a>"
