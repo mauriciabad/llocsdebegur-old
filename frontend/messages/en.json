@@ -10,7 +10,6 @@
     "data": "Data"
   },
   "MonumentView": {
-    "reference-price": "Reference price: {price}",
     "year": "Year {year}",
     "visitable": "Visitable",
     "not-visitable": "Not visitable"

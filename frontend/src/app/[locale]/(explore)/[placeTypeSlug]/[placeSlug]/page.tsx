@@ -97,6 +97,7 @@ function useCustomData(
   placeType: PlaceTypeSlug
 ): PlaceCustomDataArray | undefined {
   const t = useTranslations('Enums')
+  const t2 = useTranslations('MonumentView')
 
   const detailsGlobal = typeDynamicZone(place.detailsGlobal[0])
   if (!detailsGlobal) return undefined
@@ -120,12 +121,12 @@ function useCustomData(
           {
             icon: 'visitable',
             text: detailsGlobal.isVisitable
-              ? t('visitable')
-              : t('not-visitable'),
+              ? t2('visitable')
+              : t2('not-visitable'),
           },
           {
             icon: 'year',
-            text: t('year', { year: detailsGlobal.year }),
+            text: t2('year', { year: detailsGlobal.year }),
           },
         ]
       }
