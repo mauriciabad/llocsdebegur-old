@@ -69,8 +69,8 @@ export default function Map({
           icon={
             new Icon({
               iconUrl: IconMapPin.src,
-              iconAnchor: [94 * 0.4 * 0.5, 128 * 0.4 * 1],
-              iconSize: [94 * 0.4, 128 * 0.4],
+              iconAnchor: [94 * 0.3 * 0.5, 128 * 0.3 * 1],
+              iconSize: [94 * 0.3, 128 * 0.3],
             })
           }
         >
