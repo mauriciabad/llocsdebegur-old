@@ -5,13 +5,11 @@ import { Poppins } from 'next/font/google'
 import classNames from 'classnames'
 import { NextIntlClientProvider, useLocale } from 'next-intl'
 import { ApolloWrapper } from '@/components/wrappers/ApolloWrapper'
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['400', '500', '700', '800'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-poppins',
 })
 
@@ -46,9 +44,7 @@ export default async function RootLayout({
         ])}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header />
           <ApolloWrapper>{children}</ApolloWrapper>
-          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,15 +1,15 @@
 {
   "Landing": {
     "places": "Llocs",
-    "view-all": "Veure {gender, select, female {totes} male {tots} other {tots}}"
+    "view-all": "Veure {gender, select, female {totes} male {tots} other {tots}}",
+    "explore-map": "Explora el mapa"
   },
   "PlaceLayout": {
     "map": "Mapa",
     "links": "Enllaços",
     "data": "Dades"
   },
-  "LandmarkView": {
-    "reference-price": "Preu de referència: {price}",
+  "MonumentView": {
     "year": "Any {year}",
     "visitable": "Visitable",
     "not-visitable": "No visitable"
@@ -20,7 +20,11 @@
   },
   "Header": {
     "title": "Llocs de Begur",
-    "home": "Inici"
+    "home": "Inici",
+    "map": "Mapa"
+  },
+  "Explore": {
+    "map": "Mapa"
   },
   "Spinner": {
     "loading": "Carregant..."

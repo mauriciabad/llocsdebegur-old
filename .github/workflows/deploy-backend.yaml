@@ -25,37 +25,37 @@ jobs:
             frontend:
               - 'frontend/**'
 
-  deploy-backend:
-    runs-on: ubuntu-latest
-    needs: changes
-    if: ${{ needs.changes.outputs.backend == 'true' }}
+  # deploy-backend:
+  #   runs-on: ubuntu-latest
+  #   needs: changes
+  #   if: ${{ needs.changes.outputs.backend == 'true' }}
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/server.key
-          chmod 600 ~/.ssh/server.key
-          cat >>~/.ssh/config <<END
-          Host server
-            HostName $SSH_HOST
-            User $SSH_USER
-            IdentityFile ~/.ssh/server.key
-            StrictHostKeyChecking no
-          END
-        env:
-          SSH_USER: ${{ secrets.BACKEND_USERNAME }}
-          SSH_KEY: ${{ secrets.BACKEND_SSH_PRIVATE_KEY }}
-          SSH_HOST: ${{ secrets.BACKEND_HOST }}
+  #     - name: Configure SSH
+  #       run: |
+  #         mkdir -p ~/.ssh/
+  #         echo "$SSH_KEY" > ~/.ssh/server.key
+  #         chmod 600 ~/.ssh/server.key
+  #         cat >>~/.ssh/config <<END
+  #         Host server
+  #           HostName $SSH_HOST
+  #           User $SSH_USER
+  #           IdentityFile ~/.ssh/server.key
+  #           StrictHostKeyChecking no
+  #         END
+  #       env:
+  #         SSH_USER: ${{ secrets.BACKEND_USERNAME }}
+  #         SSH_KEY: ${{ secrets.BACKEND_SSH_PRIVATE_KEY }}
+  #         SSH_HOST: ${{ secrets.BACKEND_HOST }}
 
-      - name: Update repo
-        run: ssh server 'cd /home/shared/llocsdebegur; git status; git pull'
+  #     - name: Update repo
+  #       run: ssh server 'cd /home/shared/llocsdebegur; git status; git pull'
 
-      - name: Build and deploy code
-        run: ssh server 'cd /home/shared/llocsdebegur/backend/; docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build'
+  #     - name: Build and deploy code
+  #       run: ssh server 'cd /home/shared/llocsdebegur/backend/; docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build'
 
-      - name: Docker cleanup
-        run: ssh server 'cd /home/shared/llocsdebegur/backend/; docker system prune'
+  #     - name: Docker cleanup
+  #       run: ssh server 'cd /home/shared/llocsdebegur/backend/; docker system prune'
