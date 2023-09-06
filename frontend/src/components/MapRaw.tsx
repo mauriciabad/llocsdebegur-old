@@ -13,6 +13,8 @@ import {
 } from 'react-leaflet'
 import IconMapPin from '/public/icon-map-pin.svg'
 import { useEffect, useState } from 'react'
+import 'leaflet.locatecontrol'
+import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css'
 
 type Location = {
   latitude: number
@@ -55,6 +57,12 @@ export default function Map({
 
   useEffect(() => {
     if (map) {
+      L.control
+        .locate({
+          flyTo: true,
+          showPopup: false,
+        })
+        .addTo(map)
       new ResizeObserver(() => map.invalidateSize()).observe(map.getContainer())
     }
   }, [map])
