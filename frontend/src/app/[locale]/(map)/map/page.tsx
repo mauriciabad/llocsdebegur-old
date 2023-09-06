@@ -87,7 +87,7 @@ function SubPage({
 
   return (
     <div className="h-[calc(100dvh)]!important grid h-screen grid-cols-[475px,auto]">
-      <aside className="z-10 h-full overflow-auto shadow-lg">
+      <aside className="z-10 hidden h-full overflow-auto shadow-lg md:block">
         <Header />
         <div className="p-2">
           <h1 className="mb-4 text-center text-2xl font-bold">{t('map')}</h1>
@@ -129,7 +129,7 @@ function SubPage({
           </ul>
         </div>
       </aside>
-      <main className="h-full">
+      <main className="col-span-full h-full md:col-span-1">
         <Map
           className="h-full"
           fullControl
