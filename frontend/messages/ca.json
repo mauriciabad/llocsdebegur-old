@@ -24,6 +24,8 @@
     "map": "Mapa"
   },
   "Explore": {
+    "expand": "Mostrar panell",
+    "collapse": "Amagar panell",
     "map": "Mapa"
   },
   "Spinner": {

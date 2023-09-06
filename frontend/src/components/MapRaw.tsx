@@ -12,6 +12,7 @@ import {
   TileLayer,
 } from 'react-leaflet'
 import IconMapPin from '/public/icon-map-pin.svg'
+import { useEffect, useState } from 'react'
 
 type Location = {
   latitude: number
@@ -50,6 +51,14 @@ export default function Map({
     text?: string
   }[]
 }) {
+  const [map, setMap] = useState<Leaflet.Map | null>(null)
+
+  useEffect(() => {
+    if (map) {
+      new ResizeObserver(() => map.invalidateSize()).observe(map.getContainer())
+    }
+  }, [map])
+
   return (
     <MapContainer
       center={toLatLang(location)}
@@ -57,7 +66,7 @@ export default function Map({
       scrollWheelZoom={fullControl}
       dragging={fullControl || !L.Browser.mobile}
       className={classNames(className, 'z-0 h-64 w-full')}
-      worldCopyJump={false}
+      ref={setMap}
     >
       {markers?.map(({ text, location: { latitude, longitude } }) => (
         <Marker

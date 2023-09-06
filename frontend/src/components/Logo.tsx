@@ -1,4 +1,3 @@
-
 export default function Logo({
   outline,
   className,
@@ -10,8 +9,7 @@ export default function Logo({
     <svg
       viewBox="0 0 24 24"
       fill="none"
-      className={className
-      }
+      className={className}
       aria-label="Logo"
     >
       {outline ? (
