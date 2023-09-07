@@ -13,12 +13,13 @@ export default function PlaceMarker({
     <div
       className={classNames(
         className,
+        '-ml-3.5 -mt-3.5 inline-block rounded-full border-2 border-white p-0.5 shadow',
         {
+          'bg-gray-700': !type,
           'bg-blue-500': type === 'beach',
           'bg-red-500': type === 'monument',
           'bg-yellow-500': type === 'viewpoint',
-        },
-        '-ml-3.5 -mt-3.5 inline-block rounded-full border-2 border-white bg-current p-0.5 text-gray-700 shadow'
+        }
       )}
     >
       <PlaceIcon type={type} className="text-white" size={20} />
