@@ -41,7 +41,7 @@ export default function MapPage({
           'grid-cols-1 md:grid-cols-[475px,auto]': isExpanded,
           'grid-cols-1 grid-rows-[auto,1fr]': !isExpanded,
         },
-        'h-[calc(100dvh)]!important grid h-screen'
+        'h-[calc(100svh)]!important grid h-screen'
       )}
     >
       {isExpanded && (
