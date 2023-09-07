@@ -21,7 +21,6 @@ import { divIcon } from 'leaflet'
 import { PlaceTypeSlug } from '@/lib/gql'
 import PlaceMarker from './map/PlaceMarker'
 
-
 type Location = {
   latitude: number
   longitude: number
@@ -96,7 +95,10 @@ export default function Map({
             icon={
               markerType
                 ? divIcon({
-                    html: renderToStaticMarkup(<PlaceMarker type={markerType} />),
+                    html: renderToStaticMarkup(
+                      <PlaceMarker type={markerType} />
+                    ),
+                    iconSize: [0, 0],
                   })
                 : new Icon({
                     iconUrl: IconMapPin.src,
