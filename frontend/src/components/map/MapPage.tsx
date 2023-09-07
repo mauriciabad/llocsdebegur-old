@@ -122,6 +122,7 @@ export default function MapPage({
               latitude: place.latitude,
               longitude: place.longitude,
             },
+            markerType: place.type?.slug,
           }))}
         />
 

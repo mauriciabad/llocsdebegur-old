@@ -16,6 +16,11 @@ import IconMapPin from '/public/icon-map-pin.svg'
 import { useEffect, useState } from 'react'
 import 'leaflet.locatecontrol'
 import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css'
+import { renderToStaticMarkup } from 'react-dom/server'
+import { divIcon } from 'leaflet'
+import { PlaceTypeSlug } from '@/lib/gql'
+import PlaceMarker from './map/PlaceMarker'
+
 
 type Location = {
   latitude: number
@@ -52,6 +57,7 @@ export default function Map({
   markers?: {
     location: Location
     text?: string
+    markerType?: PlaceTypeSlug
   }[]
 }) {
   const [map, setMap] = useState<Leaflet.Map | null>(null)
@@ -79,24 +85,30 @@ export default function Map({
       className={classNames(className, 'z-0 h-64 w-full')}
       ref={setMap}
     >
-      {markers?.map(({ text, location: { latitude, longitude } }) => (
-        <Marker
-          key={`${latitude}-${longitude}`}
-          position={{
-            lat: latitude,
-            lng: longitude,
-          }}
-          icon={
-            new Icon({
-              iconUrl: IconMapPin.src,
-              iconAnchor: [94 * 0.3 * 0.5, 128 * 0.3 * 1],
-              iconSize: [94 * 0.3, 128 * 0.3],
-            })
-          }
-        >
-          {text && <Popup>{text}</Popup>}
-        </Marker>
-      ))}
+      {markers?.map(
+        ({ text, location: { latitude, longitude }, markerType }) => (
+          <Marker
+            key={`${latitude}-${longitude}`}
+            position={{
+              lat: latitude,
+              lng: longitude,
+            }}
+            icon={
+              markerType
+                ? divIcon({
+                    html: renderToStaticMarkup(<PlaceMarker type={markerType} />),
+                  })
+                : new Icon({
+                    iconUrl: IconMapPin.src,
+                    iconAnchor: [94 * 0.3 * 0.5, 128 * 0.3 * 1],
+                    iconSize: [94 * 0.3, 128 * 0.3],
+                  })
+            }
+          >
+            {text && <Popup>{text}</Popup>}
+          </Marker>
+        )
+      )}
 
       <ZoomControl position="bottomright" />
 
