@@ -63,6 +63,19 @@ export default function Map({
 
   useEffect(() => {
     if (map) {
+      const resizeObserver = new ResizeObserver(() => map.invalidateSize())
+
+      const container = map.getContainer()
+      resizeObserver.observe(container)
+
+      return () => {
+        resizeObserver.unobserve(container)
+      }
+    }
+  }, [map])
+
+  useEffect(() => {
+    if (map) {
       L.control
         .locate({
           flyTo: true,
@@ -70,7 +83,6 @@ export default function Map({
           position: 'bottomright',
         })
         .addTo(map)
-      new ResizeObserver(() => map.invalidateSize()).observe(map.getContainer())
     }
   }, [map])
 
