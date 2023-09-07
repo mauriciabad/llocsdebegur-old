@@ -81,6 +81,7 @@ function Page({
           <Logo
             className="anima mb-4 h-24 animate-hover text-brand-600"
             outline
+            stroke={1.25}
           />
         </div>
         <h1 className="font-title text-6xl font-extrabold uppercase text-stone-800">
