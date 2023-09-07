@@ -32,7 +32,9 @@ export default function MapPage({
 }) {
   const t = useTranslations('Explore')
 
-  const [isExpanded, setIsExpanded] = useState(true)
+  const [isExpanded, setIsExpanded] = useState(
+    window ? window.innerWidth >= 768 : true
+  )
 
   return (
     <div
@@ -41,7 +43,7 @@ export default function MapPage({
           'grid-cols-1 md:grid-cols-[475px,auto]': isExpanded,
           'grid-cols-1 grid-rows-[auto,1fr]': !isExpanded,
         },
-        'h-[calc(100svh)]!important grid h-screen'
+        'grid h-screen'
       )}
     >
       {isExpanded && (
