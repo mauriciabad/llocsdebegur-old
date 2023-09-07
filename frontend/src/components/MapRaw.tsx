@@ -10,8 +10,16 @@ import {
   Marker,
   Popup,
   TileLayer,
+  ZoomControl,
 } from 'react-leaflet'
 import IconMapPin from '/public/icon-map-pin.svg'
+import { useEffect, useState } from 'react'
+import 'leaflet.locatecontrol'
+import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css'
+import { renderToStaticMarkup } from 'react-dom/server'
+import { divIcon } from 'leaflet'
+import { PlaceTypeSlug } from '@/lib/gql'
+import PlaceMarker from './map/PlaceMarker'
 
 type Location = {
   latitude: number
@@ -39,7 +47,7 @@ export default function Map({
   className,
   markers,
   fullControl,
-  zoom = 13,
+  zoom = 14,
 }: {
   location?: Location
   className?: string
@@ -48,37 +56,66 @@ export default function Map({
   markers?: {
     location: Location
     text?: string
+    markerType?: PlaceTypeSlug
   }[]
 }) {
+  const [map, setMap] = useState<Leaflet.Map | null>(null)
+
+  useEffect(() => {
+    if (map) {
+      L.control
+        .locate({
+          flyTo: true,
+          showPopup: false,
+          position: 'bottomright',
+        })
+        .addTo(map)
+      new ResizeObserver(() => map.invalidateSize()).observe(map.getContainer())
+    }
+  }, [map])
+
   return (
     <MapContainer
       center={toLatLang(location)}
       zoom={zoom}
+      zoomControl={false}
       scrollWheelZoom={fullControl}
       dragging={fullControl || !L.Browser.mobile}
       className={classNames(className, 'z-0 h-64 w-full')}
-      worldCopyJump={false}
+      ref={setMap}
     >
-      {markers?.map(({ text, location: { latitude, longitude } }) => (
-        <Marker
-          key={`${latitude}-${longitude}`}
-          position={{
-            lat: latitude,
-            lng: longitude,
-          }}
-          icon={
-            new Icon({
-              iconUrl: IconMapPin.src,
-              iconAnchor: [94 * 0.3 * 0.5, 128 * 0.3 * 1],
-              iconSize: [94 * 0.3, 128 * 0.3],
-            })
-          }
-        >
-          {text && <Popup>{text}</Popup>}
-        </Marker>
-      ))}
-      <LayersControl position="topright">
-        <LayersControl.BaseLayer checked name="Classic (ICGC)">
+      {markers?.map(
+        ({ text, location: { latitude, longitude }, markerType }) => (
+          <Marker
+            key={`${latitude}-${longitude}`}
+            position={{
+              lat: latitude,
+              lng: longitude,
+            }}
+            icon={
+              markerType
+                ? divIcon({
+                    html: renderToStaticMarkup(
+                      <PlaceMarker type={markerType} />
+                    ),
+                    iconSize: [0, 0],
+                  })
+                : new Icon({
+                    iconUrl: IconMapPin.src,
+                    iconAnchor: [94 * 0.3 * 0.5, 128 * 0.3 * 1],
+                    iconSize: [94 * 0.3, 128 * 0.3],
+                  })
+            }
+          >
+            {text && <Popup>{text}</Popup>}
+          </Marker>
+        )
+      )}
+
+      <ZoomControl position="bottomright" />
+
+      <LayersControl position="bottomleft">
+        <LayersControl.BaseLayer name="Classic (ICGC)">
           <TileLayer
             maxZoom={20}
             attribution="ICGC"
@@ -113,7 +150,7 @@ export default function Map({
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
         </LayersControl.BaseLayer>
-        <LayersControl.BaseLayer name="Satelite (IGN)">
+        <LayersControl.BaseLayer checked name="Satelite (IGN)">
           <TileLayer
             maxZoom={20}
             attribution="<a href='http://www.ign.es/'>IGN</a>"

@@ -1,13 +1,19 @@
 import { useTranslations } from 'next-intl'
 import Link from 'next-intl/link'
 import Logo from './Logo'
+import classNames from 'classnames'
 
-export default function Header() {
+export default function Header({ fullWidth = false }: { fullWidth?: boolean }) {
   const t = useTranslations('Header')
 
   return (
     <nav className="border-stone-200 bg-brand text-white">
-      <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
+      <div
+        className={classNames(
+          { 'max-w-screen-xl': !fullWidth },
+          'mx-auto flex flex-wrap items-center justify-between p-4'
+        )}
+      >
         <Link href="/" className="flex items-center">
           <Logo className="mr-3 h-10" />
           <span className="self-center whitespace-nowrap text-2xl font-bold">

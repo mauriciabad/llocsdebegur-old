@@ -5,6 +5,7 @@ import {
   Icon,
   IconCircle,
   IconFlag,
+  TablerIconsProps,
 } from '@tabler/icons-react'
 
 const iconsByPlaceType = {
@@ -15,12 +16,11 @@ const iconsByPlaceType = {
 
 export default function PlaceIcon({
   type,
-  className,
+  ...tablerIconsProps
 }: {
   type?: PlaceTypeSlug
-  className?: string
-}) {
+} & TablerIconsProps) {
   const Icon = type ? iconsByPlaceType[type] : IconCircle
 
-  return <Icon className={className} />
+  return <Icon {...tablerIconsProps} />
 }
