@@ -32,7 +32,7 @@ export default function MapPage({
 }) {
   const t = useTranslations('Explore')
 
-  const [isExpanded, setIsExpanded] = useState(true)
+  const [isExpanded, setIsExpanded] = useState(window.innerWidth >= 768)
 
   return (
     <div
