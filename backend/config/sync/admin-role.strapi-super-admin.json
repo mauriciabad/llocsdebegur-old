@@ -164,7 +164,10 @@
           "difficultyNotes",
           "mapPolygons",
           "relatedPlaces",
-          "hasBeenRelatedWith"
+          "hasBeenRelatedWith",
+          "visitedBy",
+          "favoritedBy",
+          "wantedToGoBy"
         ],
         "locales": [
           "en",
@@ -221,7 +224,10 @@
           "difficultyNotes",
           "mapPolygons",
           "relatedPlaces",
-          "hasBeenRelatedWith"
+          "hasBeenRelatedWith",
+          "visitedBy",
+          "favoritedBy",
+          "wantedToGoBy"
         ],
         "locales": [
           "en",
@@ -256,11 +262,68 @@
           "difficultyNotes",
           "mapPolygons",
           "relatedPlaces",
-          "hasBeenRelatedWith"
+          "hasBeenRelatedWith",
+          "visitedBy",
+          "favoritedBy",
+          "wantedToGoBy"
         ],
         "locales": [
           "en",
           "ca"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::user-profile.user-profile",
+      "properties": {
+        "fields": [
+          "biography",
+          "user",
+          "visitedPlaces",
+          "favoritePlaces",
+          "wantToGoPlaces",
+          "name",
+          "isPublic"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::user-profile.user-profile",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::user-profile.user-profile",
+      "properties": {
+        "fields": [
+          "biography",
+          "user",
+          "visitedPlaces",
+          "favoritePlaces",
+          "wantToGoPlaces",
+          "name",
+          "isPublic"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::user-profile.user-profile",
+      "properties": {
+        "fields": [
+          "biography",
+          "user",
+          "visitedPlaces",
+          "favoritePlaces",
+          "wantToGoPlaces",
+          "name",
+          "isPublic"
         ]
       },
       "conditions": []
@@ -464,7 +527,8 @@
           "confirmationToken",
           "confirmed",
           "blocked",
-          "role"
+          "role",
+          "user_profile"
         ]
       },
       "conditions": []
@@ -488,7 +552,8 @@
           "confirmationToken",
           "confirmed",
           "blocked",
-          "role"
+          "role",
+          "user_profile"
         ]
       },
       "conditions": []
@@ -506,7 +571,8 @@
           "confirmationToken",
           "confirmed",
           "blocked",
-          "role"
+          "role",
+          "user_profile"
         ]
       },
       "conditions": []

@@ -19,6 +19,12 @@
       "action": "api::place.place.findOne"
     },
     {
+      "action": "api::user-profile.user-profile.find"
+    },
+    {
+      "action": "api::user-profile.user-profile.findOne"
+    },
+    {
       "action": "plugin::i18n.locales.listLocales"
     },
     {

@@ -24,6 +24,14 @@ export default function Header({ fullWidth = false }: { fullWidth?: boolean }) {
           <ul className="mt-4 flex flex-col rounded-lg border border-stone-100 p-4 font-medium sm:mt-0 sm:flex-row sm:space-x-8 sm:border-0 sm:p-0">
             <li>
               <Link
+                href="/me"
+                className="block rounded px-4 py-2 hover:bg-white/20"
+              >
+                {t('profile')}
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/map"
                 className="block rounded px-4 py-2 hover:bg-white/20"
               >

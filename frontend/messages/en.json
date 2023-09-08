@@ -21,7 +21,12 @@
   "Header": {
     "title": "Begur's places",
     "home": "Home",
+    "profile": "Profile",
     "map": "Map"
+  },
+  "Profile": {
+    "profile": "Profile",
+    "login": "Log in"
   },
   "Explore": {
     "expand": "Show panel",

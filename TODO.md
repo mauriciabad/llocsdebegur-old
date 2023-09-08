@@ -1,10 +1,18 @@
 # TO DOs
 
+## Users
+
+- [ ] Users can mark places as visited
+- [ ] Register, login, delete users
+- [ ] User page
+- [ ] Users can earn badges
+
 ## UI
 
 - [ ] Real navbar
-- [ ] Explore page map
-- [ ] Map in /place page with all
+  - lang selector
+  - collapsable menu
+- [ ] Filters in map page
 
 ## Dev Exp
 

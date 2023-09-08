@@ -21,7 +21,12 @@
   "Header": {
     "title": "Llocs de Begur",
     "home": "Inici",
+    "profile": "Perfil",
     "map": "Mapa"
+  },
+  "Profile": {
+    "profile": "Perfil",
+    "login": "Iniciar sessió"
   },
   "Explore": {
     "expand": "Mostrar panell",
