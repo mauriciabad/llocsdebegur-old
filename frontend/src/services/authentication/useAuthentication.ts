@@ -5,7 +5,7 @@ import {
   graphql,
   simplifyResponse,
 } from '@/lib/gql'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
 const getUserProfileQuery = graphql(`
@@ -86,10 +86,7 @@ export type User = {
 }
 
 export function useAuthentication() {
-  const [user, setUser] = useLocalStorage<User | null>(
-    'authentication-user',
-    null
-  )
+  const [user, setUser] = useLocalStorage<User | null>('auth-user', null)
 
   async function login({
     identifier,
@@ -114,24 +111,27 @@ export function useAuthentication() {
     })
   }
 
-  const [userProfile, setUserProfile] = useState<NonNullable<
+  const [userProfile, setUserProfile] = useLocalStorage<NonNullable<
     SimpleResponse<GetUserProfileQuery>
-  > | null>(null)
+  > | null>('auth-user-profile', null)
 
   useEffect(() => {
-    if (user?.id) {
-      gqlClient()
-        .query({
-          query: getUserProfileQuery,
-          variables: { userId: user.id },
-        })
-        .then(({ data: rawUserProfile }) => {
-          const newUserProfile = simplifyResponse(rawUserProfile)
-          if (!newUserProfile) throw new Error('Missing user-profile')
-          setUserProfile(newUserProfile)
-        })
+    if (!user) {
+      setUserProfile(null)
+      return
     }
-  }, [user])
+
+    gqlClient()
+      .query({
+        query: getUserProfileQuery,
+        variables: { userId: user.id },
+      })
+      .then(({ data: rawUserProfile }) => {
+        const newUserProfile = simplifyResponse(rawUserProfile)
+        if (!newUserProfile) throw new Error('Missing user-profile')
+        setUserProfile(newUserProfile)
+      })
+  }, [user, setUserProfile])
 
   return {
     user,
