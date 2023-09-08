@@ -95,47 +95,49 @@ export function useAuthentication() {
     identifier: string
     password: string
   }) {
-    const { data: rawLoginInfo } = await gqlClient().mutate({
-      mutation: loginMutation,
-      variables: { identifier, password },
-    })
+    try {
+      const { data: rawLoginInfo } = await gqlClient().mutate({
+        mutation: loginMutation,
+        variables: { identifier, password },
+      })
 
-    const loginInfo = rawLoginInfo?.login
+      const loginInfo = rawLoginInfo?.login
 
-    if (!loginInfo?.jwt) throw new Error('Missing JWT after login')
+      if (!loginInfo?.jwt) throw new Error('Missing JWT after login')
+      const newUser: User = {
+        username: loginInfo.user.username,
+        jwt: loginInfo.jwt,
+        id: loginInfo.user.id,
+      }
 
-    setUser({
-      username: loginInfo.user.username,
-      jwt: loginInfo.jwt,
-      id: loginInfo.user.id,
-    })
+      setUser(newUser)
+
+      const { data: rawUserProfile } = await gqlClient().query({
+        query: getUserProfileQuery,
+        variables: { userId: newUser.id },
+      })
+      const newUserProfile = simplifyResponse(rawUserProfile)?.[0]
+      if (!newUserProfile) throw new Error('Missing user-profile')
+      setUserProfile(newUserProfile)
+    } catch (error) {
+      logout()
+      throw error
+    }
+  }
+
+  function logout() {
+    setUser(null)
+    setUserProfile(null)
   }
 
   const [userProfile, setUserProfile] = useLocalStorage<
     NonNullable<SimpleResponse<GetUserProfileQuery>>[0] | null
   >('auth-user-profile', null)
 
-  useEffect(() => {
-    if (!user) {
-      setUserProfile(null)
-      return
-    }
-
-    gqlClient()
-      .query({
-        query: getUserProfileQuery,
-        variables: { userId: user.id },
-      })
-      .then(({ data: rawUserProfile }) => {
-        const newUserProfile = simplifyResponse(rawUserProfile)?.[0]
-        if (!newUserProfile) throw new Error('Missing user-profile')
-        setUserProfile(newUserProfile)
-      })
-  }, [user, setUserProfile])
-
   return {
     user,
     login,
     userProfile,
+    logout,
   }
 }

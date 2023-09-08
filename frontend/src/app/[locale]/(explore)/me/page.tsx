@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl'
 
 export default function Page() {
   const t = useTranslations('Profile')
-  const { user, login, userProfile } = useAuthentication()
+  const { user, login, userProfile, logout } = useAuthentication()
 
   async function handleLogin() {
     return login({
@@ -24,18 +24,26 @@ export default function Page() {
         <h2 className="mb-4 text-center font-title text-4xl font-bold capitalize text-stone-800">
           {t('profile')}
         </h2>
-        {user ? (
-          <CodeBox data={userProfile} />
-        ) : (
-          <div className="flex justify-center">
+
+        <div className="mb-4 flex justify-center">
+          {user ? (
+            <button
+              onClick={logout}
+              className="inline-block rounded-full bg-brand-600 px-8 py-3 uppercase leading-none text-white outline-none focus-visible:ring-2 focus-visible:ring-stone-700 focus-visible:ring-offset-1 group-hover:bg-brand-800"
+            >
+              {t('logout')}
+            </button>
+          ) : (
             <button
               onClick={handleLogin}
               className="inline-block rounded-full bg-brand-600 px-8 py-3 uppercase leading-none text-white outline-none focus-visible:ring-2 focus-visible:ring-stone-700 focus-visible:ring-offset-1 group-hover:bg-brand-800"
             >
               {t('login')}
             </button>
-          </div>
-        )}
+          )}
+        </div>
+
+        {userProfile && <CodeBox data={userProfile} />}
       </main>
     </>
   )

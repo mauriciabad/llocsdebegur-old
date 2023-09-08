@@ -26,7 +26,8 @@
   },
   "Profile": {
     "profile": "Profile",
-    "login": "Log in"
+    "login": "Log in",
+    "logout": "Log out"
   },
   "Explore": {
     "expand": "Show panel",

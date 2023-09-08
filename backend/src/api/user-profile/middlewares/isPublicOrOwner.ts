@@ -13,10 +13,11 @@ export default (config, { strapi }: { strapi: Strapi }) => {
     );
 
     if (!entry) return next();
+    if (entry.isPublic) return next();
 
     if (user.id !== entry.user?.id) {
       return ctx.unauthorized(
-        "This action is unauthorized. You must be the owner of the user-profile."
+        "This action is unauthorized. You must be the owner of the user-profile or it has to be public."
       );
     }
 

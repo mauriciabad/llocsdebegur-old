@@ -26,7 +26,8 @@
   },
   "Profile": {
     "profile": "Perfil",
-    "login": "Iniciar sessió"
+    "login": "Iniciar sessió",
+    "logout": "Tencar sessió"
   },
   "Explore": {
     "expand": "Mostrar panell",
