@@ -5,7 +5,6 @@ import {
   graphql,
   simplifyResponse,
 } from '@/lib/gql'
-import { useEffect } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
 const getUserProfileQuery = graphql(`
