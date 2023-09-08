@@ -111,9 +111,9 @@ export function useAuthentication() {
     })
   }
 
-  const [userProfile, setUserProfile] = useLocalStorage<NonNullable<
-    SimpleResponse<GetUserProfileQuery>
-  > | null>('auth-user-profile', null)
+  const [userProfile, setUserProfile] = useLocalStorage<
+    NonNullable<SimpleResponse<GetUserProfileQuery>>[0] | null
+  >('auth-user-profile', null)
 
   useEffect(() => {
     if (!user) {
@@ -127,7 +127,7 @@ export function useAuthentication() {
         variables: { userId: user.id },
       })
       .then(({ data: rawUserProfile }) => {
-        const newUserProfile = simplifyResponse(rawUserProfile)
+        const newUserProfile = simplifyResponse(rawUserProfile)?.[0]
         if (!newUserProfile) throw new Error('Missing user-profile')
         setUserProfile(newUserProfile)
       })
