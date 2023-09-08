@@ -20,10 +20,23 @@ const getUserProfileQuery = graphql(`
               attributes {
                 slug
                 name
+                description
+                cover {
+                  data {
+                    attributes {
+                      url
+                      height
+                      width
+                      alternativeText
+                      placeholder
+                    }
+                  }
+                }
                 type {
                   data {
                     attributes {
                       slug
+                      name
                     }
                   }
                 }
@@ -35,10 +48,23 @@ const getUserProfileQuery = graphql(`
               attributes {
                 slug
                 name
+                description
+                cover {
+                  data {
+                    attributes {
+                      url
+                      height
+                      width
+                      alternativeText
+                      placeholder
+                    }
+                  }
+                }
                 type {
                   data {
                     attributes {
                       slug
+                      name
                     }
                   }
                 }
@@ -50,10 +76,23 @@ const getUserProfileQuery = graphql(`
               attributes {
                 slug
                 name
+                description
+                cover {
+                  data {
+                    attributes {
+                      url
+                      height
+                      width
+                      alternativeText
+                      placeholder
+                    }
+                  }
+                }
                 type {
                   data {
                     attributes {
                       slug
+                      name
                     }
                   }
                 }
@@ -111,15 +150,24 @@ export function useAuthentication() {
 
       setUser(newUser)
 
+      await updateUserProfile(newUser.id)
+    } catch (error) {
+      setUser(null)
+      throw error
+    }
+  }
+
+  async function updateUserProfile(userId: User['id']) {
+    try {
       const { data: rawUserProfile } = await gqlClient().query({
         query: getUserProfileQuery,
-        variables: { userId: newUser.id },
+        variables: { userId },
       })
       const newUserProfile = simplifyResponse(rawUserProfile)?.[0]
       if (!newUserProfile) throw new Error('Missing user-profile')
       setUserProfile(newUserProfile)
     } catch (error) {
-      logout()
+      setUserProfile(null)
       throw error
     }
   }

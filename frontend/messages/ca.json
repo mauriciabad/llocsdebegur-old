@@ -27,7 +27,16 @@
   "Profile": {
     "profile": "Perfil",
     "login": "Iniciar sessió",
-    "logout": "Tencar sessió"
+    "logout": "Tencar sessió",
+    "profile-details": "Detalls del perfil",
+    "username": "Nom d'usuari",
+    "biography": "Biografia",
+    "name": "Nom",
+    "visibility": "Visiblitat",
+    "visited-places": "Llocs visitats",
+    "favorite-places": "Llocs preferits",
+    "want-to-go-places": "Locs per anar",
+    "no-places-yet": "No places yet"
   },
   "Explore": {
     "expand": "Mostrar panell",

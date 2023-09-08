@@ -27,7 +27,16 @@
   "Profile": {
     "profile": "Profile",
     "login": "Log in",
-    "logout": "Log out"
+    "logout": "Log out",
+    "profile-details": "Profile details",
+    "username": "Username",
+    "biography": "Biography",
+    "name": "Name",
+    "visibility": "Visibility",
+    "visited-places": "Visited places",
+    "favorite-places": "Favorite places",
+    "want-to-go-places": "Want to go places",
+    "no-places-yet": "No places yet"
   },
   "Explore": {
     "expand": "Show panel",
