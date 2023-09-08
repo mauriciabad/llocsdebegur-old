@@ -19,6 +19,7 @@ const getPlaceQuery = graphql(`
       data {
         attributes {
           name
+          slug
           content
           description
           latitude

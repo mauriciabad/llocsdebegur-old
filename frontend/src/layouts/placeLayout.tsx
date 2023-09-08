@@ -10,6 +10,7 @@ import PlaceCustomData, {
 import ReactMarkdown from 'react-markdown'
 import ViewInGoogleMaps from '@/components/ViewInGoogleMaps'
 import Link from 'next-intl/link'
+import UserProfilePlacesAddButtons from '@/components/UserProfilePlacesAddButtons'
 
 export default function PlaceLayout({
   place,
@@ -18,6 +19,7 @@ export default function PlaceLayout({
   place: DeepPick<
     SimpleType<Place>,
     | 'name'
+    | 'slug'
     | 'content'
     | 'description'
     | 'latitude'
@@ -51,6 +53,10 @@ export default function PlaceLayout({
         <h1 className="text-center font-title text-4xl font-bold text-stone-800">
           {place.name}
         </h1>
+        <UserProfilePlacesAddButtons
+          placeSlug={place.slug}
+          className="mt-4 justify-center"
+        />
         <p className="mx-auto mb-4 mt-4 max-w-[80ch] text-left">
           {place.description}
         </p>
