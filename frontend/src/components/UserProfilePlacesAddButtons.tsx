@@ -36,7 +36,7 @@ export default function UserProfilePlacesAddButtons({
   }
   return (
     <>
-      <div className={classNames(className, 'flex gap-4')}>
+      <div className={classNames(className, 'flex flex-wrap gap-4')}>
         {user ? (
           <>
             <button
