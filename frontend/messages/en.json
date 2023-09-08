@@ -7,7 +7,8 @@
   "PlaceLayout": {
     "map": "Map",
     "links": "Links",
-    "data": "Data"
+    "data": "Data",
+    "explore-full-map": "Explore full map"
   },
   "MonumentView": {
     "year": "Year {year}",

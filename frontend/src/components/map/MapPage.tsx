@@ -92,9 +92,9 @@ export default function MapPage({
         />
 
         {!isExpanded && (
-          <div className="pointer-events-none fixed bottom-1 left-0 right-0 z-20 flex justify-center">
+          <div className="pointer-events-none fixed bottom-2 left-0 right-0 z-20 flex justify-center">
             <button
-              className="pointer-events-auto mb-2 mr-2 rounded-full border-2 border-brand-200 bg-white px-5 py-2.5 text-center font-title text-sm font-bold uppercase text-brand-800 shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-800"
+              className="pointer-events-auto flex h-12 items-center rounded-full border-2 border-black/20 bg-white bg-clip-padding px-5 text-center font-title text-sm font-bold uppercase leading-none text-brand-800 shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-800"
               onClick={() => {
                 setIsExpanded(true)
               }}
