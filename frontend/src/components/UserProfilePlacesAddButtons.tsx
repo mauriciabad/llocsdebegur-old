@@ -43,7 +43,7 @@ export default function UserProfilePlacesAddButtons({
               onClick={() => addTo('visitedPlaces')}
               className={classNames(
                 {
-                  'border-blue-200 bg-blue-50 text-blue-950': isInVisitedPlaces,
+                  'border-blue-300   text-blue-950': isInVisitedPlaces,
                   'border-stone-200 bg-stone-50 text-stone-950':
                     !isInVisitedPlaces,
                 },
@@ -64,10 +64,9 @@ export default function UserProfilePlacesAddButtons({
               onClick={() => addTo('favoritePlaces')}
               className={classNames(
                 {
-                  'border-pink-200 bg-pink-50 text-pink-950':
-                    isInFavoritePlaces,
+                  'border-pink-300   text-pink-950': isInFavoritePlaces,
                   'border-stone-200 bg-stone-50 text-stone-950':
-                    isInFavoritePlaces,
+                    !isInFavoritePlaces,
                 },
                 'flex gap-3 rounded-lg border-2 px-3 py-2 font-medium'
               )}
@@ -88,8 +87,7 @@ export default function UserProfilePlacesAddButtons({
               onClick={() => addTo('wantToGoPlaces')}
               className={classNames(
                 {
-                  'border-green-200 bg-green-50 text-green-950':
-                    isInWantToGoPlaces,
+                  'border-green-300   text-green-950': isInWantToGoPlaces,
                   'border-stone-200 bg-stone-50 text-stone-950':
                     !isInWantToGoPlaces,
                 },
