@@ -4,7 +4,6 @@
 
 - [ ] Users can mark places as visited
 - [ ] Register, login, delete users
-- [ ] User page
 - [ ] Users can earn badges
 
 ## UI
@@ -13,6 +12,8 @@
   - lang selector
   - collapsable menu
 - [ ] Filters in map page
+- [ ] User page
+- [ ] Place list display marked
 
 ## Dev Exp
 
