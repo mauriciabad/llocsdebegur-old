@@ -26,6 +26,13 @@ const getUserProfileQuery = graphql(`
               attributes {
                 slug
                 name
+                type {
+                  data {
+                    attributes {
+                      slug
+                    }
+                  }
+                }
               }
             }
           }
@@ -34,6 +41,13 @@ const getUserProfileQuery = graphql(`
               attributes {
                 slug
                 name
+                type {
+                  data {
+                    attributes {
+                      slug
+                    }
+                  }
+                }
               }
             }
           }
@@ -42,6 +56,13 @@ const getUserProfileQuery = graphql(`
               attributes {
                 slug
                 name
+                type {
+                  data {
+                    attributes {
+                      slug
+                    }
+                  }
+                }
               }
             }
           }
