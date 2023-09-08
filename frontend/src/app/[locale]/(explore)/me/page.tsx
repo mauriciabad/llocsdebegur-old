@@ -1,100 +1,13 @@
 'use client'
 
-import {
-  graphql,
-  gqlClient,
-  simplifyResponse,
-  SimpleResponse,
-  GetUserProfileQuery,
-} from '@/lib/gql'
 import CodeBox from '@/components/CodeBox'
 import { useAuthentication } from '@/services/authentication'
-import { useState, useEffect } from 'react'
 import { IconUser } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
-const getUserProfileQuery = graphql(`
-  query getUserProfile($userId: ID!) {
-    userProfiles(filters: { user: { id: { eq: $userId } } }) {
-      data {
-        attributes {
-          biography
-          name
-          isPublic
-          visitedPlaces {
-            data {
-              attributes {
-                slug
-                name
-                type {
-                  data {
-                    attributes {
-                      slug
-                    }
-                  }
-                }
-              }
-            }
-          }
-          favoritePlaces {
-            data {
-              attributes {
-                slug
-                name
-                type {
-                  data {
-                    attributes {
-                      slug
-                    }
-                  }
-                }
-              }
-            }
-          }
-          wantToGoPlaces {
-            data {
-              attributes {
-                slug
-                name
-                type {
-                  data {
-                    attributes {
-                      slug
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`)
-
 export default function Page() {
   const t = useTranslations('Profile')
-  const { user, login } = useAuthentication()
-
-  const [userProfile, setUserProfile] = useState<NonNullable<
-    SimpleResponse<GetUserProfileQuery>
-  > | null>(null)
-
-  useEffect(() => {
-    if (user?.id) {
-      gqlClient()
-        .query({
-          query: getUserProfileQuery,
-          variables: { userId: user.id },
-        })
-        .then(({ data: rawUserProfile }) => {
-          if (!rawUserProfile) return
-          const newUserProfile = simplifyResponse(rawUserProfile)
-          if (!newUserProfile) return
-          setUserProfile(newUserProfile)
-        })
-    }
-  }, [user])
+  const { user, login, userProfile } = useAuthentication()
 
   async function handleLogin() {
     return login({

@@ -1,8 +1,74 @@
-import { gqlClient, graphql } from '@/lib/gql'
+import {
+  GetUserProfileQuery,
+  SimpleResponse,
+  gqlClient,
+  graphql,
+  simplifyResponse,
+} from '@/lib/gql'
+import { useState, useEffect } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
+const getUserProfileQuery = graphql(`
+  query getUserProfile($userId: ID!) {
+    userProfiles(filters: { user: { id: { eq: $userId } } }) {
+      data {
+        attributes {
+          biography
+          name
+          isPublic
+          visitedPlaces {
+            data {
+              attributes {
+                slug
+                name
+                type {
+                  data {
+                    attributes {
+                      slug
+                    }
+                  }
+                }
+              }
+            }
+          }
+          favoritePlaces {
+            data {
+              attributes {
+                slug
+                name
+                type {
+                  data {
+                    attributes {
+                      slug
+                    }
+                  }
+                }
+              }
+            }
+          }
+          wantToGoPlaces {
+            data {
+              attributes {
+                slug
+                name
+                type {
+                  data {
+                    attributes {
+                      slug
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`)
+
 const loginMutation = graphql(`
-  mutation loginMutation($identifier: String!, $password: String!) {
+  mutation login($identifier: String!, $password: String!) {
     login(input: { identifier: $identifier, password: $password }) {
       jwt
       user {
@@ -48,8 +114,28 @@ export function useAuthentication() {
     })
   }
 
+  const [userProfile, setUserProfile] = useState<NonNullable<
+    SimpleResponse<GetUserProfileQuery>
+  > | null>(null)
+
+  useEffect(() => {
+    if (user?.id) {
+      gqlClient()
+        .query({
+          query: getUserProfileQuery,
+          variables: { userId: user.id },
+        })
+        .then(({ data: rawUserProfile }) => {
+          const newUserProfile = simplifyResponse(rawUserProfile)
+          if (!newUserProfile) throw new Error('Missing user-profile')
+          setUserProfile(newUserProfile)
+        })
+    }
+  }, [user])
+
   return {
     user,
     login,
+    userProfile,
   }
 }
