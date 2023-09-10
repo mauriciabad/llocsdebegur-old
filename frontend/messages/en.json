@@ -27,6 +27,7 @@
   },
   "Profile": {
     "profile": "Profile",
+    "my-profile": "My profile",
     "login": "Log in",
     "logout": "Log out",
     "profile-details": "Profile details",

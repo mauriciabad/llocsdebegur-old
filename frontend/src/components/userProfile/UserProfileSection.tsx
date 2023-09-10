@@ -7,14 +7,13 @@ import {
   nonNullable,
   simplifyResponse,
 } from '@/lib/gql'
-import { Session } from 'next-auth'
 import { useTranslations } from 'next-intl'
 import PlaceListLarge from '../PlaceListLarge'
 import { DeepPick } from '@/lib/types'
 
 const getUserProfileQuery = graphql(`
-  query getUserProfile($userId: ID!) {
-    userProfiles(filters: { user: { id: { eq: $userId } } }) {
+  query getUserProfile($username: String!) {
+    userProfiles(filters: { user: { username: { eq: $username } } }) {
       data {
         attributes {
           biography
@@ -111,27 +110,28 @@ const getUserProfileQuery = graphql(`
 `)
 
 export default async function UserProfileSection({
-  user,
+  username,
 }: {
-  user: Session['user']
+  username: string
 }) {
   const { data: rawUserProfile } = await gqlClient().query({
     query: getUserProfileQuery,
-    variables: { userId: user.id },
+    variables: { username },
   })
+
   const userProfile = simplifyResponse(rawUserProfile)?.[0]
   if (!userProfile) throw new Error('Missing user-profile')
 
-  return <InnerComponent user={user} userProfile={userProfile} />
+  return <InnerComponent username={username} userProfile={userProfile} />
 }
 
 type PlaceListsKey = 'visitedPlaces' | 'favoritePlaces' | 'wantToGoPlaces'
 
 async function InnerComponent({
-  user,
+  username,
   userProfile,
 }: {
-  user: Session['user']
+  username: string
   userProfile: DeepPick<
     SimpleType<UserProfile>,
     | 'biography'
@@ -153,7 +153,7 @@ async function InnerComponent({
         {t('profile-details')}
       </h3>
       <p>
-        {t('username')}: @{user.username}
+        {t('username')}: @{username}
       </p>
       <p>
         {t('biography')}: {userProfile.biography}

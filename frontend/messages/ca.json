@@ -27,6 +27,7 @@
   },
   "Profile": {
     "profile": "Perfil",
+    "my-profile": "El meu perfil",
     "login": "Iniciar sessió",
     "logout": "Tencar sessió",
     "profile-details": "Detalls del perfil",
