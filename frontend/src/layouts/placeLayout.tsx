@@ -10,7 +10,7 @@ import PlaceCustomData, {
 import ReactMarkdown from 'react-markdown'
 import ViewInGoogleMaps from '@/components/ViewInGoogleMaps'
 import Link from 'next-intl/link'
-import UserProfilePlacesAddButtons from '@/components/UserProfilePlacesAddButtons'
+import UserProfilePlacesAddButtons from '@/components/UserProfilePlacesAddButtons/UserProfilePlacesAddButtons'
 import { ImageProperties } from '@/components/StrapiImage'
 
 export default function PlaceLayout({
