@@ -192,12 +192,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "username",
-        "email",
-        "confirmed"
-      ],
       "edit": [
         [
           {
@@ -212,29 +206,33 @@
         [
           {
             "name": "password",
-            "size": 6
+            "size": 4
           },
           {
             "name": "confirmed",
             "size": 4
-          }
-        ],
-        [
+          },
           {
             "name": "blocked",
             "size": 4
-          },
-          {
-            "name": "role",
-            "size": 6
           }
         ],
         [
+          {
+            "name": "role",
+            "size": 6
+          },
           {
             "name": "user_profile",
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "username",
+        "email",
+        "confirmed"
       ]
     }
   },

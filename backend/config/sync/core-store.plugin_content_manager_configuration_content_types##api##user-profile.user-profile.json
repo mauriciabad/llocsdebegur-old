@@ -152,49 +152,47 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "biography",
-        "createdAt",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
+            "name": "name",
+            "size": 8
+          },
+          {
+            "name": "isPublic",
+            "size": 4
+          }
+        ],
+        [
+          {
             "name": "biography",
-            "size": 6
+            "size": 8
           },
           {
             "name": "user",
-            "size": 6
+            "size": 4
           }
         ],
         [
           {
             "name": "visitedPlaces",
-            "size": 6
+            "size": 4
           },
           {
             "name": "favoritePlaces",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "wantToGoPlaces",
-            "size": 6
+            "size": 4
           },
           {
-            "name": "name",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "isPublic",
+            "name": "wantToGoPlaces",
             "size": 4
           }
         ]
+      ],
+      "list": [
+        "id",
+        "biography",
+        "createdAt",
+        "updatedAt"
       ]
     }
   },

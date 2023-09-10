@@ -13,6 +13,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import { notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
 import PlaceListLarge from '@/components/PlaceListLarge'
+import { ImageProperties } from '@/components/StrapiImage'
 
 const getPlaceTypeQuery = graphql(`
   query getPlaceType($locale: I18NLocaleCode!, $slug: String!) {
@@ -106,11 +107,7 @@ function SubPage({
     | 'name'
     | 'slug'
     | 'description'
-    | 'cover.url'
-    | 'cover.height'
-    | 'cover.width'
-    | 'cover.alternativeText'
-    | 'cover.placeholder'
+    | `cover.${ImageProperties}`
     | 'type.slug'
     | 'type.name'
   >[]

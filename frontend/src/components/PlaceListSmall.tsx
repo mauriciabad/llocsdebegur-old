@@ -3,6 +3,7 @@ import PlaceIcon from './PlaceIcon'
 import StrapiImage from './StrapiImage'
 import { SimpleType, Place } from '@/lib/gql'
 import { DeepPick } from '@/lib/types'
+import { ImageProperties } from '@/components/StrapiImage'
 
 export default function PlaceListSmall({
   places,
@@ -14,11 +15,7 @@ export default function PlaceListSmall({
     | 'name'
     | 'slug'
     | 'description'
-    | 'cover.url'
-    | 'cover.height'
-    | 'cover.width'
-    | 'cover.alternativeText'
-    | 'cover.placeholder'
+    | `cover.${ImageProperties}`
     | 'type.slug'
     | 'type.name'
   >[]

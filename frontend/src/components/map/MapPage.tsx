@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import classNames from 'classnames'
 import PlaceListSmall from '@/components/PlaceListSmall'
+import { ImageProperties } from '@/components/StrapiImage'
 
 export default function MapPage({
   places,
@@ -21,11 +22,7 @@ export default function MapPage({
     | 'latitude'
     | 'longitude'
     | 'description'
-    | 'cover.url'
-    | 'cover.height'
-    | 'cover.width'
-    | 'cover.alternativeText'
-    | 'cover.placeholder'
+    | `cover.${ImageProperties}`
   >[]
 }) {
   const t = useTranslations('Explore')

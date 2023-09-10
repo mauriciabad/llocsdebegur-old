@@ -2,19 +2,23 @@ import { BACKEND_URL } from '@/constants'
 import classNames from 'classnames'
 import Image from 'next/image'
 
+type ImageObject = {
+  url: string
+  width?: number | null
+  height?: number | null
+  alternativeText?: string | null
+  placeholder?: string | null
+}
+
+export type ImageProperties = keyof ImageObject
+
 export default function StrapiImage({
   image,
   className,
   height,
   width,
 }: {
-  image: {
-    url: string
-    width?: number | null
-    height?: number | null
-    alternativeText?: string | null
-    placeholder?: string | null
-  }
+  image: ImageObject
   height?: number
   width?: number
   className?: string

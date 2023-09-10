@@ -11,6 +11,7 @@ import ReactMarkdown from 'react-markdown'
 import ViewInGoogleMaps from '@/components/ViewInGoogleMaps'
 import Link from 'next-intl/link'
 import UserProfilePlacesAddButtons from '@/components/UserProfilePlacesAddButtons'
+import { ImageProperties } from '@/components/StrapiImage'
 
 export default function PlaceLayout({
   place,
@@ -26,11 +27,7 @@ export default function PlaceLayout({
     | 'longitude'
     | 'googleMapsPlaceId'
     | 'type.slug'
-    | 'cover.url'
-    | 'cover.height'
-    | 'cover.width'
-    | 'cover.alternativeText'
-    | 'cover.placeholder'
+    | `cover.${ImageProperties}`
   >
   customData?: PlaceCustomDataArray
 }) {
