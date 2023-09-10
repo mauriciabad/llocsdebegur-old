@@ -9,6 +9,9 @@ import PlaceCustomData, {
 } from '@/components/PlaceCustomData'
 import ReactMarkdown from 'react-markdown'
 import ViewInGoogleMaps from '@/components/ViewInGoogleMaps'
+import Link from 'next-intl/link'
+import UserProfilePlacesAddButtons from '@/components/UserProfilePlacesAddButtons/UserProfilePlacesAddButtons'
+import { ImageProperties } from '@/components/StrapiImage'
 
 export default function PlaceLayout({
   place,
@@ -17,17 +20,14 @@ export default function PlaceLayout({
   place: DeepPick<
     SimpleType<Place>,
     | 'name'
+    | 'slug'
     | 'content'
     | 'description'
     | 'latitude'
     | 'longitude'
     | 'googleMapsPlaceId'
     | 'type.slug'
-    | 'cover.url'
-    | 'cover.height'
-    | 'cover.width'
-    | 'cover.alternativeText'
-    | 'cover.placeholder'
+    | `cover.${ImageProperties}`
   >
   customData?: PlaceCustomDataArray
 }) {
@@ -50,13 +50,17 @@ export default function PlaceLayout({
         <h1 className="text-center font-title text-4xl font-bold text-stone-800">
           {place.name}
         </h1>
+        <UserProfilePlacesAddButtons
+          placeSlug={place.slug}
+          className="mt-4 justify-center"
+        />
         <p className="mx-auto mb-4 mt-4 max-w-[80ch] text-left">
           {place.description}
         </p>
         <h2 className="mb-2 mt-8 text-center font-title text-2xl font-bold leading-none text-stone-800">
           {t('map')}
         </h2>
-        <div className="overflow-hidden rounded-xl border border-stone-300 bg-stone-100">
+        <div className="relative h-64 overflow-hidden rounded-xl border border-stone-300 bg-stone-100">
           <Map
             location={{
               latitude: place.latitude,
@@ -72,6 +76,14 @@ export default function PlaceLayout({
               },
             ]}
           />
+          <div className="pointer-events-none absolute bottom-2 left-0 right-0 z-10 flex justify-center">
+            <Link
+              href="/map"
+              className="pointer-events-auto flex h-12 items-center rounded-full border-2 border-black/20 bg-white bg-clip-padding px-5 text-center font-title text-sm font-bold uppercase leading-none text-brand-800 shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-800"
+            >
+              {t('explore-full-map')}
+            </Link>
+          </div>
         </div>
 
         <div className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(theme(spacing.64),1fr))] items-stretch gap-6">

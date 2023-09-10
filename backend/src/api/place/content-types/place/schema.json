@@ -231,6 +231,24 @@
       "relation": "manyToMany",
       "target": "api::place.place",
       "inversedBy": "relatedPlaces"
+    },
+    "visitedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-profile.user-profile",
+      "inversedBy": "visitedPlaces"
+    },
+    "favoritedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-profile.user-profile",
+      "inversedBy": "favoritePlaces"
+    },
+    "wantedToGoBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-profile.user-profile",
+      "inversedBy": "wantToGoPlaces"
     }
   }
 }

@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_profiles",
+  "info": {
+    "singularName": "user-profile",
+    "pluralName": "user-profiles",
+    "displayName": "User profile",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "biography": {
+      "type": "text",
+      "maxLength": 300
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "user_profile"
+    },
+    "visitedPlaces": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::place.place",
+      "mappedBy": "visitedBy"
+    },
+    "favoritePlaces": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::place.place",
+      "mappedBy": "favoritedBy"
+    },
+    "wantToGoPlaces": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::place.place",
+      "mappedBy": "wantedToGoBy"
+    },
+    "name": {
+      "type": "string",
+      "required": false,
+      "maxLength": 80
+    },
+    "isPublic": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}

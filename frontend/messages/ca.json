@@ -7,7 +7,8 @@
   "PlaceLayout": {
     "map": "Mapa",
     "links": "Enllaços",
-    "data": "Dades"
+    "data": "Dades",
+    "explore-full-map": "Explorar mapa complert"
   },
   "MonumentView": {
     "year": "Any {year}",
@@ -21,7 +22,23 @@
   "Header": {
     "title": "Llocs de Begur",
     "home": "Inici",
+    "profile": "Perfil",
     "map": "Mapa"
+  },
+  "Profile": {
+    "profile": "Perfil",
+    "my-profile": "El meu perfil",
+    "login": "Iniciar sessió",
+    "logout": "Tencar sessió",
+    "profile-details": "Detalls del perfil",
+    "username": "Nom d'usuari",
+    "biography": "Biografia",
+    "name": "Nom",
+    "visibility": "Visiblitat",
+    "visited-places": "Llocs visitats",
+    "favorite-places": "Llocs preferits",
+    "want-to-go-places": "Locs per anar",
+    "no-places-yet": "No places yet"
   },
   "Explore": {
     "expand": "Mostrar panell",

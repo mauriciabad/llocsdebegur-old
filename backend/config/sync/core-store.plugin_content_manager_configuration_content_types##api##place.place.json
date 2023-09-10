@@ -331,6 +331,51 @@
           "sortable": false
         }
       },
+      "visitedBy": {
+        "edit": {
+          "label": "visitedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "id"
+        },
+        "list": {
+          "label": "visitedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "favoritedBy": {
+        "edit": {
+          "label": "favoritedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "id"
+        },
+        "list": {
+          "label": "favoritedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "wantedToGoBy": {
+        "edit": {
+          "label": "wantedToGoBy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "id"
+        },
+        "list": {
+          "label": "wantedToGoBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -361,6 +406,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "cover",
+        "name",
+        "type",
+        "difficulty"
+      ],
       "edit": [
         [
           {
@@ -475,13 +526,23 @@
             "name": "detailsLocal",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "visitedBy",
+            "size": 6
+          },
+          {
+            "name": "favoritedBy",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "wantedToGoBy",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "cover",
-        "name",
-        "type",
-        "difficulty"
       ]
     }
   },

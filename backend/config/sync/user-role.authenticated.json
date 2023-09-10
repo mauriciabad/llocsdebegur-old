@@ -7,6 +7,12 @@
       "action": "api::landing.landing.find"
     },
     {
+      "action": "api::user-profile.user-profile.find"
+    },
+    {
+      "action": "api::user-profile.user-profile.findOne"
+    },
+    {
       "action": "plugin::users-permissions.auth.changePassword"
     },
     {

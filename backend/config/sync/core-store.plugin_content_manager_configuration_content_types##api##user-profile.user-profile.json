@@ -1,0 +1,202 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::user-profile.user-profile",
+  "value": {
+    "uid": "api::user-profile.user-profile",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "name",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "biography": {
+        "edit": {
+          "label": "biography",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "biography",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "user": {
+        "edit": {
+          "label": "user",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "username"
+        },
+        "list": {
+          "label": "user",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "visitedPlaces": {
+        "edit": {
+          "label": "visitedPlaces",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "visitedPlaces",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "favoritePlaces": {
+        "edit": {
+          "label": "favoritePlaces",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "favoritePlaces",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "wantToGoPlaces": {
+        "edit": {
+          "label": "wantToGoPlaces",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "wantToGoPlaces",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "name": {
+        "edit": {
+          "label": "name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "isPublic": {
+        "edit": {
+          "label": "isPublic",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "isPublic",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "name",
+            "size": 8
+          },
+          {
+            "name": "isPublic",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "biography",
+            "size": 8
+          },
+          {
+            "name": "user",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "visitedPlaces",
+            "size": 4
+          },
+          {
+            "name": "favoritePlaces",
+            "size": 4
+          },
+          {
+            "name": "wantToGoPlaces",
+            "size": 4
+          }
+        ]
+      ],
+      "list": [
+        "id",
+        "biography",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

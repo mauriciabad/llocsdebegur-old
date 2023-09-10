@@ -5,6 +5,7 @@ import { Poppins } from 'next/font/google'
 import classNames from 'classnames'
 import { NextIntlClientProvider, useLocale } from 'next-intl'
 import { ApolloWrapper } from '@/components/wrappers/ApolloWrapper'
+import { AuthProvider } from '@/components/wrappers/AuthProvider'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const poppins = Poppins({
@@ -43,9 +44,11 @@ export default async function RootLayout({
           'min-h-screen bg-stone-50',
         ])}
       >
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <ApolloWrapper>{children}</ApolloWrapper>
-        </NextIntlClientProvider>
+        <AuthProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <ApolloWrapper>{children}</ApolloWrapper>
+          </NextIntlClientProvider>
+        </AuthProvider>
       </body>
     </html>
   )

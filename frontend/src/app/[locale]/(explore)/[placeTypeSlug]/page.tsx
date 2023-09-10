@@ -1,5 +1,4 @@
 import PlaceIcon from '@/components/PlaceIcon'
-import StrapiImage from '@/components/StrapiImage'
 import {
   Place,
   PlaceType,
@@ -12,8 +11,9 @@ import {
 import { DeepPick } from '@/lib/types'
 import { useLocale, useTranslations } from 'next-intl'
 import { notFound } from 'next/navigation'
-import Link from 'next-intl/link'
 import ReactMarkdown from 'react-markdown'
+import PlaceListLarge from '@/components/PlaceListLarge'
+import { ImageProperties } from '@/components/StrapiImage'
 
 const getPlaceTypeQuery = graphql(`
   query getPlaceType($locale: I18NLocaleCode!, $slug: String!) {
@@ -51,6 +51,14 @@ const getAllPlacesOfTypeQuery = graphql(`
                 width
                 alternativeText
                 placeholder
+              }
+            }
+          }
+          type {
+            data {
+              attributes {
+                slug
+                name
               }
             }
           }
@@ -99,11 +107,9 @@ function SubPage({
     | 'name'
     | 'slug'
     | 'description'
-    | 'cover.url'
-    | 'cover.height'
-    | 'cover.width'
-    | 'cover.alternativeText'
-    | 'cover.placeholder'
+    | `cover.${ImageProperties}`
+    | 'type.slug'
+    | 'type.name'
   >[]
 }) {
   const t = useTranslations('Enums.placeType')
@@ -126,33 +132,7 @@ function SubPage({
           <ReactMarkdown>{placeType.content}</ReactMarkdown>
         </div>
       )}
-      <ul className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(theme(spacing.64),1fr))] gap-6">
-        {places.map(
-          (place) =>
-            place && (
-              <li key={place.slug} className="h-full">
-                <Link
-                  href={`/${placeType.slug}/${place.slug}`}
-                  className="group block h-full overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-md outline-2 outline-brand-100 hover:outline"
-                >
-                  {place.cover && (
-                    <StrapiImage
-                      image={place.cover}
-                      className="aspect-[4/3] w-full"
-                      width={256 * 2 + 64}
-                    />
-                  )}
-                  <h2 className="mx-4 mt-3 font-title text-xl font-bold text-stone-800">
-                    {place.name}
-                  </h2>
-                  <p className="mx-4 mb-4 mt-1 line-clamp-3">
-                    {place.description}
-                  </p>
-                </Link>
-              </li>
-            )
-        )}
-      </ul>
+      <PlaceListLarge className="mt-6" places={places} />
     </main>
   )
 }

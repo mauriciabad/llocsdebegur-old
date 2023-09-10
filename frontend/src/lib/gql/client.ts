@@ -7,7 +7,7 @@ import {
   SSRMultipartLink,
 } from '@apollo/experimental-nextjs-app-support/ssr'
 
-if (IS_PRODUCTION_ENV) {
+if (!IS_PRODUCTION_ENV) {
   loadDevMessages()
   loadErrorMessages()
 }
