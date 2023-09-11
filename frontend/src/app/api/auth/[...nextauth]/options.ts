@@ -2,6 +2,8 @@ import { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { signIn } from '@/services/authentication'
+import { BACKEND_URL } from '@/constants'
+import { UsersPermissionsLoginPayload } from '@/lib/gql'
 
 if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
   throw new Error('Missing environment variables')
@@ -31,11 +33,29 @@ export const options: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    jwt: async ({ token, user }) => {
-      if (user) {
-        token.jwt = user.jwt
-        token.id = user.id
-        token.username = user.username
+    jwt: async ({ token, user, account }) => {
+      if (account) {
+        if (account.provider === 'credentials') {
+          token.jwt = user.jwt
+          token.id = user.id
+          token.username = user.username
+        } else {
+          const data: UsersPermissionsLoginPayload = await (
+            await fetch(
+              `${BACKEND_URL}/api/auth/${
+                account.provider
+              }/callback?access_token=${
+                account.access_token ?? account.accessToken
+              }`
+            )
+          ).json()
+
+          if (!data.jwt) throw new Error('Missing JWT at login')
+
+          token.jwt = data.jwt
+          token.id = data.user.id
+          token.username = data.user.username
+        }
       }
 
       return Promise.resolve(token)
