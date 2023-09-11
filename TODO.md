@@ -4,7 +4,6 @@
 
 - [ ] Register users
 - [ ] Hide private profiles
-- [ ] Login with Google
 - [ ] Delete user
 
 ## Gamification & User interaction
