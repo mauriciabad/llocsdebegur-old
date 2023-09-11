@@ -7,7 +7,7 @@
 >
 > Deployment: Deployed on `Vercel`.
 
-Public URL: <https://begur.mauri.app/>
+Public URL: <https://begur-old.mauri.app/>
 
 ### Development
 
@@ -51,8 +51,8 @@ npm run build
 >
 > Deployment: Deployed on Maurici's server automatically when there's a push in main.
 
-- Admin panel URL: <https://cms.begur.s.mauri.app/admin>
-- GraphQL URL: <http://cms.begur.s.mauri.app/graphql>
+- Admin panel URL: <https://cms.begur-old.s.mauri.app/admin>
+- GraphQL URL: <http://cms.begur-old.s.mauri.app/graphql>
 
 ### Development
 
@@ -77,7 +77,7 @@ npm run docker:dev
 
 > [!IMPORTANT]
 > *Importing data*
-> You can import all the data from production using `npm run strapi -- transfer --from https://cms.begur.s.mauri.app/admin`, then you provide a token. More info in <https://docs.strapi.io/dev-docs/data-management/transfer#setup-and-run-the-data-transfer>
+> You can import all the data from production using `npm run strapi -- transfer --from https://cms.begur-old.s.mauri.app/admin`, then you provide a token. More info in <https://docs.strapi.io/dev-docs/data-management/transfer#setup-and-run-the-data-transfer>
 >
 > Remember that you can export the admin's config with the plugin [Config Sync](https://market.strapi.io/plugins/strapi-plugin-config-sync) or `npm run cs export`. **You should do this manually when the config changes** (Admin role, User role, Core store, or I18n locale). And after deploying, manually importing the config with the plugin [Config Sync](https://market.strapi.io/plugins/strapi-plugin-config-sync) or `npm run cs import` on the server's docker container.
 
@@ -91,4 +91,4 @@ docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build
 ```
 
 > [!IMPORTANT]
-> Remember to sync the settings changed during development by going to <https://cms.begur.s.mauri.app/admin/settings/config-sync> and import the settings. You have to do this after every deploy that changed something in the backend.
+> Remember to sync the settings changed during development by going to <https://cms.begur-old.s.mauri.app/admin/settings/config-sync> and import the settings. You have to do this after every deploy that changed something in the backend.

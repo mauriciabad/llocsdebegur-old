@@ -21,8 +21,8 @@ export default ({ env }) => {
         origin:
           env("NODE_ENV") === "production"
             ? [
-                "https://cms.begur.s.mauri.app",
-                "https://begur.mauri.app",
+                "https://cms.begur-old.s.mauri.app",
+                "https://begur-old.mauri.app",
                 "https://llocsdebegur.vercel.app",
               ]
             : ["http://localhost:3000", "http://localhost:1337"],
