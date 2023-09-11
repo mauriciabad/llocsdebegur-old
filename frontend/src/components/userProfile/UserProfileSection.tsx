@@ -2,6 +2,7 @@ import { ImageProperties } from '@/components/StrapiImage'
 import {
   SimpleType,
   UserProfile,
+  getOnlyOne,
   gqlClient,
   graphql,
   nonNullable,
@@ -119,7 +120,7 @@ export default async function UserProfileSection({
     variables: { username },
   })
 
-  const userProfile = simplifyResponse(rawUserProfile)?.[0]
+  const userProfile = getOnlyOne(simplifyResponse(rawUserProfile))
   if (!userProfile) throw new Error('Missing user-profile')
 
   return <InnerComponent username={username} userProfile={userProfile} />

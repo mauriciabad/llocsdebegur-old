@@ -1,6 +1,6 @@
 'use client'
 
-import { graphql, simplifyResponse } from '@/lib/gql'
+import { getOnlyOne, graphql, simplifyResponse } from '@/lib/gql'
 import { useQuery } from '@apollo/client'
 import { IconBookmark, IconCheck, IconHeart } from '@tabler/icons-react'
 import classNames from 'classnames'
@@ -54,7 +54,7 @@ export default function UserProfilePlacesAddButtonsButtons({
   )
 
   const userProfile = useMemo(
-    () => rawUserProfile && simplifyResponse(rawUserProfile)?.[0],
+    () => rawUserProfile && getOnlyOne(simplifyResponse(rawUserProfile)),
     [rawUserProfile]
   )
 
