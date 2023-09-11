@@ -6,7 +6,7 @@ const nextConfig = {
   images: {
     domains: [
       process.env.NODE_ENV === 'production'
-        ? 'https://cms.begur.s.mauri.app'
+        ? 'https://cms.begur-old.s.mauri.app'
         : 'http://localhost:1337',
     ],
   },
