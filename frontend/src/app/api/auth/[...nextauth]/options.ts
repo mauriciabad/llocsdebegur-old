@@ -25,7 +25,7 @@ export const options: NextAuthOptions = {
 
         try {
           const { user, jwt } = await signIn(credentials)
-          return { ...user, jwt }
+          return { ...user, provider: 'local', jwt }
         } catch (error) {
           return null
         }
@@ -39,6 +39,7 @@ export const options: NextAuthOptions = {
           token.jwt = user.jwt
           token.id = user.id
           token.username = user.username
+          token.provider = 'local'
         } else {
           const data: UsersPermissionsLoginPayload = await (
             await fetch(
@@ -55,6 +56,7 @@ export const options: NextAuthOptions = {
           token.jwt = data.jwt
           token.id = data.user.id
           token.username = data.user.username
+          token.provider = account.provider
         }
       }
 
@@ -64,6 +66,7 @@ export const options: NextAuthOptions = {
       session.jwt = token.jwt
       session.user.id = token.id
       session.user.username = token.username
+      session.user.provider = token.provider
 
       return Promise.resolve(session)
     },

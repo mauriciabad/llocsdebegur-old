@@ -7,7 +7,8 @@ import { redirect } from 'next/navigation'
 export default async function PageWrapper() {
   const session = await getServerSessionCustom()
 
-  if (session) redirect(`/user/${session.user.username}`)
+  if (session)
+    redirect(`/user/${session.user.provider}/${session.user.username}`)
 
   return <Page />
 }
