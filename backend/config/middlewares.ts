@@ -23,7 +23,7 @@ export default ({ env }) => {
             ? [
                 "https://cms.begur-old.s.mauri.app",
                 "https://begur-old.mauri.app",
-                "https://llocsdebegur.vercel.app",
+                "https://llocsdebegur-old.vercel.app",
               ]
             : ["http://localhost:3000", "http://localhost:1337"],
       },
