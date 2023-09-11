@@ -1,5 +1,4 @@
 import { BACKEND_URL, IS_PRODUCTION_ENV } from '@/constants'
-import { getServerSessionCustom } from '@/services/authentication'
 import { ApolloLink, HttpLink } from '@apollo/client'
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev'
 import {

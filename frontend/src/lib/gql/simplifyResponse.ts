@@ -139,15 +139,3 @@ export type NonNullableItem<T extends any[] | null | undefined> = NonNullable<
 export function nonNullable<T>(x: T | null | undefined): x is T {
   return x !== null && x !== undefined
 }
-
-type Expand<T> = T extends object
-  ? T extends infer O
-    ? { [K in keyof O]: O[K] }
-    : never
-  : T
-
-type UnionToIntersection<U> = Expand<
-  (U extends any ? (k: U) => void : never) extends (k: infer I) => void
-    ? I
-    : never
->
