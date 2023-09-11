@@ -1,5 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+export function getOnlyOne(array: undefined): undefined
+export function getOnlyOne(array: null): null
+export function getOnlyOne(array: []): undefined
+export function getOnlyOne<T>(array: T[]): T
+export function getOnlyOne<T>(
+  array: T[] | undefined | null
+): T | undefined | null
+export function getOnlyOne<T>(array: T[] | undefined | null) {
+  if (array === undefined) return undefined
+  if (array === null) return null
+  if (array.length === 0) return undefined
+
+  if (!Array.isArray(array)) throw new Error('Response is not an array')
+  if (array.length >= 2)
+    throw new Error('Response has none or more than 1 items')
+
+  return array[0]
+}
+
 export function simplifyResponse<T extends ObjectType>(
   response: T
 ): SimpleResponse<T> {
@@ -104,6 +123,7 @@ type IsUnion<T, U extends T = T> = (
 ) extends false
   ? false
   : true
+
 type GetOnlyKeyOrNever<
   T extends ObjectType,
   Keys = Exclude<keyof T, '__typename'>,

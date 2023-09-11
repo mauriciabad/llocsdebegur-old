@@ -5,16 +5,27 @@ import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
 export default async function PageWrapper({
-  params: { username },
+  params: { username, provider },
 }: {
-  params: { username: string }
+  params: { username: string; provider: string }
 }) {
   const session = await getServerSessionCustom()
-  const isMe = session?.user.username === username
-  return <Page username={username} isMe={isMe} />
+  const isMe =
+    !!session &&
+    session.user.username === username &&
+    session.user.provider === provider
+  return <Page username={username} provider={provider} isMe={isMe} />
 }
 
-function Page({ username, isMe }: { username: string; isMe: boolean }) {
+function Page({
+  username,
+  provider,
+  isMe,
+}: {
+  username: string
+  provider: string
+  isMe: boolean
+}) {
   const t = useTranslations('Profile')
 
   return (
@@ -36,7 +47,7 @@ function Page({ username, isMe }: { username: string; isMe: boolean }) {
           </div>
         )}
 
-        <UserProfileSection username={username} />
+        <UserProfileSection username={username} provider={provider} />
       </main>
     </>
   )

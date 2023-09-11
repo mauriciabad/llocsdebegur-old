@@ -2,6 +2,7 @@ import { ImageProperties } from '@/components/StrapiImage'
 import {
   SimpleType,
   UserProfile,
+  getOnlyOne,
   gqlClient,
   graphql,
   nonNullable,
@@ -12,13 +13,27 @@ import PlaceListLarge from '../PlaceListLarge'
 import { DeepPick } from '@/lib/types'
 
 const getUserProfileQuery = graphql(`
-  query getUserProfile($username: String!) {
-    userProfiles(filters: { user: { username: { eq: $username } } }) {
+  query getUserProfile($username: String!, $provider: String!) {
+    userProfiles(
+      filters: {
+        user: {
+          and: { username: { eq: $username }, provider: { eq: $provider } }
+        }
+      }
+    ) {
       data {
         attributes {
           biography
           name
           isPublic
+          user {
+            data {
+              attributes {
+                provider
+                username
+              }
+            }
+          }
           visitedPlaces {
             data {
               attributes {
@@ -111,32 +126,34 @@ const getUserProfileQuery = graphql(`
 
 export default async function UserProfileSection({
   username,
+  provider,
 }: {
   username: string
+  provider: string
 }) {
   const { data: rawUserProfile } = await gqlClient().query({
     query: getUserProfileQuery,
-    variables: { username },
+    variables: { username, provider },
   })
 
-  const userProfile = simplifyResponse(rawUserProfile)?.[0]
+  const userProfile = getOnlyOne(simplifyResponse(rawUserProfile))
   if (!userProfile) throw new Error('Missing user-profile')
 
-  return <InnerComponent username={username} userProfile={userProfile} />
+  return <InnerComponent userProfile={userProfile} />
 }
 
 type PlaceListsKey = 'visitedPlaces' | 'favoritePlaces' | 'wantToGoPlaces'
 
 async function InnerComponent({
-  username,
   userProfile,
 }: {
-  username: string
   userProfile: DeepPick<
     SimpleType<UserProfile>,
     | 'biography'
     | 'name'
     | 'isPublic'
+    | 'user.provider'
+    | 'user.username'
     | `${PlaceListsKey}.name`
     | `${PlaceListsKey}.slug`
     | `${PlaceListsKey}.description`
@@ -153,7 +170,11 @@ async function InnerComponent({
         {t('profile-details')}
       </h3>
       <p>
-        {t('username')}: @{username}
+        {t('username')}: @{userProfile.user?.username}
+      </p>
+      <p>
+        {t('account-type')}:{' '}
+        <span className="capitalize">{userProfile.user?.provider}</span>
       </p>
       <p>
         {t('biography')}: {userProfile.biography}

@@ -6,6 +6,8 @@ import {
   NextSSRInMemoryCache,
   SSRMultipartLink,
 } from '@apollo/experimental-nextjs-app-support/ssr'
+import { setContext } from '@apollo/client/link/context'
+import { getSession } from 'next-auth/react'
 
 if (!IS_PRODUCTION_ENV) {
   loadDevMessages()
@@ -19,16 +21,27 @@ export function gqlClient() {
     uri: GRAPHQL_API_URL,
   })
 
+  const authLink = setContext(async () => {
+    const session = await getSession()
+    if (!session?.jwt) return {}
+    return {
+      headers: {
+        Authorization: `Bearer ${session.jwt}`,
+      },
+    }
+  })
+
   return new NextSSRApolloClient({
     cache: new NextSSRInMemoryCache(),
     link:
       typeof window === 'undefined'
         ? ApolloLink.from([
+            authLink,
             new SSRMultipartLink({
               stripDefer: true,
             }),
             httpLink,
           ])
-        : httpLink,
+        : ApolloLink.from([authLink, httpLink]),
   })
 }

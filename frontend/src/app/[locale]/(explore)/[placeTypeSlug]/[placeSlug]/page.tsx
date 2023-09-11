@@ -5,6 +5,7 @@ import {
   NonNullableItem,
   PlaceTypeSlug,
   SimpleResponse,
+  getOnlyOne,
   gqlClient,
   graphql,
   simplifyResponse,
@@ -73,8 +74,7 @@ export default async function PageWrapper({
     query: getPlaceQuery,
     variables: { locale, slug: placeSlug },
   })
-  const places = simplifyResponse(data)
-  const place = places?.[0]
+  const place = getOnlyOne(simplifyResponse(data))
 
   if (!place) notFound()
 

@@ -3,6 +3,7 @@ import {
   Place,
   PlaceType,
   SimpleType,
+  getOnlyOne,
   gqlClient,
   graphql,
   nonNullable,
@@ -88,7 +89,7 @@ export default async function Page({
     query: getPlaceTypeQuery,
     variables: { locale, slug: placeTypeSlug },
   })
-  const placeType = simplifyResponse(rawPlaceType)?.[0]
+  const placeType = getOnlyOne(simplifyResponse(rawPlaceType))
   if (!placeType) notFound()
 
   return <SubPage placeType={placeType} places={places.filter(nonNullable)} />
